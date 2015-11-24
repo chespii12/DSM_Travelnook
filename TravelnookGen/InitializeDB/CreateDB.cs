@@ -361,6 +361,8 @@ public static void InitializeData ()
                         System.Console.Write (evento.Id + "\n");
                 }
 
+            ///Prueba repositorio
+
 
 
                 /*List<TravelnookGenNHibernate.EN.Mediaplayer.MusicTrackEN> musicTracks = new List<TravelnookGenNHibernate.EN.Mediaplayer.MusicTrackEN>();
