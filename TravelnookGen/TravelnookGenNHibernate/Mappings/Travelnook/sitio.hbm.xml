@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="SitioEN" table="Sitio"> 
+						<id name="Nombre" column="nombre"/> 
+			
+					
+					<property name="Provincia" type="string"> 
+						<column name="provincia"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion"  not-null="true"/>
+					</property>
+					<property name="Puntuacion" type="integer"> 
+						<column name="puntuacion"  not-null="true"/>
+					</property>
+					<bag name="Fotos" table="fotos"> 
+						<key>
+						</key>
+						<element column="Fotos" type="string"/> 
+    				</bag>
+					<bag name="Videos" table="videos"> 
+						<key>
+						</key>
+						<element column="Videos" type="string"/> 
+    				</bag>
+					<property name="Localizacion" type="string"> 
+						<column name="localizacion"  not-null="true"/>
+					</property>
+					<property name="FechaCreacion" type="date"> 
+						<column name="fechaCreacion"  not-null="true"/>
+					</property>
+					<property name="NumPuntuados" type="integer"> 
+						<column name="numPuntuados"  not-null="true"/>
+					</property>
+					<property name="PuntuacionMedia" type="integer"> 
+						<column name="puntuacionMedia"  not-null="true"/>
+					</property>
+					<property name="TipoSitio" > 
+						<column name="tipoSitio"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Ruta" table="[ruta_sitio]" inverse="true" >
+							<key>
+								
+									<column name="FK_nombre_idSitio"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.RutaEN">
+									<column name="FK_nombre_idRuta"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+		  			
+						<many-to-one name="Usuario" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_nomUsu_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Favorito" >
+							<key>
+							
+								
+								<column name="FK_nombre_idSitio"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.FavoritoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_nombre_idSitio"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Actividades" table="[actividad_sitio]" inverse="true" >
+							<key>
+								
+									<column name="FK_nombre_idSitio"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.ActividadEN">
+									<column name="FK_tipo_idActividad"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="SitioENReadAllHQL">from SitioEN</query>
+		  <query name="SitioENDevuelveSitiosOrdenadosPorFechaHQL"><![CDATA[FROM SitioEN sitio order by sitio.FechaCreacion asc]]></query>
+		  <query name="SitioENDevuelveSitioPorNombreHQL"><![CDATA[FROM SitioEN sitio where sitio.Nombre like :p_nombre]]></query>
+		  <query name="SitioENDevuelveSitiosPorTipoHQL"><![CDATA[FROM SitioEN sitio where sitio.TipoSitio like :p_tipositio]]></query>
+		  <query name="SitioENDevuelveSitiosPorActividadHQL"><![CDATA[FROM SitioEN sitio where sitio.Actividades like  :p_actividades]]></query>
+		  <query name="SitioENbuscarSitioHQL"><![CDATA[FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion = -1 or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo = -1 or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)]]></query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="ActividadEN" table="Actividad"> 
+						<id name="Tipo" column="tipo"/> 
+			
+					
+			
+			
+		  			
+						<bag name="Sitio" table="[actividad_sitio]"  >
+							<key>
+								
+									<column name="FK_tipo_idActividad"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.SitioEN">
+									<column name="FK_nombre_idSitio"/> 
+      						</many-to-many>
+    					</bag>
+			
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ActividadENReadAllHQL">from ActividadEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="EventoEN" table="Evento"> 
+				  	
+						<id name="Id" column="attribute" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Titulo" type="string"> 
+						<column name="titulo"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion"  not-null="true"/>
+					</property>
+					<property name="Asistentes" type="integer"> 
+						<column name="asistentes"  not-null="true"/>
+					</property>
+					<property name="Quizas" type="integer"> 
+						<column name="quizas"  not-null="true"/>
+					</property>
+					<property name="Rechazados" type="integer"> 
+						<column name="rechazados"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_attribute_idEventos"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+			
+			
+			
+		  			
+						<many-to-one name="Organizador" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_nomUsu_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Favorito" >
+							<key>
+							
+								
+								<column name="FK_attribute_idEventos"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.FavoritoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Usuario" table="[eventos_0_usuario]"  >
+							<key>
+								
+									<column name="FK_attribute_idInvitados"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN">
+									<column name="FK_nomUsu_idUsuario"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="EventoENReadAllHQL">from EventoEN</query>
+		  <query name="EventoENdevuelveEventoPorTituloHQL"><![CDATA[FROM EventoEN as e where e.Titulo like '%'+:p_titulo+'%']]></query>
+		  <query name="EventoENEventosPorMayorNumAsistentesHQL"><![CDATA[FROM EventoEN ev order by ev.Asistentes desc]]></query>
+		</hibernate-mapping>
+	

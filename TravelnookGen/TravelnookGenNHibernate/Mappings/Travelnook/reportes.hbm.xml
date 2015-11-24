@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="ReportesEN" table="Reportes"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Motivo" type="string"> 
+						<column name="motivo"  not-null="true"/>
+					</property>
+					<property name="Marcado" type="boolean"> 
+						<column name="marcado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Sitio" class="TravelnookGenNHibernate.EN.Travelnook.SitioEN" >	
+								<column name="FK_nombre_idSitio"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Ruta" class="TravelnookGenNHibernate.EN.Travelnook.RutaEN" >	
+								<column name="FK_nombre_idRuta"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Comentario" class="TravelnookGenNHibernate.EN.Travelnook.ComentarioEN" >	
+								<column name="FK_attribute_idComentario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Eventos" class="TravelnookGenNHibernate.EN.Travelnook.EventoEN" >	
+								<column name="FK_attribute_idEventos"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Administrador" class="TravelnookGenNHibernate.EN.Travelnook.AdministradorEN" >	
+								<column name="FK_email_idAdministrador"/> 
+						</many-to-one>
+											 					
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ReportesENReadAllHQL">from ReportesEN</query>
+		</hibernate-mapping>
+	

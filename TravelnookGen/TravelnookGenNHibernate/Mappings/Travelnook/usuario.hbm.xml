@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="UsuarioEN" table="Usuario"> 
+						<id name="NomUsu" column="nomUsu"/> 
+			
+					
+					<property name="Email" type="string"> 
+						<column name="email"  unique="true" not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="apellidos"  not-null="true"/>
+					</property>
+					<property name="Localidad" type="string"> 
+						<column name="localidad"  not-null="true"/>
+					</property>
+					<property name="Provincia" type="string"> 
+						<column name="provincia"  not-null="true"/>
+					</property>
+					<property name="Contrasenya" type="string"> 
+						<column name="contrasenya"  not-null="true"/>
+					</property>
+					<property name="FechaNacimiento" type="date"> 
+						<column name="fechaNacimiento"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Sitio" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.SitioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Favorito" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario_0"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.FavoritoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Comentario" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ComentarioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="SolicitudAmistadSolicitante" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.SolicitudEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="SolicitudAmistadSolicitado" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario_0"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.SolicitudEN"/>
+					    </bag>
+					
+			
+			
+		  			
+						<bag name="Evento" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.EventoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Invitado" table="[eventos_0_usuario]" inverse="true" >
+							<key>
+								
+									<column name="FK_nomUsu_idUsuario"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.EventoEN">
+									<column name="FK_attribute_idInvitados"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						<bag name="Amigos" table="[usuario_usuario_0]" >
+							<key>
+									<column name="FK_nomUsu_idUsuario_0"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN">
+									<column name="FK_nomUsu_idAmigos"/> 
+      						</many-to-many>
+    					</bag>		
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENdevuelveUsuarioPorEmailHQL"><![CDATA[FROM UsuarioEN as usuario where usuario.Email = :p_email]]></query>
+		  <query name="UsuarioENamigosPorNomUsuHQL"><![CDATA[SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE amigo.NomUsu like '%'+:p_nomUsu+'%' ]]></query>
+		  <query name="UsuarioENamigosPorEmailHQL"><![CDATA[SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE amigo.Email like '%'+:p_email+'%']]></query>
+		  <query name="UsuarioENconsultarAmigosHQL"><![CDATA[SELECT (amigo.NomUsu) FROM UsuarioEN as usu inner join usu.Amigos as amigo]]></query>
+		</hibernate-mapping>
+	

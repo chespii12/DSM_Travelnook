@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="RutaEN" table="Ruta"> 
+						<id name="Nombre" column="nombre"/> 
+			
+					
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion"  not-null="true"/>
+					</property>
+					<property name="Provincia" type="string"> 
+						<column name="provincia"  not-null="true"/>
+					</property>
+					<property name="Puntuacion" type="integer"> 
+						<column name="puntuacion"  not-null="true"/>
+					</property>
+					<property name="NumPuntuados" type="integer"> 
+						<column name="numPuntuados"  not-null="true"/>
+					</property>
+					<property name="FechaCreacion" type="date"> 
+						<column name="fechaCreacion"  not-null="true"/>
+					</property>
+					<property name="PuntuacionMedia" type="integer"> 
+						<column name="puntuacionMedia"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Sitio" table="[ruta_sitio]"  >
+							<key>
+								
+									<column name="FK_nombre_idRuta"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.SitioEN">
+									<column name="FK_nombre_idSitio"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Favorito" >
+							<key>
+							
+								
+								<column name="FK_nombre_idRuta"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.FavoritoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_nombre_idRuta"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+			
+			
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="RutaENReadAllHQL">from RutaEN</query>
+		  <query name="RutaENDevuelveRutasOrdenadasPorFechaHQL"><![CDATA[FROM RutaEN ruta order by ruta.FechaCreacion asc]]></query>
+		  <query name="RutaENDevuelveRutaPorNombreHQL"><![CDATA[FROM RutaEN as r where r.Nombre like :p_nombre]]></query>
+		  <query name="RutaENbuscarRutaHQL"><![CDATA[FROM RutaEN ruta where (:p_nombre is null or ruta.Nombre = :p_nombre) and (:p_provincia is null or ruta.Provincia = :p_provincia) and (:p_puntuacion = -1 or ruta.PuntuacionMedia = :p_puntuacion)]]></query>
+		</hibernate-mapping>
+	

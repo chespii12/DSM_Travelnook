@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>TravelnookGenNHibernate</RootNamespace>
+		    <AssemblyName>TravelnookGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		<ItemGroup>
+		    <Content Include="AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="AppLib\Iesi.Collections.dll" />
+		    <Content Include="AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="AppLib\log4net.dll" />
+		    <Content Include="AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="AppLib\NHibernate.dll" />
+		    <Content Include="AppLib\nunit.core.dll" />
+		    <Content Include="AppLib\nunit.framework.dll" />
+  		</ItemGroup>
+		<ItemGroup>
+			<Compile Include="Utils\Util.cs" />
+		    <Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	
+	<Compile Include="CAD\BasicCAD.cs"/>
+	
+	<Compile Include="EN\Travelnook\UsuarioEN.cs" />
+	<Compile Include="CEN\Travelnook\UsuarioCEN.cs" />
+	<Compile Include="CAD\Travelnook\IUsuarioCAD.cs" />
+	<Compile Include="CAD\Travelnook\UsuarioCAD.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_Login.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_ConsultarAmigos.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_Registro.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_EnviarSolicitud.cs" />
+	<Compile Include="EN\Travelnook\FavoritoEN.cs" />
+	<Compile Include="CEN\Travelnook\FavoritoCEN.cs" />
+	<Compile Include="CAD\Travelnook\IFavoritoCAD.cs" />
+	<Compile Include="CAD\Travelnook\FavoritoCAD.cs" />
+	<Compile Include="EN\Travelnook\SitioEN.cs" />
+	<Compile Include="CEN\Travelnook\SitioCEN.cs" />
+	<Compile Include="CAD\Travelnook\ISitioCAD.cs" />
+	<Compile Include="CAD\Travelnook\SitioCAD.cs" />
+			<Compile Include="CEN\Travelnook\SitioCEN_PuntuarSitio.cs" />
+	<Compile Include="EN\Travelnook\RutaEN.cs" />
+	<Compile Include="CEN\Travelnook\RutaCEN.cs" />
+	<Compile Include="CAD\Travelnook\IRutaCAD.cs" />
+	<Compile Include="CAD\Travelnook\RutaCAD.cs" />
+			<Compile Include="CEN\Travelnook\RutaCEN_PuntuarRuta.cs" />
+	<Compile Include="EN\Travelnook\ReporteEN.cs" />
+	<Compile Include="CEN\Travelnook\ReporteCEN.cs" />
+	<Compile Include="CAD\Travelnook\IReporteCAD.cs" />
+	<Compile Include="CAD\Travelnook\ReporteCAD.cs" />
+			<Compile Include="CEN\Travelnook\ReporteCEN_EnviarReporte.cs" />
+	<Compile Include="EN\Travelnook\AdministradorEN.cs" />
+	<Compile Include="CEN\Travelnook\AdministradorCEN.cs" />
+	<Compile Include="CAD\Travelnook\IAdministradorCAD.cs" />
+	<Compile Include="CAD\Travelnook\AdministradorCAD.cs" />
+			<Compile Include="CEN\Travelnook\AdministradorCEN_Login.cs" />
+	<Compile Include="EN\Travelnook\ComentarioEN.cs" />
+	<Compile Include="CEN\Travelnook\ComentarioCEN.cs" />
+	<Compile Include="CAD\Travelnook\IComentarioCAD.cs" />
+	<Compile Include="CAD\Travelnook\ComentarioCAD.cs" />
+			<Compile Include="CEN\Travelnook\ComentarioCEN_IncrementarLikes.cs" />
+			<Compile Include="CEN\Travelnook\ComentarioCEN_IncrementarDislikes.cs" />
+	<Compile Include="EN\Travelnook\EventoEN.cs" />
+	<Compile Include="CEN\Travelnook\EventoCEN.cs" />
+	<Compile Include="CAD\Travelnook\IEventoCAD.cs" />
+	<Compile Include="CAD\Travelnook\EventoCAD.cs" />
+	<Compile Include="EN\Travelnook\SolicitudEN.cs" />
+	<Compile Include="CEN\Travelnook\SolicitudCEN.cs" />
+	<Compile Include="CAD\Travelnook\ISolicitudCAD.cs" />
+	<Compile Include="CAD\Travelnook\SolicitudCAD.cs" />
+	<Compile Include="EN\Travelnook\ActividadEN.cs" />
+	<Compile Include="CEN\Travelnook\ActividadCEN.cs" />
+	<Compile Include="CAD\Travelnook\IActividadCAD.cs" />
+	<Compile Include="CAD\Travelnook\ActividadCAD.cs" />
+	<Compile Include="Enumerated\Travelnook\TipoSitioEnum.cs" />
+	<Compile Include="Enumerated\Travelnook\TipoActividadesEnum.cs" />
+	<Compile Include="Enumerated\Travelnook\EstadoSolicitudEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\Travelnook\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\favorito.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\sitio.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\ruta.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\reporte.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\administrador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\comentario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\evento.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\solicitud.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Travelnook\actividad.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+		  </ItemGroup>
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+		</Project>

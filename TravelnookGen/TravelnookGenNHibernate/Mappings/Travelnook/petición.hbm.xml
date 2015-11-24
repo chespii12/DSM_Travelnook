@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="PeticiónEN" table="Petición"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+					<bag name="Fecha" table="idUsuario"> 
+						<key>
+						</key>
+						<element column="Fecha" type="date"/> 
+    				</bag>
+			
+			
+		  			
+						<many-to-one name="Solicitante" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+			
+			
+			
+		  			
+						<many-to-one name="Solicitado" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_email_idUsuario_0"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PeticiónENReadAllHQL">from PeticiónEN</query>
+		  <query name="PeticiónENdevuelvePeticionesPorSolicitanteHQL"><![CDATA[FROM Solicitud amistadEN]]></query>
+		  <query name="PeticiónENdevuelvePeticionesPorSolicitadoHQL"><![CDATA[FROM Solicitud amistadEN]]></query>
+		</hibernate-mapping>
+	

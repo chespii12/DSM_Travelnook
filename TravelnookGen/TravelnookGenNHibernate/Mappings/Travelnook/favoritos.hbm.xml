@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="FavoritosEN" table="Favoritos"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+			
+			
+			
+		  			
+						<many-to-one name="Ruta" class="TravelnookGenNHibernate.EN.Travelnook.RutaEN" >	
+								<column name="FK_nombre_idRuta"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Sitio" class="TravelnookGenNHibernate.EN.Travelnook.SitioEN" >	
+								<column name="FK_nombre_idSitio"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Usuario" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_email_idUsuario_0"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Evento" class="TravelnookGenNHibernate.EN.Travelnook.EventoEN" >	
+								<column name="FK_attribute_idEventos"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="FavoritosENReadAllHQL">from FavoritosEN</query>
+		</hibernate-mapping>
+	

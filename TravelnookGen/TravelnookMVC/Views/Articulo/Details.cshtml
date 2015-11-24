@@ -1,0 +1,49 @@
+﻿@model MvcApplication1.Models.Articulo
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title del @Model.Nombre</h2>
+
+<fieldset>
+    <legend>Articulo</legend>
+
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Precio)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Precio)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </div>
+    </h3>
+    <div class="display-field">
+        <img src="@Html.DisplayFor(model => model.Imagen)"/>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Volver a la lista", "PorCategoria", new { id = Model.IdCategoria })
+</p>

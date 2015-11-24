@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="ComentarioEN" table="Comentario"> 
+				  	
+						<id name="Id" column="attribute" type="integer"> 
+							<generator class="identity"/>
+						</id>
+			
+					
+					<property name="Descripción" type="string"> 
+						<column name="descripción"  not-null="true"/>
+					</property>
+					<property name="Likes" type="integer"> 
+						<column name="likes"  not-null="true"/>
+					</property>
+					<property name="Dislikes" type="integer"> 
+						<column name="dislikes"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+					<bag name="Fotos" table="fotos"> 
+						<key>
+						</key>
+						<element column="Fotos" type="string"/> 
+    				</bag>
+					<bag name="Videos" table="videos"> 
+						<key>
+						</key>
+						<element column="Videos" type="string"/> 
+    				</bag>
+			
+			
+			
+		  			
+						<bag name="Reportes" >
+							<key>
+							
+								
+								<column name="FK_attribute_idComentario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Usuario" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_nomUsu_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+			
+			
+			
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ComentarioENReadAllHQL">from ComentarioEN</query>
+		</hibernate-mapping>
+	

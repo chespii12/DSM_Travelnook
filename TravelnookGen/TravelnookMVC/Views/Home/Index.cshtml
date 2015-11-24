@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EjemploDSMGenNHibernate.EN.EjemploDSM.CategoriaEN>
+
+@{
+    ViewBag.Title = "Bienvenidos al Petstore en ASP.MVC";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
+<h3>Categorias de Animales</h3>
+<table>
+    <tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img height="60" width="100 "src="@Html.DisplayFor(modelItem => item.Url)" />
+            </td>
+            <td>
+                @Html.ActionLink("Ver Artículos", "PorCategoria", "Articulo", routeValues: new { id = item.Id }, htmlAttributes:null)
+            <td>
+        </tr>
+    }
+    </table>
+    

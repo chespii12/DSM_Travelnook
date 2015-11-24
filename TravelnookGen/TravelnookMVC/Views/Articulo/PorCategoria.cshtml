@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MvcApplication1.Models.Articulo>
+
+@{
+    ViewBag.Title = "Listado de Articulos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado de la Categoria @ViewData["NombreCategoria"]</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo ", "Create", new {id=ViewData["IdCategoria"]})
+</p>
+<table>
+@{
+    if (Model.Any()) { 
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+    }
+    else
+    {
+        <tr>No hay artículos</tr>
+    }
+}
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            <img height="140" width="140 "src="@Html.DisplayFor(modelItem => item.Imagen)" />
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.id })|
+            @Html.ActionLink("Detalles", "Details", new { id=item.id })
+
+        </td>
+    </tr>
+}
+
+</table>

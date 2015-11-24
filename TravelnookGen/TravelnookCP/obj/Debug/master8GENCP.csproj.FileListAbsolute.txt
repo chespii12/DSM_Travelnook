@@ -1,0 +1,36 @@
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\hibernate.cfg.xml
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GENCP.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GENCP.pdb
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Antlr3.Runtime.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Castle.DynamicProxy2.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Iesi.Collections.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\LinFu.DynamicProxy.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\log4net.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GenNHibernate.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.ByteCode.Castle.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.ByteCode.LinFu.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\nunit.core.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\nunit.framework.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GenNHibernate.pdb
+G:\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\ResolveAssemblyReference.cache
+G:\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\master8GENCP.dll
+G:\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\master8GENCP.pdb
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\hibernate.cfg.xml
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GENCP.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GENCP.pdb
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Antlr3.Runtime.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Castle.DynamicProxy2.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\Iesi.Collections.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\LinFu.DynamicProxy.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\log4net.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GenNHibernate.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.ByteCode.Castle.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.ByteCode.LinFu.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\NHibernate.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\nunit.core.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\nunit.framework.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\bin\Debug\master8GenNHibernate.pdb
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\master8GENCP.dll
+C:\Documents and Settings\Usuario\Escritorio\proyectoPetstore_CP_Master\master8GENCP\obj\Debug\master8GENCP.pdb

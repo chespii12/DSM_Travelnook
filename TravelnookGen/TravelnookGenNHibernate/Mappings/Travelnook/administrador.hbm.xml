@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TravelnookGenNHibernate"
+		                   namespace="TravelnookGenNHibernate.EN.Travelnook">
+		    
+		    
+			
+				<class name="AdministradorEN" table="Administrador"> 
+						<id name="Email" column="email"/> 
+			
+					
+					<property name="Contrasenya" type="string"> 
+						<column name="contrasenya"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_email_idAdministrador"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
+					    </bag>
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
+		  <query name="AdministradorENdevuelveAdminPorEmailHQL"><![CDATA[FROM AdministradorEN as admin where admin.Email= :p_email]]></query>
+		</hibernate-mapping>
+	
