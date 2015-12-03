@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelnookGenNHibernate", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelnookCP", "TravelnookCP\TravelnookCP.csproj", "{D4CB224B-8B66-402C-90CD-2E8168D2C104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcEjemplo", "TravelnookMVC\MvcEjemplo.csproj", "{2BA8F166-B304-4926-8DE7-1508C0D86CAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelnookMVC", "TravelnookMVC\TravelnookMVC.csproj", "{2BA8F166-B304-4926-8DE7-1508C0D86CAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

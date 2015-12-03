@@ -77,7 +77,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\TravelnookGenNHibernate.csproj">
+    <ProjectReference Include="..\TravelnookGenNHibernate\TravelnookGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>TravelnookGenNHibernate</Name>
     </ProjectReference>
