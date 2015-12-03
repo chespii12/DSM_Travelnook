@@ -129,6 +129,6 @@
 		  <query name="SitioENDevuelveSitioPorNombreHQL"><![CDATA[FROM SitioEN sitio where sitio.Nombre like :p_nombre]]></query>
 		  <query name="SitioENDevuelveSitiosPorTipoHQL"><![CDATA[FROM SitioEN sitio where sitio.TipoSitio like :p_tipositio]]></query>
 		  <query name="SitioENDevuelveSitiosPorActividadHQL"><![CDATA[FROM SitioEN sitio where sitio.Actividades like  :p_actividades]]></query>
-		  <query name="SitioENbuscarSitioHQL"><![CDATA[FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion = -1 or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo = -1 or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)]]></query>
+		  <query name="SitioENbuscarSitioHQL"><![CDATA[FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion is null or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo is null or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)]]></query>
 		</hibernate-mapping>
 	

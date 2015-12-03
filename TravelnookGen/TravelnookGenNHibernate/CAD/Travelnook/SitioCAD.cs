@@ -316,7 +316,7 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion = -1 or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo = -1 or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)";
+                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion is null or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo is null or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENbuscarSitioHQL");
                 query.SetParameter ("p_nombre", p_nombre);

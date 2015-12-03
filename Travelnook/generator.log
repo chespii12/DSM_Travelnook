@@ -17968,3 +17968,257 @@ enc:utf-8
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.core.dll
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.framework.dll
 6194 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 4709ms!
+0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
+14   [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - EMF Modeling Workflow Engine 1.2.1, Build v201306110341
+14   [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - (c) 2005-2009 openarchitectureware.org and contributors
+14   [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
+14   [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - running workflow: C:/Users/OIDEWin7/Desktop/Repositorio/Travelnook/templates/workflow/generator.mwe
+14   [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - 
+816  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\Users\OIDEWin7\Desktop\Repositorio'
+1632 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
+1759 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
+1970 [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow workflow::nhibernate::generator.mwe in C:/Users/OIDEWin7/Desktop/Repositorio/Travelnook/templates/workflow/generator.mwe:10
+1970 [main] INFO  e.core.container.CompositeComponent  - XmiReader: file 'models/default.domainModel' => slot 'es_ua_dlsi_ooh_conceptual_model'
+2406 [main] INFO  e.core.container.CompositeComponent  - CheckComponent: slot es_ua_dlsi_ooh_conceptual_model check file(s): metamodel::Checks 
+4782 [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [../TravelnookGen, CONFIGURATION:../TravelnookGen(overwrite=false,append=false,fileEncoding=utf-8)]
+configuroConf:C:\Users\OIDEWin7\AppData\Local\Temp\OOH4RIA634677648076867375.cfg
+enc:utf-8
+6361 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
+26933 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan finished in 20.572s
+26933 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Files scanned: 425
+26933 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Regions found: 24
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+30045 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCAD
+enc:utf-8
+30202 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCAD
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+LA clase origen: Favorito y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
+Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
+enc:utf-8
+30405 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCAD
+LA clase origen: Sitio y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_sitio. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: reportes_sitio. El nombre del rol origen: reporte de el rol destino: usuario
+DISTINTO en: asoOrigin: actividad_sitio. El nombre del rol origen: actividades de el rol destino: usuario
+LA clase destino: Sitio y el nombre de rol: usuario
+Encontrado en: asoTarget: sitio_usuario El nombre de rol origen (generado): sitio y el nombre del rol destino:usuario
+LA clase origen: Sitio y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_sitio. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: reportes_sitio. El nombre del rol origen: reporte de el rol destino: usuario
+DISTINTO en: asoOrigin: actividad_sitio. El nombre del rol origen: actividades de el rol destino: usuario
+LA clase destino: Sitio y el nombre de rol: usuario
+Encontrado en: asoTarget: sitio_usuario El nombre de rol origen (generado): sitio y el nombre del rol destino:usuario
+LA clase origen: Sitio y el nombre de rol: usuario
+DISTINTO en: asoOrigin: ruta_sitio. El nombre del rol origen: ruta de el rol destino: usuario
+DISTINTO en: asoOrigin: reportes_sitio. El nombre del rol origen: reporte de el rol destino: usuario
+DISTINTO en: asoOrigin: actividad_sitio. El nombre del rol origen: actividades de el rol destino: usuario
+LA clase destino: Sitio y el nombre de rol: usuario
+Encontrado en: asoTarget: sitio_usuario El nombre de rol origen (generado): sitio y el nombre del rol destino:usuario
+enc:utf-8
+30546 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCAD
+enc:utf-8
+30639 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCAD
+LA clase origen: Reporte y el nombre de rol: administrador
+DISTINTO en: asoOrigin: usuario_reportes. El nombre del rol origen: usuario de el rol destino: administrador
+DISTINTO en: asoOrigin: ruta_reportes. El nombre del rol origen: ruta de el rol destino: administrador
+DISTINTO en: asoOrigin: eventos_reportes. El nombre del rol origen: evento de el rol destino: administrador
+LA clase destino: Reporte y el nombre de rol: administrador
+DISTINTO en: asoTarget: reportes_sitio. El nombre del rol destino: sitio de el rol origen: administrador
+DISTINTO en: asoTarget: reportes_comentario. El nombre del rol destino: comentario de el rol origen: administrador
+Encontrado en: asoTarget: reportes_administrador El nombre de rol origen (generado): reporte y el nombre del rol destino:administrador
+LA clase origen: Reporte y el nombre de rol: administrador
+DISTINTO en: asoOrigin: usuario_reportes. El nombre del rol origen: usuario de el rol destino: administrador
+DISTINTO en: asoOrigin: ruta_reportes. El nombre del rol origen: ruta de el rol destino: administrador
+DISTINTO en: asoOrigin: eventos_reportes. El nombre del rol origen: evento de el rol destino: administrador
+LA clase destino: Reporte y el nombre de rol: administrador
+DISTINTO en: asoTarget: reportes_sitio. El nombre del rol destino: sitio de el rol origen: administrador
+DISTINTO en: asoTarget: reportes_comentario. El nombre del rol destino: comentario de el rol origen: administrador
+Encontrado en: asoTarget: reportes_administrador El nombre de rol origen (generado): reporte y el nombre del rol destino:administrador
+LA clase origen: Reporte y el nombre de rol: administrador
+DISTINTO en: asoOrigin: usuario_reportes. El nombre del rol origen: usuario de el rol destino: administrador
+DISTINTO en: asoOrigin: ruta_reportes. El nombre del rol origen: ruta de el rol destino: administrador
+DISTINTO en: asoOrigin: eventos_reportes. El nombre del rol origen: evento de el rol destino: administrador
+LA clase destino: Reporte y el nombre de rol: administrador
+DISTINTO en: asoTarget: reportes_sitio. El nombre del rol destino: sitio de el rol origen: administrador
+DISTINTO en: asoTarget: reportes_comentario. El nombre del rol destino: comentario de el rol origen: administrador
+Encontrado en: asoTarget: reportes_administrador El nombre de rol origen (generado): reporte y el nombre del rol destino:administrador
+enc:utf-8
+30764 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCAD
+enc:utf-8
+30874 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCAD
+LA clase origen: Comentario y el nombre de rol: usuario
+DISTINTO en: asoOrigin: reportes_comentario. El nombre del rol origen: reportes de el rol destino: usuario
+LA clase destino: Comentario y el nombre de rol: usuario
+Encontrado en: asoTarget: comentario_usuario El nombre de rol origen (generado): comentario y el nombre del rol destino:usuario
+LA clase origen: Comentario y el nombre de rol: usuario
+DISTINTO en: asoOrigin: reportes_comentario. El nombre del rol origen: reportes de el rol destino: usuario
+LA clase destino: Comentario y el nombre de rol: usuario
+Encontrado en: asoTarget: comentario_usuario El nombre de rol origen (generado): comentario y el nombre del rol destino:usuario
+LA clase origen: Comentario y el nombre de rol: usuario
+DISTINTO en: asoOrigin: reportes_comentario. El nombre del rol origen: reportes de el rol destino: usuario
+LA clase destino: Comentario y el nombre de rol: usuario
+Encontrado en: asoTarget: comentario_usuario El nombre de rol origen (generado): comentario y el nombre del rol destino:usuario
+enc:utf-8
+31265 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCAD
+LA clase origen: Evento y el nombre de rol: organizador
+DISTINTO en: asoOrigin: favoritos_eventos. El nombre del rol origen: favorito de el rol destino: organizador
+LA clase destino: Evento y el nombre de rol: organizador
+DISTINTO en: asoTarget: eventos_reportes. El nombre del rol destino: reporte de el rol origen: organizador
+Encontrado en: asoTarget: eventos_usuario El nombre de rol origen (generado): evento y el nombre del rol destino:organizador
+LA clase origen: Evento y el nombre de rol: organizador
+DISTINTO en: asoOrigin: favoritos_eventos. El nombre del rol origen: favorito de el rol destino: organizador
+LA clase destino: Evento y el nombre de rol: organizador
+DISTINTO en: asoTarget: eventos_reportes. El nombre del rol destino: reporte de el rol origen: organizador
+Encontrado en: asoTarget: eventos_usuario El nombre de rol origen (generado): evento y el nombre del rol destino:organizador
+LA clase origen: Evento y el nombre de rol: organizador
+DISTINTO en: asoOrigin: favoritos_eventos. El nombre del rol origen: favorito de el rol destino: organizador
+LA clase destino: Evento y el nombre de rol: organizador
+DISTINTO en: asoTarget: eventos_reportes. El nombre del rol destino: reporte de el rol origen: organizador
+Encontrado en: asoTarget: eventos_usuario El nombre de rol origen (generado): evento y el nombre del rol destino:organizador
+enc:utf-8
+31547 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCAD
+LA clase origen: Solicitud y el nombre de rol: solicitante
+DISTINTO en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado de el rol destino: solicitante
+LA clase destino: Solicitud y el nombre de rol: solicitante
+Encontrado en: asoTarget: solicitud amistad_usuario El nombre de rol origen (generado): solicitudAmistadSolicitante y el nombre del rol destino:solicitante
+LA clase origen: Solicitud y el nombre de rol: solicitante
+DISTINTO en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado de el rol destino: solicitante
+LA clase destino: Solicitud y el nombre de rol: solicitante
+Encontrado en: asoTarget: solicitud amistad_usuario El nombre de rol origen (generado): solicitudAmistadSolicitante y el nombre del rol destino:solicitante
+LA clase origen: Solicitud y el nombre de rol: solicitante
+DISTINTO en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado de el rol destino: solicitante
+LA clase destino: Solicitud y el nombre de rol: solicitante
+Encontrado en: asoTarget: solicitud amistad_usuario El nombre de rol origen (generado): solicitudAmistadSolicitante y el nombre del rol destino:solicitante
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+LA clase origen: Solicitud y el nombre de rol: solicitado
+Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
+enc:utf-8
+31875 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCAD
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+33752 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCEN
+enc:utf-8
+34582 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCEN
+enc:utf-8
+35004 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCEN
+enc:utf-8
+35101 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCEN
+enc:utf-8
+35242 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCEN
+enc:utf-8
+35320 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCEN
+enc:utf-8
+35414 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCEN
+enc:utf-8
+35492 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCEN
+enc:utf-8
+36196 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCEN
+enc:utf-8
+36399 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCEN
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+39371 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioEN
+enc:utf-8
+39496 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoEN
+enc:utf-8
+39543 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioEN
+enc:utf-8
+39652 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaEN
+enc:utf-8
+39761 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteEN
+enc:utf-8
+39871 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorEN
+enc:utf-8
+40277 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioEN
+enc:utf-8
+40684 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoEN
+enc:utf-8
+41403 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudEN
+enc:utf-8
+41799 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadEN
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+43363 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+43410 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+43441 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+43785 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44161 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44176 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44520 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44598 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44973 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+44989 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+enc:utf-8
+enc:utf-8
+45256 [main] INFO         org.eclipse.xpand2.Generator  - Written 4 files to outlet [default](../TravelnookGen)
+45256 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 79 files to outlet [default](../TravelnookGen)
+45256 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CreateSolution
+45271 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.UpdateSolution
+45287 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CopyDLLs
+../TravelnookGen\TravelnookGenNHibernate\AppLib\Antlr3.Runtime.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\Castle.DynamicProxy2.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\Iesi.Collections.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\LinFu.DynamicProxy.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\log4net.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\NHibernate.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.core.dll
+../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.framework.dll
+45302 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 43374ms!
