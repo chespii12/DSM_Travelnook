@@ -1,0 +1,3 @@
+C:\Users\OIDEWin7\Desktop\repositorio\TravelnookGen\TravelnookMVC\obj\Debug\TravelnookMVC.csprojResolveAssemblyReference.cache
+C:\Users\OIDEWin7\Desktop\repositorio\TravelnookGen\TravelnookMVC\obj\Debug\MvcApplication1.dll
+C:\Users\OIDEWin7\Desktop\repositorio\TravelnookGen\TravelnookMVC\obj\Debug\MvcApplication1.pdb

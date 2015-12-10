@@ -8,13 +8,13 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using MvcApplication1.Filters;
-using MvcApplication1.Models;
-using EjemploDSMGenNHibernate.CEN.EjemploDSM;
-using EjemploDSMGenNHibernate.EN.EjemploDSM;
-using EjemploDSMGenNHibernate.CAD.EjemploDSM;
+using TravelnookMVC.Filters;
+using TravelnookMVC.Models;
+using TravelnookGenNHibernate.CEN.Travelnook;
+using TravelnookGenNHibernate.EN.Travelnook;
+using TravelnookGenNHibernate.CAD.Travelnook;
 
-namespace MvcApplication1.Controllers
+namespace TravelnookMVC.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]

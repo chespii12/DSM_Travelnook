@@ -5,10 +5,10 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using NHibernate;
-using EjemploDSMGenNHibernate.Exceptions;
-using EjemploDSMGenNHibernate.CAD.EjemploDSM;
+using TravelnookGenNHibernate.Exceptions;
+using TravelnookGenNHibernate.CAD.Travelnook;
 
-namespace MvcApplication1.Controllers
+namespace TravelnookMVC.Controllers
 {
 public class BasicController: Controller
 {

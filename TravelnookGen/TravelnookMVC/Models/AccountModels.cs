@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace MvcApplication1.Models
+namespace TravelnookMVC.Models
 {
     public class UsersContext : DbContext
     {
@@ -36,7 +36,7 @@ namespace MvcApplication1.Models
         public string ExternalLoginData { get; set; }
     }
 
-    public class LocalPasswordModel
+    public class LocalPasswordModel //en administrar cuenta, aqui se modifica la contraseña
     {
         [Required]
         [DataType(DataType.Password)]
@@ -55,7 +55,7 @@ namespace MvcApplication1.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginModel
+    public class LoginModel //login
     {
         [Required]
         [Display(Name = "Nombre de usuario")]
@@ -70,7 +70,7 @@ namespace MvcApplication1.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel
+    public class RegisterModel //el registro
     {
         [Required]
         [Display(Name = "Nombre de usuario")]

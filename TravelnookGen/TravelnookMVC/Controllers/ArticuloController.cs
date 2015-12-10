@@ -6,25 +6,25 @@ using System.Web.Mvc;
 using TravelnookGenNHibernate.CEN.Travelnook;
 using TravelnookGenNHibernate.EN.Travelnook;
 using TravelnookGenNHibernate.CAD.Travelnook;
-using MvcApplication1.Models;
+using TravelnookMVC.Models;
 using System.IO;
 
-namespace MvcApplication1.Controllers
+namespace TravelnookMVC.Controllers
 {
     public class ArticuloController : BasicController
     {
         //
         // GET: /Articulo/
         
-        public ActionResult Index()
+        public ActionResult Index() //devuelve una lista de sitios (falta readAll)
         {
-            ArticuloCEN cen = new ArticuloCEN();
-            IEnumerable<ArticuloEN> list = cen.ReadAll(0, -1).ToList(); 
+            SitioCEN cen = new SitioCEN();
+            IEnumerable<SitioEN> list = cen.ReadAll(0, -1).ToList(); 
             return View(list);
         }
 
         // GET: /Articulo/Categoria/5
-
+      
         public ActionResult PorCategoria (int id)
         {
             SessionInitialize();
@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             CategoriaCAD cadCat = new CategoriaCAD(session);
             ArticuloCEN cen = new ArticuloCEN(cadArt);
             IList<ArticuloEN> listArtEn = cen.DameArticulosPorCat(id);
-            IEnumerable<Articulo> listArt = new AssemblerArticulo().ConvertListENToModel(listArtEn).ToList();
+            IEnumerable<Sitio> listArt = new AssemblerArticulo().ConvertListENToModel(listArtEn).ToList();
             CategoriaEN catEN = cadCat.ReadOIDDefault(id);
 
             ViewData["IdCategoria"] = id;
@@ -44,13 +44,12 @@ namespace MvcApplication1.Controllers
         }
 
 
-
         //
         // GET: /Articulo/Details/5
 
         public ActionResult Details(int id)
         {
-            Articulo art = null;
+            Sitio art = null;
             SessionInitialize();
             ArticuloEN artEN = new ArticuloCAD(session).ReadOIDDefault(id);
             art = new AssemblerArticulo().ConvertENToModelUI(artEN);
@@ -63,7 +62,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Create(int id)
         {
-            Articulo art = new Articulo();
+            Sitio art = new Sitio();
             art.IdCategoria = id;
             return View(art);
         }
@@ -72,7 +71,7 @@ namespace MvcApplication1.Controllers
         // POST: /Articulo/Create
 
         [HttpPost]
-        public ActionResult Create(Articulo art, HttpPostedFileBase file)
+        public ActionResult Create(Sitio art, HttpPostedFileBase file)
         {
             string fileName = "", path = "";
             // Verify that the user selected a file
@@ -90,7 +89,7 @@ namespace MvcApplication1.Controllers
             {
                 fileName = "/Images/Uploads/" + fileName;
                 ArticuloCEN cen = new ArticuloCEN();
-                cen.New_(art.Descripcion, art.Precio, art.IdCategoria, fileName, art.Nombre);
+                cen.New_(art.Descripcion, art.Provincia, art.IdCategoria, fileName, art.Nombre);
 
                 return RedirectToAction("PorCategoria", new { id=art.IdCategoria});
             }
@@ -105,7 +104,7 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Edit(int id)
         {
-            Articulo art = null;
+            Sitio art = null;
             SessionInitialize();
             ArticuloEN artEN = new ArticuloCAD(session).ReadOIDDefault(id);
             art = new AssemblerArticulo().ConvertENToModelUI(artEN);
@@ -117,12 +116,12 @@ namespace MvcApplication1.Controllers
         // POST: /Articulo/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Articulo art)
+        public ActionResult Edit(Sitio art)
         {
             try
             {
                 ArticuloCEN cen = new ArticuloCEN();
-                cen.Modify(art.id, art.Descripcion, art.Precio,art.Imagen, art.Nombre);
+                cen.Modify(art.nombreSitio, art.Descripcion, art.Provincia,art.Imagen, art.Nombre);
 
                 return RedirectToAction("PorCategoria", new { id = art.IdCategoria });
             }
@@ -145,7 +144,7 @@ namespace MvcApplication1.Controllers
                 ArticuloCAD artCAD = new ArticuloCAD(session);
                 ArticuloCEN cen = new ArticuloCEN(artCAD);
                 ArticuloEN artEN = cen.ReadOID(id);
-                Articulo art = new AssemblerArticulo().ConvertENToModelUI(artEN);
+                Sitio art = new AssemblerArticulo().ConvertENToModelUI(artEN);
                 idCategoria = art.IdCategoria;
                 SessionClose();
 

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EjemploDSMGenNHibernate.CEN.EjemploDSM;
-using EjemploDSMGenNHibernate.EN.EjemploDSM;
-namespace MvcApplication1.Controllers
+using TravelnookGenNHibernate.CEN.Travelnook;
+using TravelnookGenNHibernate.EN.Travelnook;
+namespace TravelnookMVC.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             
-            CategoriaCEN cen = new CategoriaCEN();
-            IEnumerable<CategoriaEN> listaCat = cen.ReadAll(0, -1).ToList();
+            UsuarioCEN cen = new UsuarioCEN();
+            IEnumerable<UsuarioEN> listaCat = cen.MostrarUsuariosRegistrados(0, -1).ToList();
 
             return View(listaCat);
         }
