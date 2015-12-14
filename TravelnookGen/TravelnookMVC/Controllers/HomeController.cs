@@ -12,9 +12,8 @@ namespace TravelnookMVC.Controllers
         public ActionResult Index()
         {
             
-            UsuarioCEN cen = new UsuarioCEN();
-            IEnumerable<UsuarioEN> listaCat = cen.MostrarUsuariosRegistrados(0, -1).ToList();
-
+            SitioCEN cen = new SitioCEN();
+            IEnumerable<SitioEN> listaCat = cen.DevuelveSitios(0, -1).ToList();
             return View(listaCat);
         }
 

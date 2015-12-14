@@ -40,8 +40,8 @@ namespace TravelnookMVC.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                ClienteCEN cliCEN = new ClienteCEN();
-                if (cliCEN.Login (model.UserName, model.Password))
+                UsuarioCEN usuCEN = new UsuarioCEN();
+                if (usuCEN.Login (model.UserName, model.Password))
                      return RedirectToLocal(returnUrl);
             }
 
@@ -85,9 +85,10 @@ namespace TravelnookMVC.Controllers
              
                 try
                 {
+
                     // Invocamos a la lógica de negocio para crear un cliente.
-                    ClienteCEN cli = new ClienteCEN();
-                    cli.New_(model.UserName, model.UserName, model.UserName, model.Password);
+                    UsuarioCEN usu = new UsuarioCEN();
+                    usu.CrearUsuario(model.Email, model.Nombre, model.Apellidos, model.UserName, model.Localidad, model.Provincia, model.Password, model.Fecha);//New_(model.UserName, model.UserName, model.UserName, model.Password);
 
 
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
@@ -167,9 +168,9 @@ namespace TravelnookMVC.Controllers
                     try
                     {
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                        ClienteCEN cli = new ClienteCEN();
-                        ClienteEN en = cli.get_IClienteCAD().ReadOIDDefault(User.Identity.Name);
-                        cli.Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
+                        UsuarioCEN usu = new UsuarioCEN();
+                        UsuarioEN en = usu.get_IUsuarioCAD().ReadOIDDefault(User.Identity.Name);
+                        usu.ModificarPerfil(en.NomUsu, en.Email, en.Nombre, en.Apellidos, en.Localidad, en.Provincia, model.NewPassword, en.FechaNacimiento);//Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
                     }
                     catch (Exception)
                     {

@@ -316,7 +316,7 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion is null or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo is null or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)";
+                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion = -1 or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo = -1 or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENbuscarSitioHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -326,6 +326,35 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
                 query.SetParameter ("p_puntuacion", p_puntuacion);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in SitioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int size)
+{
+        System.Collections.Generic.IList<SitioEN> result = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                if (size > 0)
+                        result = session.CreateCriteria (typeof(SitioEN)).
+                                 SetFirstResult (first).SetMaxResults (size).List<SitioEN>();
+                else
+                        result = session.CreateCriteria (typeof(SitioEN)).List<SitioEN>();
                 SessionCommit ();
         }
 

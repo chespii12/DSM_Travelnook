@@ -75,6 +75,13 @@ private int puntuacionMedia;
 
 
 
+/**
+ *	Atributo comentarios
+ */
+private System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual int PuntuacionMedia {
 
 
 
+public virtual System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> Comentarios {
+        get { return comentarios; } set { comentarios = value;  }
+}
+
+
+
 
 
 public RutaEN()
@@ -145,23 +158,24 @@ public RutaEN()
         sitio = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
         favorito = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN>();
         reporte = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.ReporteEN>();
+        comentarios = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN>();
 }
 
 
 
-public RutaEN(string nombre, string descripcion, string provincia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, int puntuacion, int numPuntuados, Nullable<DateTime> fechaCreacion, int puntuacionMedia
+public RutaEN(string nombre, string descripcion, string provincia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, int puntuacion, int numPuntuados, Nullable<DateTime> fechaCreacion, int puntuacionMedia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios
               )
 {
-        this.init (Nombre, descripcion, provincia, sitio, favorito, reporte, puntuacion, numPuntuados, fechaCreacion, puntuacionMedia);
+        this.init (Nombre, descripcion, provincia, sitio, favorito, reporte, puntuacion, numPuntuados, fechaCreacion, puntuacionMedia, comentarios);
 }
 
 
 public RutaEN(RutaEN ruta)
 {
-        this.init (Nombre, ruta.Descripcion, ruta.Provincia, ruta.Sitio, ruta.Favorito, ruta.Reporte, ruta.Puntuacion, ruta.NumPuntuados, ruta.FechaCreacion, ruta.PuntuacionMedia);
+        this.init (Nombre, ruta.Descripcion, ruta.Provincia, ruta.Sitio, ruta.Favorito, ruta.Reporte, ruta.Puntuacion, ruta.NumPuntuados, ruta.FechaCreacion, ruta.PuntuacionMedia, ruta.Comentarios);
 }
 
-private void init (string nombre, string descripcion, string provincia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, int puntuacion, int numPuntuados, Nullable<DateTime> fechaCreacion, int puntuacionMedia)
+private void init (string nombre, string descripcion, string provincia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, int puntuacion, int numPuntuados, Nullable<DateTime> fechaCreacion, int puntuacionMedia, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios)
 {
         this.Nombre = nombre;
 
@@ -183,6 +197,8 @@ private void init (string nombre, string descripcion, string provincia, System.C
         this.FechaCreacion = fechaCreacion;
 
         this.PuntuacionMedia = puntuacionMedia;
+
+        this.Comentarios = comentarios;
 }
 
 public override bool Equals (object obj)

@@ -91,6 +91,10 @@
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>TravelnookGenNHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TravelnookMVC\TravelnookMVC.csproj">
+      <Project>{2ba8f166-b304-4926-8de7-1508c0d86cad}</Project>
+      <Name>TravelnookMVC</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

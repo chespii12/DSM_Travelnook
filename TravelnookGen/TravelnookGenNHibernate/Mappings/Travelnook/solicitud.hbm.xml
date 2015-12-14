@@ -43,8 +43,8 @@
 		 </class>	
 		  
 		  <query name="SolicitudENReadAllHQL">from SolicitudEN</query>
-		  <query name="SolicitudENdevuelveSolicitudesHQL"><![CDATA[FROM SolicitudEN s where s.Solicitante.Email like '%'+:p_solicitante+'%' AND s.Solicitado.Email like '%'+:p_solicitado+'%']]></query>
-		  <query name="SolicitudENdevuelveSolicitudesRecibidasHQL"><![CDATA[FROM SolicitudEN s where s.Solicitado.Email like '%'+:p_email+'%']]></query>
-		  <query name="SolicitudENdevuelveSolicitudesEnviadasHQL"><![CDATA[FROM SolicitudEN s where s.Solicitante.Email like '%'+:p_email+'%']]></query>
+		  <query name="SolicitudENdevuelveSolicitudesHQL"><![CDATA[FROM SolicitudEN s where s.Solicitante.NomUsu like '%'+:p_yo+'%' OR s.Solicitado.NomUsu like '%'+:p_yo+'%']]></query>
+		  <query name="SolicitudENdevuelveSolicitudesRecibidasHQL"><![CDATA[FROM SolicitudEN s where s.Solicitado.NomUsu like '%'+:p_nombre+'%']]></query>
+		  <query name="SolicitudENdevuelveSolicitudesEnviadasHQL"><![CDATA[FROM SolicitudEN s where s.Solicitante.NomUsu like '%'+:p_nombre+'%']]></query>
 		</hibernate-mapping>
 	

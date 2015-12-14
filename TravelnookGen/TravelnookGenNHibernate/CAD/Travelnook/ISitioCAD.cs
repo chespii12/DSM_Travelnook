@@ -30,5 +30,8 @@ System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> 
 
 
 System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BuscarSitio (string p_nombre, string p_provincia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipo, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades, int p_puntuacion);
+
+
+System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int size);
 }
 }

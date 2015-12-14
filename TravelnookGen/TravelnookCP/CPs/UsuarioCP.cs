@@ -22,7 +22,7 @@ namespace TravelnookCP.CPs
         {
             //cambiar Estado de petición
             //Añadir amigo "suyo_OID" a la lista de "mio_OID"
-            //Añadir amigo "mio_OID" a la lista de "suyo_OID"
+           
             SolicitudCEN solicitudCEN = null;
             UsuarioCEN usuarioCEN1 = null;
             UsuarioCEN usuarioCEN2 = null;
@@ -40,7 +40,7 @@ namespace TravelnookCP.CPs
                 SolicitudEN solicitud = solicitudCAD.DevuelveSolicitudPorId(peticion_OID);
                 solicitud.Estado = TravelnookGenNHibernate.Enumerated.Travelnook.EstadoSolicitudEnum.aceptada;//cambiar estado
 
-                IList<string> listaAmigos1 = usuarioCAD1.ConsultarAmigos();
+                IList<string> listaAmigos1 = new List<string>();
                 listaAmigos1.Add(suyo_OID);                
                 usuarioCAD1.AnyadirAmigo(mio_OID, listaAmigos1);
 

@@ -14,11 +14,11 @@ namespace TravelnookGenNHibernate.CEN.Travelnook
 {
 public partial class UsuarioCEN
 {
-public System.Collections.Generic.IList<string> ConsultarAmigos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> ConsultarAmigos (string p_nombre)
 {
         /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Usuario_consultarAmigos_customized) START*/
 
-        return _IUsuarioCAD.ConsultarAmigos ();
+        return _IUsuarioCAD.ConsultarAmigos (p_nombre);
         /*PROTECTED REGION END*/
 }
 }

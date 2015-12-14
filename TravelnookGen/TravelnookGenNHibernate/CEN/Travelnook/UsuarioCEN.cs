@@ -113,13 +113,13 @@ public void EliminarAmigo (string p_Usuario_OID, System.Collections.Generic.ILis
 
         _IUsuarioCAD.EliminarAmigo (p_Usuario_OID, p_amigos_OIDs);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_nomUsu)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_yo, string p_nomUsu)
 {
-        return _IUsuarioCAD.AmigosPorNomUsu (p_nomUsu);
+        return _IUsuarioCAD.AmigosPorNomUsu (p_yo, p_nomUsu);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_yo, string p_email)
 {
-        return _IUsuarioCAD.AmigosPorEmail (p_email);
+        return _IUsuarioCAD.AmigosPorEmail (p_yo, p_email);
 }
 public System.Collections.Generic.IList<UsuarioEN> MostrarUsuariosRegistrados (int first, int size)
 {

@@ -104,17 +104,16 @@ public void CancelarSolicitud (int id)
         }
 }
 
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudes (string p_solicitante, string p_solicitado)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudes (string p_yo)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitante.Email like '%'+:p_solicitante+'%' AND s.Solicitado.Email like '%'+:p_solicitado+'%'";
+                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitante.NomUsu like '%'+:p_yo+'%' OR s.Solicitado.NomUsu like '%'+:p_yo+'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SolicitudENdevuelveSolicitudesHQL");
-                query.SetParameter ("p_solicitante", p_solicitante);
-                query.SetParameter ("p_solicitado", p_solicitado);
+                query.SetParameter ("p_yo", p_yo);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN>();
                 SessionCommit ();
@@ -135,16 +134,16 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.So
 
         return result;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesRecibidas (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesRecibidas (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitado.Email like '%'+:p_email+'%'";
+                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitado.NomUsu like '%'+:p_nombre+'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SolicitudENdevuelveSolicitudesRecibidasHQL");
-                query.SetParameter ("p_email", p_email);
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN>();
                 SessionCommit ();
@@ -165,16 +164,16 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.So
 
         return result;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesEnviadas (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesEnviadas (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitante.Email like '%'+:p_email+'%'";
+                //String sql = @"FROM SolicitudEN self where FROM SolicitudEN s where s.Solicitante.NomUsu like '%'+:p_nombre+'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SolicitudENdevuelveSolicitudesEnviadasHQL");
-                query.SetParameter ("p_email", p_email);
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN>();
                 SessionCommit ();

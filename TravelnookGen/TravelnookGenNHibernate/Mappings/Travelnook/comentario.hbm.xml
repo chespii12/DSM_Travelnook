@@ -59,6 +59,25 @@
 			
 			
 			
+			
+		  			
+						<many-to-one name="Sitio" class="TravelnookGenNHibernate.EN.Travelnook.SitioEN" >	
+								<column name="FK_nombre_idSitio"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Ruta" table="[ruta_comentario]" inverse="true" >
+							<key>
+								
+									<column name="FK_attribute_idComentario"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.RutaEN">
+									<column name="FK_nombre_idRuta"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
 					
 					
 					

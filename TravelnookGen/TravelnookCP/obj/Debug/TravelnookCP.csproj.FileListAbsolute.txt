@@ -9,3 +9,11 @@ C:\OOH4RIA\workspace\TravelnookGen\TravelnookCP\bin\Debug\TravelnookGenNHibernat
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookCP\obj\Debug\TravelnookCP.csprojResolveAssemblyReference.cache
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookCP\obj\Debug\master8GENCP.dll
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookCP\obj\Debug\master8GENCP.pdb
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\bin\Debug\hibernate.cfg.xml
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\bin\Debug\master8GENCP.dll
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\bin\Debug\master8GENCP.pdb
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\bin\Debug\TravelnookGenNHibernate.dll
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\bin\Debug\TravelnookGenNHibernate.pdb
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\obj\Debug\TravelnookCP.csprojResolveAssemblyReference.cache
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\obj\Debug\master8GENCP.dll
+C:\Users\Stoycho\Desktop\documents-export-2015-11-20\TravelnookGen\TravelnookCP\obj\Debug\master8GENCP.pdb

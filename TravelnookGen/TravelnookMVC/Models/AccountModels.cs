@@ -36,7 +36,7 @@ namespace TravelnookMVC.Models
         public string ExternalLoginData { get; set; }
     }
 
-    public class LocalPasswordModel //en administrar cuenta, aqui se modifica la contraseña
+    public class LocalPasswordModel
     {
         [Required]
         [DataType(DataType.Password)]
@@ -55,7 +55,7 @@ namespace TravelnookMVC.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginModel //login
+    public class LoginModel
     {
         [Required]
         [Display(Name = "Nombre de usuario")]
@@ -70,11 +70,25 @@ namespace TravelnookMVC.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel //el registro
+    public class RegisterModel
     {
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+
+        [Required]
+        [Display(Name = "Apellidos")]
+        public string Apellidos { get; set; }
+
         [Required]
         [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Correo electrónico")]
+        [EmailAddress(ErrorMessage = "Correo electrónico no válido")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
@@ -82,10 +96,27 @@ namespace TravelnookMVC.Models
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Provincia")]
+        public string Provincia { get; set; }
+
+        [Required]
+        [Display(Name = "Localidad")]
+        public string Localidad { get; set; }
+
+        [Required]
+        [Display(Name = "Fecha de nacimiento")]
+        public DateTime Fecha { get; set; }
+
+
+
+
     }
 
     public class ExternalLogin

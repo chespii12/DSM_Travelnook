@@ -309,15 +309,16 @@ public void EliminarAmigo (string p_Usuario_OID, System.Collections.Generic.ILis
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_nomUsu)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_yo, string p_nomUsu)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE amigo.NomUsu like '%'+:p_nomUsu+'%' ";
+                //String sql = @"FROM UsuarioEN self where SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE  usu.NomUsu =:p_yo AND amigo.NomUsu like '%'+:p_nomUsu+'%' ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENamigosPorNomUsuHQL");
+                query.SetParameter ("p_yo", p_yo);
                 query.SetParameter ("p_nomUsu", p_nomUsu);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN>();
@@ -339,15 +340,16 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Us
 
         return result;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_yo, string p_email)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE amigo.Email like '%'+:p_email+'%'";
+                //String sql = @"FROM UsuarioEN self where SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE  usu.NomUsu =:p_yo AND amigo.Email like '%'+:p_email+'%' ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENamigosPorEmailHQL");
+                query.SetParameter ("p_yo", p_yo);
                 query.SetParameter ("p_email", p_email);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN>();
@@ -369,17 +371,18 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Us
 
         return result;
 }
-public System.Collections.Generic.IList<string> ConsultarAmigos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> ConsultarAmigos (string p_nombre)
 {
-        System.Collections.Generic.IList<string> result;
+        System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where SELECT (amigo.NomUsu) FROM UsuarioEN as usu inner join usu.Amigos as amigo";
+                //String sql = @"FROM UsuarioEN self where SELECT amigo FROM UsuarioEN as usu inner join usu.Amigos as amigo WHERE usu.NomUsu = :p_nombre";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENconsultarAmigosHQL");
+                query.SetParameter ("p_nombre", p_nombre);
 
-                result = query.List<string>();
+                result = query.List<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN>();
                 SessionCommit ();
         }
 

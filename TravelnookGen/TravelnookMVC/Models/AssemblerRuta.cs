@@ -14,27 +14,27 @@ namespace TravelnookMVC.Models
             rut.Nombre = en.Nombre;
             rut.Descripcion = en.Descripcion;
             rut.Provincia = en.Provincia;
-            rut.Puntuacion = en.Puntuacion;
+            rut.Puntuacion = en.PuntuacionMedia;
             rut.Fecha = en.FechaCreacion;
-            IList<string> sitios = new List<string>();
-
+            IList<string>sitios= new List<string>();
             foreach (SitioEN sit in en.Sitio)
             {
                 sitios.Add(sit.Nombre);
             }
-
-            rut.IdSitio = sitios;
+            rut.Idsitios = sitios;
+            
             return rut;
-        }
 
-        public IList<Ruta> ConvertListENToModel(IList<RutaEN> ens)
-        {
-            IList<Ruta> ruts = new List<Ruta>();
+
+        }
+        public IList<Ruta> ConvertListENToModel (IList<RutaEN> ens){
+            IList<Ruta> rutas = new List<Ruta>();
             foreach (RutaEN en in ens)
             {
-                ruts.Add(ConvertENToModelUI(en));
+                rutas.Add(ConvertENToModelUI(en));
             }
-            return ruts;
+            return rutas;
         }
+        
     }
 }

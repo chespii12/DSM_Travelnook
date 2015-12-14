@@ -96,7 +96,10 @@
 			<Compile Include="CEN\Travelnook\UsuarioCEN_Login.cs" />
 			<Compile Include="CEN\Travelnook\UsuarioCEN_ConsultarAmigos.cs" />
 			<Compile Include="CEN\Travelnook\UsuarioCEN_Registro.cs" />
-			<Compile Include="CEN\Travelnook\UsuarioCEN_EnviarSolicitud.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_MisAmigos.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_MisAmigosPorEmail.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_MisAmigosPorNomUsu.cs" />
+			<Compile Include="CEN\Travelnook\UsuarioCEN_BorrarAmigo.cs" />
 	<Compile Include="EN\Travelnook\FavoritoEN.cs" />
 	<Compile Include="CEN\Travelnook\FavoritoCEN.cs" />
 	<Compile Include="CAD\Travelnook\IFavoritoCAD.cs" />
@@ -135,6 +138,7 @@
 	<Compile Include="CEN\Travelnook\SolicitudCEN.cs" />
 	<Compile Include="CAD\Travelnook\ISolicitudCAD.cs" />
 	<Compile Include="CAD\Travelnook\SolicitudCAD.cs" />
+			<Compile Include="CEN\Travelnook\SolicitudCEN_EnviarSolicitud.cs" />
 	<Compile Include="EN\Travelnook\ActividadEN.cs" />
 	<Compile Include="CEN\Travelnook\ActividadCEN.cs" />
 	<Compile Include="CAD\Travelnook\IActividadCAD.cs" />

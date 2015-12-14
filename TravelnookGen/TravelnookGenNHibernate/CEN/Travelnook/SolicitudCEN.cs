@@ -41,17 +41,17 @@ public void CancelarSolicitud (int id)
         _ISolicitudCAD.CancelarSolicitud (id);
 }
 
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudes (string p_solicitante, string p_solicitado)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudes (string p_yo)
 {
-        return _ISolicitudCAD.DevuelveSolicitudes (p_solicitante, p_solicitado);
+        return _ISolicitudCAD.DevuelveSolicitudes (p_yo);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesRecibidas (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesRecibidas (string p_nombre)
 {
-        return _ISolicitudCAD.DevuelveSolicitudesRecibidas (p_email);
+        return _ISolicitudCAD.DevuelveSolicitudesRecibidas (p_nombre);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesEnviadas (string p_email)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> DevuelveSolicitudesEnviadas (string p_nombre)
 {
-        return _ISolicitudCAD.DevuelveSolicitudesEnviadas (p_email);
+        return _ISolicitudCAD.DevuelveSolicitudesEnviadas (p_nombre);
 }
 public void AceptarSolicitud (int p_Solicitud_OID, TravelnookGenNHibernate.Enumerated.Travelnook.EstadoSolicitudEnum p_estado, Nullable<DateTime> p_fecha)
 {

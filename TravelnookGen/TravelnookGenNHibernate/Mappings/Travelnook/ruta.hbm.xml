@@ -68,6 +68,18 @@
 			
 			
 			
+			
+		  			
+						<bag name="Comentarios" table="[ruta_comentario]"  >
+							<key>
+								
+									<column name="FK_nombre_idRuta"/> 
+							</key>
+      						<many-to-many class="TravelnookGenNHibernate.EN.Travelnook.ComentarioEN">
+									<column name="FK_attribute_idComentario"/> 
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					

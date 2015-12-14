@@ -134,5 +134,12 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
 {
         return _ISitioCAD.BuscarSitio (p_nombre, p_provincia, p_tipo, p_actividades, p_puntuacion);
 }
+public System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int size)
+{
+        System.Collections.Generic.IList<SitioEN> list = null;
+
+        list = _ISitioCAD.DevuelveSitios (first, size);
+        return list;
+}
 }
 }

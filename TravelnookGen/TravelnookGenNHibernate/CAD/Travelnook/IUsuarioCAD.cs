@@ -27,13 +27,13 @@ void AnyadirAmigo (string p_Usuario_OID, System.Collections.Generic.IList<string
 
 void EliminarAmigo (string p_Usuario_OID, System.Collections.Generic.IList<string> p_amigos_OIDs);
 
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_nomUsu);
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorNomUsu (string p_yo, string p_nomUsu);
 
 
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_email);
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> AmigosPorEmail (string p_yo, string p_email);
 
 
-System.Collections.Generic.IList<string> ConsultarAmigos ();
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> ConsultarAmigos (string p_nombre);
 
 
 System.Collections.Generic.IList<UsuarioEN> MostrarUsuariosRegistrados (int first, int size);

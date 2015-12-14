@@ -165,9 +165,17 @@ public static void InitializeData ()
                 sitio1EN.TipoSitio = TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum.montanya;
                 IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> acti = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
                 acti.Add (acti3EN.Tipo);
+                //acti.Add (acti2EN.Tipo);
                 sitio1CEN.CrearSitio (sitio1EN.Nombre, sitio1EN.Provincia, sitio1EN.Descripcion, sitio1EN.Puntuacion, sitio1EN.Usuario.NomUsu, sitio1EN.Localizacion, sitio1EN.FechaCreacion, sitio1EN.NumPuntuados, sitio1EN.PuntuacionMedia, sitio1EN.TipoSitio, acti);
                 System.Console.Write ("Crea sitio 1");
-
+                SitioEN prueba = new SitioEN();
+                /*Si hago esto de golpe va mal, si lo hago paso a paso va bien
+                prueba = sitio1CEN.DevuelveSitioPorNombre("Guadalest");
+                System.Console.Write(prueba.Descripcion+"\n");
+                foreach (ActividadEN actividaddad in prueba.Actividades)
+                {
+                    System.Console.Write(actividaddad.Tipo + "\n");
+                }*/
                 sitio2EN.Nombre = "Xixona";
                 sitio2EN.Provincia = "Alicante";
                 sitio2EN.Descripcion = "Ricos turrones";
@@ -185,12 +193,12 @@ public static void InitializeData ()
                 sitio2CEN.CrearSitio (sitio2EN.Nombre, sitio2EN.Provincia, sitio2EN.Descripcion, sitio2EN.Puntuacion, sitio2EN.Usuario.NomUsu, sitio2EN.Localizacion, sitio2EN.FechaCreacion, sitio2EN.NumPuntuados, sitio2EN.PuntuacionMedia, sitio2EN.TipoSitio, acti2);
                 System.Console.Write ("Crea sitio 2");
 
-                
+
                 //Devuelve sitio por actividad
                 //actividades para buscar
                 IList<ActividadEN> actividades = new List<ActividadEN>();
-                actividades.Add(acti1EN);
-                actividades.Add(acti2EN);
+                actividades.Add (acti1EN);
+                actividades.Add (acti2EN);
                 //IList<SitioCEN> sitiosPorActividad = sitio1CEN.DevuelveSitiosPorActividad(actividades);
 
 
@@ -226,36 +234,64 @@ public static void InitializeData ()
                 System.Console.Write (usu2EN.NomUsu);
                 System.Console.Write (usu1EN.NomUsu);
 
-                solicitud1EN.Id = usu2CEN.EnviarSolicitud (usu2EN.NomUsu, solicitud1EN.Estado, solicitud1EN.Fecha, usu1EN.NomUsu);
+                int Id = solicitud1CEN.EnviarSolicitud (usu2EN.NomUsu, solicitud1EN.Estado, solicitud1EN.Fecha, usu1EN.NomUsu);
                 System.Console.Write ("************Enviada\n\n");
-
+                SolicitudEN solicitud2EN = new SolicitudEN ();
+                IList<SolicitudEN> listapet = new List<SolicitudEN>();
+                listapet = solicitud1CEN.DevuelveSolicitudes ("u1");
                 /***********************USUARIOCP**********************************/
-
+                foreach (SolicitudEN solaux in listapet) {
+                        System.Console.Write (solaux.Solicitante.NomUsu + "\n");
+                }
                 UsuarioCP usuCP = new UsuarioCP ();
-                usuCP.AceptarSolicitud (usu1EN.NomUsu, usu2EN.NomUsu, solicitud1EN.Id);
+                usuCP.AceptarSolicitud (usu1EN.NomUsu, usu2EN.NomUsu, Id); //usu1 introduce en su lista a usu2
 
-                IList<string> misAmigos1 = new List<string>();
-                misAmigos1 = usu1CEN.ConsultarAmigos ();
+                /*PRUEBA*/
+                IList<string> agregar1 = new List<string>();
+                agregar1.Add (usu3EN.NomUsu);
+                usu1CEN.AnyadirAmigo (usu2EN.NomUsu, agregar1);
+
+
+                IList<UsuarioEN> misAmigos1 = new List<UsuarioEN>();
+                misAmigos1 = usu1CEN.ConsultarAmigos (usu1EN.NomUsu);
                 System.Console.Write ("FUNCIONO\n");
-                System.Console.Write ("Amigos usu1\n");
-                foreach (string aux1 in misAmigos1) {
-                        System.Console.Write (aux1 + "\n");
+                System.Console.Write ("Amigos usu1" + usu1EN.NomUsu + "\n");
+                foreach (UsuarioEN aux1 in misAmigos1) {
+                        System.Console.Write (aux1.NomUsu + "\n");
                 }
 
-                System.Console.Write ("Fin Amigos usu1");
-
-                System.Console.WriteLine ("*********************************\n");
+                System.Console.Write ("Fin Amigos usu1------ABAJO AMIGOS DE USU2\n");
+                IList<UsuarioEN> misAmigos2 = new List<UsuarioEN>();
+                misAmigos2 = usu2CEN.MisAmigosPorEmail (usu2EN.NomUsu, "@hotmail.com");
+                System.Console.Write ("FUNCIONO2\n");
+                System.Console.Write ("Amigos usu2" + usu2EN.NomUsu + "\n");
+                foreach (UsuarioEN aux2 in misAmigos2) {
+                        System.Console.Write (aux2.NomUsu + "\n");
+                }
+                System.Console.WriteLine ("**************Usuario por email*******************\n");
 
                 UsuarioEN usu1 = new UsuarioEN ();
-                usu1 = usu1CEN.DevuelveUsuarioPorEmail ("usu2@hotmail.com");
-                System.Console.Write (usu1.NomUsu);
+                usu1 = usu1CEN.DevuelveUsuarioPorEmail (usu2EN.Email);
+                System.Console.Write (usu1.NomUsu + "\n");
                 IList<UsuarioEN> aux = new List<UsuarioEN>();
-                aux = usu1CEN.AmigosPorNomUsu (usu2EN.NomUsu);
-                System.Console.Write ("******************MI AMIGO\n");
+
+                aux = usu1CEN.MisAmigosPorNomUsu (usu2EN.NomUsu, "u");
+                System.Console.Write ("******************MI AMIGO por nomUsu*****\n");
                 foreach (UsuarioEN aux2 in aux) {
                         System.Console.Write (aux2.NomUsu + "\n");
                 }
+                IList<string> borrar1 = new List<string>();
+                borrar1.Add (usu3EN.NomUsu);
 
+                usu1CEN.BorrarAmigo (usu2EN.NomUsu, usu1EN.NomUsu);
+                IList<UsuarioEN> misAmigos9 = new List<UsuarioEN>();
+                misAmigos9 = usu1CEN.MisAmigos (usu2EN.NomUsu);
+                System.Console.Write ("Amigos de: " + usu2EN.NomUsu + " despues del borrado\n");
+                foreach (UsuarioEN aux1 in misAmigos9) {
+                        System.Console.Write (aux1.NomUsu + "\n");
+                }
+
+                System.Console.Write ("***************SITIOS*****************\n");
                 IList<SitioEN> aux5 = new List<SitioEN>();
                 SitioEN sit = new SitioEN ();
                 aux5 = sitio1CEN.DevuelveSitiosOrdenadosPorFecha ();
@@ -360,8 +396,6 @@ public static void InitializeData ()
                 foreach (EventoEN evento in eventos) {
                         System.Console.Write (evento.Id + "\n");
                 }
-              
-            ///Prueba repositorio
 
 
 
