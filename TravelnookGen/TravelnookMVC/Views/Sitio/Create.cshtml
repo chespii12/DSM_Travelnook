@@ -1,0 +1,63 @@
+﻿@model TravelnookMVC.Models.Sitio
+
+@{
+    ViewBag.Title = "Crear Sitio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm("Create", "Articulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Articulo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Provincia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Localizacion)
+            @Html.ValidationMessageFor(model => model.Localizacion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fotos)
+        </div>
+       
+        <div>
+            <input type="file" name="file" />
+        </div>
+        @Html.HiddenFor(model => Model.Fecha)
+       
+        <p>
+            <input type="submit" value="Nuevo" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver a la lista", "PorCategoria", new { id = Model.IdCategoria })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

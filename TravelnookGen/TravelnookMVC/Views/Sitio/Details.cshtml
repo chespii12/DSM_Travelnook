@@ -1,0 +1,65 @@
+﻿@model TravelnookMVC.Models.Sitio
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title del Sitio @Model.Nombre</h2>
+
+<fieldset>
+    <legend>Articulo</legend>
+
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fecha)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Actividades)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Actividades)
+    </div>
+    <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.TipoSitio)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoSitio)
+    </div>
+    <!--<h3>
+        <div class="display-label">
+            arrobaHtml.DisplayNameFor(model => model.Imagen)
+        </div>
+    </h3>
+    <div class="display-field">
+        <img src="arrobaHtml.DisplayFor(model => model.Imagen)"/>
+    </div>-->
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=26 }) |
+    @Html.ActionLink("Inicio", "PorCategoria", new { id ="casa"})
+</p>
