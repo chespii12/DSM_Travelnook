@@ -340,6 +340,7 @@
     <Content Include="Views\Sitio\Create.cshtml" />
     <Content Include="Views\Sitio\Edit.cshtml" />
     <Content Include="Views\Sitio\Details.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

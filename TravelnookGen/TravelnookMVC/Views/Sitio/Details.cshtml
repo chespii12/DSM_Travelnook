@@ -40,7 +40,12 @@
         </div>
     </h3>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Actividades)
+        @foreach (string a in Model.Actividadesimprimir)
+        {
+            @Html.DisplayName(a)
+            <br />
+        }
+       
     </div>
     <h3>
         <div class="display-label">

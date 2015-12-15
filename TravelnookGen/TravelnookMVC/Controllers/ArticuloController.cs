@@ -16,15 +16,15 @@ namespace TravelnookMVC.Controllers
         //
         // GET: /Articulo/
         
-        public ActionResult Index() //devuelve una lista de sitios (falta readAll)
+        public ActionResult Index()
         {
-            SitioCEN cen = new SitioCEN();
-            IEnumerable<SitioEN> list = cen.ReadAll(0, -1).ToList(); 
+            ArticuloCEN cen = new ArticuloCEN();
+            IEnumerable<ArticuloEN> list = cen.ReadAll(0, -1).ToList(); 
             return View(list);
         }
 
         // GET: /Articulo/Categoria/5
-      
+
         public ActionResult PorCategoria (int id)
         {
             SessionInitialize();
@@ -32,7 +32,7 @@ namespace TravelnookMVC.Controllers
             CategoriaCAD cadCat = new CategoriaCAD(session);
             ArticuloCEN cen = new ArticuloCEN(cadArt);
             IList<ArticuloEN> listArtEn = cen.DameArticulosPorCat(id);
-            IEnumerable<Sitio> listArt = new AssemblerArticulo().ConvertListENToModel(listArtEn).ToList();
+            IEnumerable<Ruta> listArt = new AssemblerArticulo().ConvertListENToModel(listArtEn).ToList();
             CategoriaEN catEN = cadCat.ReadOIDDefault(id);
 
             ViewData["IdCategoria"] = id;
@@ -44,12 +44,13 @@ namespace TravelnookMVC.Controllers
         }
 
 
+
         //
         // GET: /Articulo/Details/5
 
         public ActionResult Details(int id)
         {
-            Sitio art = null;
+            Ruta art = null;
             SessionInitialize();
             ArticuloEN artEN = new ArticuloCAD(session).ReadOIDDefault(id);
             art = new AssemblerArticulo().ConvertENToModelUI(artEN);
@@ -62,7 +63,7 @@ namespace TravelnookMVC.Controllers
 
         public ActionResult Create(int id)
         {
-            Sitio art = new Sitio();
+            Ruta art = new Ruta();
             art.IdCategoria = id;
             return View(art);
         }
@@ -71,7 +72,7 @@ namespace TravelnookMVC.Controllers
         // POST: /Articulo/Create
 
         [HttpPost]
-        public ActionResult Create(Sitio art, HttpPostedFileBase file)
+        public ActionResult Create(Ruta art, HttpPostedFileBase file)
         {
             string fileName = "", path = "";
             // Verify that the user selected a file
@@ -89,7 +90,7 @@ namespace TravelnookMVC.Controllers
             {
                 fileName = "/Images/Uploads/" + fileName;
                 ArticuloCEN cen = new ArticuloCEN();
-                cen.New_(art.Descripcion, art.Provincia, art.IdCategoria, fileName, art.Nombre);
+                cen.New_(art.Descripcion, art.Precio, art.IdCategoria, fileName, art.Nombre);
 
                 return RedirectToAction("PorCategoria", new { id=art.IdCategoria});
             }
@@ -104,7 +105,7 @@ namespace TravelnookMVC.Controllers
 
         public ActionResult Edit(int id)
         {
-            Sitio art = null;
+            Ruta art = null;
             SessionInitialize();
             ArticuloEN artEN = new ArticuloCAD(session).ReadOIDDefault(id);
             art = new AssemblerArticulo().ConvertENToModelUI(artEN);
@@ -116,12 +117,12 @@ namespace TravelnookMVC.Controllers
         // POST: /Articulo/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Sitio art)
+        public ActionResult Edit(Ruta art)
         {
             try
             {
                 ArticuloCEN cen = new ArticuloCEN();
-                cen.Modify(art.nombreSitio, art.Descripcion, art.Provincia,art.Imagen, art.Nombre);
+                cen.Modify(art.id, art.Descripcion, art.Precio,art.Imagen, art.Nombre);
 
                 return RedirectToAction("PorCategoria", new { id = art.IdCategoria });
             }
@@ -144,7 +145,7 @@ namespace TravelnookMVC.Controllers
                 ArticuloCAD artCAD = new ArticuloCAD(session);
                 ArticuloCEN cen = new ArticuloCEN(artCAD);
                 ArticuloEN artEN = cen.ReadOID(id);
-                Sitio art = new AssemblerArticulo().ConvertENToModelUI(artEN);
+                Ruta art = new AssemblerArticulo().ConvertENToModelUI(artEN);
                 idCategoria = art.IdCategoria;
                 SessionClose();
 

@@ -34,6 +34,13 @@ namespace TravelnookMVC.Models
                 actividades.Add(act.Tipo);
             }
             sit.Actividades = actividades;
+            IList<string> actividadesimprimir = new List<string>();
+            foreach (ActividadEN act in en.Actividades)
+            {
+                string aux = Convert.ToString(act.Tipo);
+                actividadesimprimir.Add(aux);
+            }
+            sit.Actividadesimprimir = actividadesimprimir;
             return sit;
 
 

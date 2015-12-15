@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using TravelnookGenNHibernate.EN.Travelnook;
 
-namespace MvcApplication1.Models
+namespace TravelnookMVC.Models
 {
     public class AssemblerArticulo
     {
-        public Articulo ConvertENToModelUI(ArticuloEN en)
+        public Ruta ConvertENToModelUI(ArticuloEN en)
         {
-            Articulo art = new Articulo();
+            Ruta art = new Ruta();
             art.id = en.Id;
             art.Descripcion = en.Descripcion;
             art.Nombre = en.Nombre;
@@ -22,8 +22,8 @@ namespace MvcApplication1.Models
 
 
         }
-        public IList<Articulo> ConvertListENToModel (IList<ArticuloEN> ens){
-            IList<Articulo> arts = new List<Articulo>();
+        public IList<Ruta> ConvertListENToModel (IList<ArticuloEN> ens){
+            IList<Ruta> arts = new List<Ruta>();
             foreach (ArticuloEN en in ens)
             {
                 arts.Add(ConvertENToModelUI(en));
