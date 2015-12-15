@@ -39,36 +39,41 @@ namespace TravelnookMVC.Controllers
         //
         // GET: /Sitio/Create
 
-        public ActionResult Create(string id)
+        public ActionResult Create()
         {
             Sitio sit = new Sitio();
-            sit.Nombre = id;
-            return View();
+            sit.NombreUsuario = User.Identity.Name;
+            return View(sit);
         }
 
         //
         // POST: /Sitio/Create
 
         [HttpPost]
-        public ActionResult Create(Sitio sit, HttpPostedFileBase file)
+        public ActionResult Create(Sitio sit, HttpPostedFileBase imagenes, string Tipo_formulario)
         {
             string fileName = "", path = "";
             // Verify that the user selected a file
-            if (file != null && file.ContentLength > 0)
+            if (imagenes != null && imagenes.ContentLength > 0)
             {
                 // extract only the fielname
-                fileName = Path.GetFileName(file.FileName);
+                fileName = Path.GetFileName(imagenes.FileName);
                 // store the file inside ~/App_Data/uploads folder
                 path = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
                 //string pathDef = path.Replace(@"\\", @"\");
-                file.SaveAs(path);
+                imagenes.SaveAs(path);
             }
 
             try
             {
                 fileName = "/Images/Uploads/" + fileName;
                 SitioCEN cen = new SitioCEN();
-                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.NombreUsuario, sit.Localizacion, sit.Fecha, 1, sit.Puntuacion, sit.TipoSitio, sit.Actividades);
+                DateTime fechaActual = DateTime.Today;
+                //IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> TipoActividades = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
+                
+                TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum sitioaaa= new TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum();
+                sitioaaa = (TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum),Tipo_formulario);
+                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.NombreUsuario, sit.Localizacion, fechaActual, 1, sit.Puntuacion, sitioaaa, sit.Actividades);
 
                 return RedirectToAction("Details", new { id = sit.Nombre });
             }

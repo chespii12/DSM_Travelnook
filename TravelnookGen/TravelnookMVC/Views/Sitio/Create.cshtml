@@ -7,7 +7,7 @@
 
 <h2>Crear</h2>
 
-@using (Html.BeginForm("Create", "Articulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Sitio", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -27,6 +27,13 @@
             @Html.LabelFor(model => model.Provincia)
         </div>
         <div class="editor-field">
+            @Html.EditorFor(model => model.Provincia)
+            @Html.ValidationMessageFor(model => model.Provincia)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Localizacion)
+        </div>
+        <div class="editor-field">
             @Html.EditorFor(model => model.Localizacion)
             @Html.ValidationMessageFor(model => model.Localizacion)
         </div>
@@ -38,25 +45,46 @@
             @Html.EditorFor(model => model.Descripcion)
             @Html.ValidationMessageFor(model => model.Descripcion)
         </div>
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoSitio)
+        </div>
+        <div class="editor-field">
+            <select id="Tipo_formulario" name="Tipo_formulario">
+                <option value="montanya">Montaña</option>
+                <option value="playa">Playa</option>
+                <option value="urbano">Urbano</option>
+                <option value="exotico">Exótico</option>
+                <option value="espacio_natural">Espacio Natural</option>
+            </select> 
+            @Html.ValidationMessageFor(model => model.TipoSitio)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.fotos)
         </div>
        
         <div>
-            <input type="file" name="file" />
+            <input type="file" name="imagenes" accept="image/jpg, image/png,image/jpeg" />
         </div>
-        @Html.HiddenFor(model => Model.Fecha)
-       
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Videos)
+        </div>
+
+        <div>
+            <input type="file" name="videos" accept="video/*" multiple />
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Puntuacion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Puntuacion)
+            @Html.ValidationMessageFor(model => model.Puntuacion)
+        </div>
+        @Html.HiddenFor(model => Model.NombreUsuario)
         <p>
             <input type="submit" value="Nuevo" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Volver a la lista", "PorCategoria", new { id = 23 })
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

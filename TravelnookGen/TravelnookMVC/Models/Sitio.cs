@@ -49,7 +49,7 @@ namespace TravelnookMVC.Models
         [Required(ErrorMessage = "Debe indicar un tipo al sitio")]
         public IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> Actividades { get; set; }
 
-        [Display(Prompt = "Tipo de sitio", Description = "Tipo de sitio", Name = "Actividades ")]
+        [Display(Prompt = "Tipo de sitio", Description = "Tipo de sitio", Name = "Actividades imprimir ")]
         [Required(ErrorMessage = "Debe indicar un tipo al sitio")]
         public IList<string> Actividadesimprimir { get; set; }
 
