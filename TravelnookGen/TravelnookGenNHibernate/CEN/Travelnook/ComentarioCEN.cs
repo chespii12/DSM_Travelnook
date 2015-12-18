@@ -77,5 +77,18 @@ public ComentarioEN DevuelveComentarioPorID (int id)
         comentarioEN = _IComentarioCAD.DevuelveComentarioPorID (id);
         return comentarioEN;
 }
+
+public void AsignarSitio (int p_Comentario_OID, string p_sitio_OID)
+{
+        //Call to ComentarioCAD
+
+        _IComentarioCAD.AsignarSitio (p_Comentario_OID, p_sitio_OID);
+}
+public void AsignarRuta (int p_Comentario_OID, System.Collections.Generic.IList<string> p_ruta_OIDs)
+{
+        //Call to ComentarioCAD
+
+        _IComentarioCAD.AsignarRuta (p_Comentario_OID, p_ruta_OIDs);
+}
 }
 }

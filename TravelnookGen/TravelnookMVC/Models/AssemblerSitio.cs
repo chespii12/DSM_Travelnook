@@ -21,12 +21,17 @@ namespace TravelnookMVC.Models
             sit.Descripcion = en.Descripcion;
             sit.fotos = en.Fotos;
             sit.Puntuacion = en.PuntuacionMedia;
-            IList<int> comentarios = new List<int>();
+            IList<Comentario> comentarios = new List<Comentario>();
+            AssemblerComentario auxiliar= new AssemblerComentario();
+            Comentario auxiliar2 = new Comentario();
             foreach (ComentarioEN com in en.Comentarios)
             {
-                comentarios.Add(com.Id);
+                auxiliar2 = auxiliar.ConvertENToModelUI(com);
+                //sit.Comentarios.Add(new AssemblerComentario (ConvertENToModelUI (com)));
+                comentarios.Add(auxiliar2);
+                //comentarios.Add(com.Id);
             }
-            sit.IdComentarios = comentarios;
+            sit.Comentarios = comentarios;
 
             IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> actividades = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
             foreach (ActividadEN act in en.Actividades)

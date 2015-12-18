@@ -165,5 +165,75 @@ public ComentarioEN DevuelveComentarioPorID (int id)
 
         return comentarioEN;
 }
+
+public void AsignarSitio (int p_Comentario_OID, string p_sitio_OID)
+{
+        TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentarioEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                comentarioEN = (ComentarioEN)session.Load (typeof(ComentarioEN), p_Comentario_OID);
+                comentarioEN.Sitio = (TravelnookGenNHibernate.EN.Travelnook.SitioEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.SitioEN), p_sitio_OID);
+
+                comentarioEN.Sitio.Comentarios.Add (comentarioEN);
+
+
+
+                session.Update (comentarioEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in ComentarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void AsignarRuta (int p_Comentario_OID, System.Collections.Generic.IList<string> p_ruta_OIDs)
+{
+        TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentarioEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                comentarioEN = (ComentarioEN)session.Load (typeof(ComentarioEN), p_Comentario_OID);
+                TravelnookGenNHibernate.EN.Travelnook.RutaEN rutaENAux = null;
+                if (comentarioEN.Ruta == null) {
+                        comentarioEN.Ruta = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.RutaEN>();
+                }
+
+                foreach (string item in p_ruta_OIDs) {
+                        rutaENAux = new TravelnookGenNHibernate.EN.Travelnook.RutaEN ();
+                        rutaENAux = (TravelnookGenNHibernate.EN.Travelnook.RutaEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.RutaEN), item);
+                        rutaENAux.Comentarios.Add (comentarioEN);
+
+                        comentarioEN.Ruta.Add (rutaENAux);
+                }
+
+
+                session.Update (comentarioEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in ComentarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

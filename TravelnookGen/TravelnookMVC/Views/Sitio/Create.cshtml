@@ -48,6 +48,22 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.TipoSitio)
         </div>
+       @Html.CheckBoxFor(m => m.senderismo)
+    @Html.LabelFor(m => m.senderismo, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.deportes)
+        @Html.LabelFor(m => m.deportes, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.deportes_acuaticos)
+        @Html.LabelFor(m => m.deportes_acuaticos, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.camping)
+        @Html.LabelFor(m => m.camping, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.gastronomia)
+        @Html.LabelFor(m => m.gastronomia, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.ludicas)
+        @Html.LabelFor(m => m.ludicas, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.ocio_nocturno)
+        @Html.LabelFor(m => m.ocio_nocturno, new { @class = "checkbox" })
+        @Html.CheckBoxFor(m => m.culturales)
+        @Html.LabelFor(m => m.culturales, new { @class = "checkbox" })
         <div class="editor-field">
             <select id="Tipo_formulario" name="Tipo_formulario">
                 <option value="montanya">Montaña</option>

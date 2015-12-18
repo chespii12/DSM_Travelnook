@@ -225,7 +225,7 @@ public TravelnookGenNHibernate.EN.Travelnook.SitioEN DevuelveSitioPorNombre (str
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where sitio.Nombre like :p_nombre";
+                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where sitio.Nombre like '%' + :p_nombre +'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENDevuelveSitioPorNombreHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -290,40 +290,6 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENDevuelveSitiosPorActividadHQL");
                 query.SetParameter ("p_actividades", p_actividades);
-
-                result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in SitioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BuscarSitio (string p_nombre, string p_provincia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipo, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades, int p_puntuacion)
-{
-        System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where (:p_nombre is null or sitio.Nombre = :p_nombre) and (:p_provincia is null or sitio.Provincia = :p_provincia) and (:p_puntuacion = -1 or sitio.PuntuacionMedia = :p_puntuacion) and (:p_tipo = -1 or sitio.TipoSitio = :p_tipo) and (:p_actividades is null or sitio.Actividades = :p_actividades)";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("SitioENbuscarSitioHQL");
-                query.SetParameter ("p_nombre", p_nombre);
-                query.SetParameter ("p_provincia", p_provincia);
-                query.SetParameter ("p_tipo", p_tipo);
-                query.SetParameter ("p_actividades", p_actividades);
-                query.SetParameter ("p_puntuacion", p_puntuacion);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
                 SessionCommit ();

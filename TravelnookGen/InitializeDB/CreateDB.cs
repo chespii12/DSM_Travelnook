@@ -14,87 +14,88 @@ using TravelnookCP.CPs;
 /*PROTECTED REGION END*/
 namespace InitializeDB
 {
-public class CreateDB
-{
-public static void Create (string databaseArg, string userArg, string passArg)
-{
-        String database = databaseArg;
-        String user = userArg;
-        String pass = passArg;
-
-        // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
-
-        // Order T-SQL create user
-        String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
-            BEGIN
-                CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-            END"                                                                                                                                                                                                                                                                                    ;
-
-        //Order delete user if exist
-        String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
-        //Order create databas
-        string createBD = "CREATE DATABASE " + database;
-        //Order associate user with database
-        String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
-        SqlCommand cmd = null;
-
-        try
+    public class CreateDB
+    {
+        public static void Create(string databaseArg, string userArg, string passArg)
         {
+            String database = databaseArg;
+            String user = userArg;
+            String pass = passArg;
+
+            // Conex DB
+            SqlConnection cnn = new SqlConnection(@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+
+            // Order T-SQL create user
+            String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
+            BEGIN
+                CREATE LOGIN [" + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+            END";
+
+            //Order delete user if exist
+            String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
+            //Order create databas
+            string createBD = "CREATE DATABASE " + database;
+            //Order associate user with database
+            String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
+            SqlCommand cmd = null;
+
+            try
+            {
                 // Open conex
-                cnn.Open ();
+                cnn.Open();
 
                 //Create user in SQLSERVER
-                cmd = new SqlCommand (createUser, cnn);
-                cmd.ExecuteNonQuery ();
+                cmd = new SqlCommand(createUser, cnn);
+                cmd.ExecuteNonQuery();
 
                 //DELETE database if exist
-                cmd = new SqlCommand (deleteDataBase, cnn);
-                cmd.ExecuteNonQuery ();
+                cmd = new SqlCommand(deleteDataBase, cnn);
+                cmd.ExecuteNonQuery();
 
                 //CREATE DB
-                cmd = new SqlCommand (createBD, cnn);
-                cmd.ExecuteNonQuery ();
+                cmd = new SqlCommand(createBD, cnn);
+                cmd.ExecuteNonQuery();
 
                 //Associate user with db
-                cmd = new SqlCommand (associatedUser, cnn);
-                cmd.ExecuteNonQuery ();
+                cmd = new SqlCommand(associatedUser, cnn);
+                cmd.ExecuteNonQuery();
 
-                System.Console.WriteLine ("DataBase create sucessfully..");
-        }
-        catch (Exception ex)
-        {
+                System.Console.WriteLine("DataBase create sucessfully..");
+            }
+            catch (Exception ex)
+            {
                 throw ex;
-        }
-        finally
-        {
-                if (cnn.State == ConnectionState.Open) {
-                        cnn.Close ();
+            }
+            finally
+            {
+                if (cnn.State == ConnectionState.Open)
+                {
+                    cnn.Close();
                 }
+            }
         }
-}
 
-public static void InitializeData ()
-{
-        /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
-        try
+        public static void InitializeData()
         {
+            /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
+            try
+            {
                 /*******************ADMIN************************/
-                AdministradorEN adminEN = new AdministradorEN ();
-                AdministradorCEN adminCEN = new AdministradorCEN ();
+                AdministradorEN adminEN = new AdministradorEN();
+                AdministradorCEN adminCEN = new AdministradorCEN();
+                adminEN.NomUsu = "aaaaaaaaaa";
+                adminEN.Email = "administrador@boss.es";
+                adminEN.Contrasenya = "qwerty";
 
-                adminEN.Email = "admin@boss.es";
-                adminEN.Contrasenya = "admin";
-
-                adminCEN.New_ (adminEN.Email, adminEN.Contrasenya);
+                adminCEN.New_(adminEN.NomUsu,adminEN.Contrasenya, adminEN.Email);
 
                 /*************************USUARIOS**********************************/
-                UsuarioEN usu1EN = new UsuarioEN ();
-                UsuarioEN usu2EN = new UsuarioEN ();
-                UsuarioEN usu3EN = new UsuarioEN ();
-                UsuarioCEN usu1CEN = new UsuarioCEN ();
-                UsuarioCEN usu2CEN = new UsuarioCEN ();
-                UsuarioCEN usu3CEN = new UsuarioCEN ();
+                UsuarioEN usu1EN = new UsuarioEN();
+                UsuarioEN usu2EN = new UsuarioEN();
+                UsuarioEN usu3EN = new UsuarioEN();
+                UsuarioCEN usu1CEN = new UsuarioCEN();
+                UsuarioCEN usu2CEN = new UsuarioCEN();
+                UsuarioCEN usu3CEN = new UsuarioCEN();
 
                 usu1EN.Email = "usu1@hotmail.com";
                 usu1EN.Nombre = "usu1";
@@ -102,9 +103,9 @@ public static void InitializeData ()
                 usu1EN.NomUsu = "u1";
                 usu1EN.Localidad = "Orihuela";
                 usu1EN.Provincia = "Alicante";
-                usu1EN.Contrasenya = "111";
-                usu1EN.FechaNacimiento = new DateTime (2000, 03, 12);
-                usu1CEN.CrearUsuario (usu1EN.Email, usu1EN.Nombre, usu1EN.Apellidos, usu1EN.NomUsu, usu1EN.Localidad, usu1EN.Provincia, usu1EN.Contrasenya, usu1EN.FechaNacimiento);
+                usu1EN.Contrasenya = "111111";
+                usu1EN.FechaNacimiento = new DateTime(2000, 03, 12);
+                usu1CEN.CrearUsuario(usu1EN.Email, usu1EN.Nombre, usu1EN.Apellidos, usu1EN.NomUsu, usu1EN.Localidad, usu1EN.Provincia, usu1EN.Contrasenya, usu1EN.FechaNacimiento);
 
 
                 usu2EN.Email = "usu2@hotmail.com";
@@ -113,9 +114,9 @@ public static void InitializeData ()
                 usu2EN.NomUsu = "u2";
                 usu2EN.Localidad = "Sanvi";
                 usu2EN.Provincia = "Alicante";
-                usu2EN.Contrasenya = "222";
-                usu2EN.FechaNacimiento = new DateTime (1994, 03, 12);
-                usu2CEN.CrearUsuario (usu2EN.Email, usu2EN.Nombre, usu2EN.Apellidos, usu2EN.NomUsu, usu2EN.Localidad, usu2EN.Provincia, usu2EN.Contrasenya, usu2EN.FechaNacimiento);
+                usu2EN.Contrasenya = "222222";
+                usu2EN.FechaNacimiento = new DateTime(1994, 03, 12);
+                usu2CEN.CrearUsuario(usu2EN.Email, usu2EN.Nombre, usu2EN.Apellidos, usu2EN.NomUsu, usu2EN.Localidad, usu2EN.Provincia, usu2EN.Contrasenya, usu2EN.FechaNacimiento);
 
 
                 usu3EN.Email = "usu3@hotmail.com";
@@ -125,32 +126,59 @@ public static void InitializeData ()
                 usu3EN.Localidad = "San Juan";
                 usu3EN.Provincia = "Alicante";
                 usu3EN.Contrasenya = "333";
-                usu3EN.FechaNacimiento = new DateTime (1994, 02, 01);
-                usu3CEN.CrearUsuario (usu3EN.Email, usu3EN.Nombre, usu3EN.Apellidos, usu3EN.NomUsu, usu3EN.Localidad, usu3EN.Provincia, usu3EN.Contrasenya, usu3EN.FechaNacimiento);
+                usu3EN.FechaNacimiento = new DateTime(1994, 02, 01);
+                usu3CEN.CrearUsuario(usu3EN.Email, usu3EN.Nombre, usu3EN.Apellidos, usu3EN.NomUsu, usu3EN.Localidad, usu3EN.Provincia, usu3EN.Contrasenya, usu3EN.FechaNacimiento);
 
 
 
                 /****************************Actividades************************/
-                ActividadEN acti1EN = new ActividadEN ();
-                ActividadCEN acti1CEN = new ActividadCEN ();
+                ActividadEN acti1EN = new ActividadEN();
+                ActividadCEN acti1CEN = new ActividadCEN();
                 acti1EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.camping;
-                acti1CEN.New_ (acti1EN.Tipo);
+                acti1CEN.New_(acti1EN.Tipo);
 
-                ActividadEN acti2EN = new ActividadEN ();
-                ActividadCEN acti2CEN = new ActividadCEN ();
+                ActividadEN acti2EN = new ActividadEN();
+                ActividadCEN acti2CEN = new ActividadCEN();
                 acti2EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.culturales;
-                acti2CEN.New_ (acti2EN.Tipo);
+                acti2CEN.New_(acti2EN.Tipo);
 
-                ActividadEN acti3EN = new ActividadEN ();
-                ActividadCEN acti3CEN = new ActividadCEN ();
+                ActividadEN acti3EN = new ActividadEN();
+                ActividadCEN acti3CEN = new ActividadCEN();
                 acti3EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.gastronomia;
-                acti3CEN.New_ (acti3EN.Tipo);
+                acti3CEN.New_(acti3EN.Tipo);
+
+                ActividadEN acti4EN = new ActividadEN();
+                ActividadCEN acti4CEN = new ActividadCEN();
+                acti4EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.deportes;
+                acti4CEN.New_(acti4EN.Tipo);
+
+                ActividadEN acti5EN = new ActividadEN();
+                ActividadCEN acti5CEN = new ActividadCEN();
+                acti5EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.deportes_acuaticos;
+                acti5CEN.New_(acti5EN.Tipo);
+
+                ActividadEN acti6EN = new ActividadEN();
+                ActividadCEN acti6CEN = new ActividadCEN();
+                acti6EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.ludicas;
+                acti6CEN.New_(acti6EN.Tipo);
+
+                ActividadEN acti7EN = new ActividadEN();
+                ActividadCEN acti7CEN = new ActividadCEN();
+                acti7EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.ocio_nocturno;
+                acti7CEN.New_(acti7EN.Tipo);
+
+                ActividadEN acti8EN = new ActividadEN();
+                ActividadCEN acti8CEN = new ActividadCEN();
+                acti8EN.Tipo = TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum.senderismo;
+                acti8CEN.New_(acti8EN.Tipo);
+
+
 
                 /*****************************SITIOS***********************************/
-                SitioEN sitio1EN = new SitioEN ();
-                SitioEN sitio2EN = new SitioEN ();
-                SitioCEN sitio1CEN = new SitioCEN ();
-                SitioCEN sitio2CEN = new SitioCEN ();
+                SitioEN sitio1EN = new SitioEN();
+                SitioEN sitio2EN = new SitioEN();
+                SitioCEN sitio1CEN = new SitioCEN();
+                SitioCEN sitio2CEN = new SitioCEN();
 
 
                 sitio1EN.Nombre = "Guadalest";
@@ -159,15 +187,15 @@ public static void InitializeData ()
                 sitio1EN.Puntuacion = 5;
                 sitio1EN.Usuario = usu1EN;
                 sitio1EN.Localizacion = "";
-                sitio1EN.FechaCreacion = new DateTime (2015, 11, 11);
+                sitio1EN.FechaCreacion = new DateTime(2015, 11, 11);
                 sitio1EN.NumPuntuados = 1;
                 sitio1EN.PuntuacionMedia = 5;
                 sitio1EN.TipoSitio = TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum.montanya;
                 IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> acti = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
-                acti.Add (acti3EN.Tipo);
+                acti.Add(acti3EN.Tipo);
                 //acti.Add (acti2EN.Tipo);
-                sitio1CEN.CrearSitio (sitio1EN.Nombre, sitio1EN.Provincia, sitio1EN.Descripcion, sitio1EN.Puntuacion, sitio1EN.Usuario.NomUsu, sitio1EN.Localizacion, sitio1EN.FechaCreacion, sitio1EN.NumPuntuados, sitio1EN.PuntuacionMedia, sitio1EN.TipoSitio, acti);
-                System.Console.Write ("Crea sitio 1");
+                sitio1CEN.CrearSitio(sitio1EN.Nombre, sitio1EN.Provincia, sitio1EN.Descripcion, sitio1EN.Puntuacion, sitio1EN.Usuario.NomUsu, sitio1EN.Localizacion, sitio1EN.FechaCreacion, sitio1EN.NumPuntuados, sitio1EN.PuntuacionMedia, sitio1EN.TipoSitio, acti);
+                System.Console.Write("Crea sitio 1");
                 SitioEN prueba = new SitioEN();
                 /*Si hago esto de golpe va mal, si lo hago paso a paso va bien
                 prueba = sitio1CEN.DevuelveSitioPorNombre("Guadalest");
@@ -182,198 +210,218 @@ public static void InitializeData ()
                 sitio2EN.Puntuacion = 3;
                 sitio2EN.Usuario = usu1EN;
                 sitio2EN.Localizacion = "";
-                sitio2EN.FechaCreacion = new DateTime (2015, 07, 11);
+                sitio2EN.FechaCreacion = new DateTime(2015, 07, 11);
                 sitio2EN.NumPuntuados = 1;
                 sitio2EN.PuntuacionMedia = 3;
                 sitio2EN.TipoSitio = TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum.espacio_natural;
                 IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> acti2 = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
-                acti2.Add (acti1EN.Tipo);
-                acti2.Add (acti2EN.Tipo);
-                System.Console.WriteLine ("Creo sitio2");
-                sitio2CEN.CrearSitio (sitio2EN.Nombre, sitio2EN.Provincia, sitio2EN.Descripcion, sitio2EN.Puntuacion, sitio2EN.Usuario.NomUsu, sitio2EN.Localizacion, sitio2EN.FechaCreacion, sitio2EN.NumPuntuados, sitio2EN.PuntuacionMedia, sitio2EN.TipoSitio, acti2);
-                System.Console.Write ("Crea sitio 2");
+                acti2.Add(acti1EN.Tipo);
+                acti2.Add(acti2EN.Tipo);
+                System.Console.WriteLine("Creo sitio2");
+                sitio2CEN.CrearSitio(sitio2EN.Nombre, sitio2EN.Provincia, sitio2EN.Descripcion, sitio2EN.Puntuacion, sitio2EN.Usuario.NomUsu, sitio2EN.Localizacion, sitio2EN.FechaCreacion, sitio2EN.NumPuntuados, sitio2EN.PuntuacionMedia, sitio2EN.TipoSitio, acti2);
+                System.Console.Write("Crea sitio 2");
 
 
                 //Devuelve sitio por actividad
                 //actividades para buscar
                 IList<ActividadEN> actividades = new List<ActividadEN>();
-                actividades.Add (acti1EN);
-                actividades.Add (acti2EN);
+                actividades.Add(acti1EN);
+                actividades.Add(acti2EN);
                 //IList<SitioCEN> sitiosPorActividad = sitio1CEN.DevuelveSitiosPorActividad(actividades);
 
 
                 /*********************************RUTAS************************************/
-                RutaCEN ruta1CEN = new RutaCEN ();
-                RutaEN ruta1EN = new RutaEN ();
+                RutaCEN ruta1CEN = new RutaCEN();
+                RutaEN ruta1EN = new RutaEN();
 
                 ruta1EN.Nombre = "la ruta del bacalao";
                 ruta1EN.Descripcion = "to guapa";
                 ruta1EN.Provincia = "Orihuelica";
                 IList<string> sitios = new List<string>();
-                sitios.Add (sitio1EN.Nombre);
-                sitios.Add (sitio2EN.Nombre);
+                sitios.Add(sitio1EN.Nombre);
+                sitios.Add(sitio2EN.Nombre);
                 ruta1EN.Puntuacion = 4;
                 ruta1EN.NumPuntuados = 34;
-                ruta1EN.FechaCreacion = new DateTime (2015, 05, 05);
+                ruta1EN.FechaCreacion = new DateTime(2015, 05, 05);
 
-                System.Console.WriteLine ("Creo ruta 1");
-                ruta1CEN.CrearRuta (ruta1EN.Nombre, ruta1EN.Descripcion, ruta1EN.Provincia, sitios, ruta1EN.Puntuacion, ruta1EN.NumPuntuados, ruta1EN.FechaCreacion, ruta1EN.PuntuacionMedia);
+                System.Console.WriteLine("Creo ruta 1");
+                ruta1CEN.CrearRuta(ruta1EN.Nombre, ruta1EN.Descripcion, ruta1EN.Provincia, sitios, ruta1EN.Puntuacion, ruta1EN.NumPuntuados, ruta1EN.FechaCreacion, ruta1EN.PuntuacionMedia);
 
 
                 /*******************************COMENTARIOS**************************/
-                ComentarioCEN comen1CEN = new ComentarioCEN ();
+                ComentarioCEN comen1CEN = new ComentarioCEN();
+                ComentarioEN com1EN = new ComentarioEN();
+                int a = comen1CEN.CrearComentario(usu1EN.NomUsu, "Precioso sitio, estuve allí hace unos meses", 0, 0, DateTime.Today);
+                comen1CEN.AsignarSitio(a, "Guadalest");
+                a = comen1CEN.CrearComentario(usu2EN.NomUsu, "Pues a mi no me gustó", 3, 0, DateTime.Today);
+                comen1CEN.AsignarSitio(a, "Guadalest");
+
+                a = comen1CEN.CrearComentario(usu2EN.NomUsu, "Este sitio si que me gustó, no como Guadalest", 0, 0, DateTime.Today);
+                comen1CEN.AsignarSitio(a, "Xixona");
 
                 /**********************SOLICITUD*******************************/
-                SolicitudEN solicitud1EN = new SolicitudEN ();
-                SolicitudCEN solicitud1CEN = new SolicitudCEN ();
+                SolicitudEN solicitud1EN = new SolicitudEN();
+                SolicitudCEN solicitud1CEN = new SolicitudCEN();
 
 
                 solicitud1EN.Estado = TravelnookGenNHibernate.Enumerated.Travelnook.EstadoSolicitudEnum.pendiente;
                 solicitud1EN.Fecha = DateTime.Today;
-                System.Console.Write ("**********************************************usuarios");
-                System.Console.Write (usu2EN.NomUsu);
-                System.Console.Write (usu1EN.NomUsu);
+                System.Console.Write("**********************************************usuarios");
+                System.Console.Write(usu2EN.NomUsu);
+                System.Console.Write(usu1EN.NomUsu);
 
-                int Id = solicitud1CEN.EnviarSolicitud (usu2EN.NomUsu, solicitud1EN.Estado, solicitud1EN.Fecha, usu1EN.NomUsu);
-                System.Console.Write ("************Enviada\n\n");
-                SolicitudEN solicitud2EN = new SolicitudEN ();
+                int Id = solicitud1CEN.EnviarSolicitud(usu2EN.NomUsu, solicitud1EN.Estado, solicitud1EN.Fecha, usu1EN.NomUsu);
+                System.Console.Write("************Enviada\n\n");
+                SolicitudEN solicitud2EN = new SolicitudEN();
                 IList<SolicitudEN> listapet = new List<SolicitudEN>();
-                listapet = solicitud1CEN.DevuelveSolicitudes ("u1");
+                listapet = solicitud1CEN.DevuelveSolicitudes("u1");
                 /***********************USUARIOCP**********************************/
-                foreach (SolicitudEN solaux in listapet) {
-                        System.Console.Write (solaux.Solicitante.NomUsu + "\n");
+                foreach (SolicitudEN solaux in listapet)
+                {
+                    System.Console.Write(solaux.Solicitante.NomUsu + "\n");
                 }
-                UsuarioCP usuCP = new UsuarioCP ();
-                usuCP.AceptarSolicitud (usu1EN.NomUsu, usu2EN.NomUsu, Id); //usu1 introduce en su lista a usu2
+                UsuarioCP usuCP = new UsuarioCP();
+                usuCP.AceptarSolicitud(usu1EN.NomUsu, usu2EN.NomUsu, Id); //usu1 introduce en su lista a usu2
 
                 /*PRUEBA*/
                 IList<string> agregar1 = new List<string>();
-                agregar1.Add (usu3EN.NomUsu);
-                usu1CEN.AnyadirAmigo (usu2EN.NomUsu, agregar1);
+                agregar1.Add(usu3EN.NomUsu);
+                usu1CEN.AnyadirAmigo(usu2EN.NomUsu, agregar1);
 
 
                 IList<UsuarioEN> misAmigos1 = new List<UsuarioEN>();
-                misAmigos1 = usu1CEN.ConsultarAmigos (usu1EN.NomUsu);
-                System.Console.Write ("FUNCIONO\n");
-                System.Console.Write ("Amigos usu1" + usu1EN.NomUsu + "\n");
-                foreach (UsuarioEN aux1 in misAmigos1) {
-                        System.Console.Write (aux1.NomUsu + "\n");
+                misAmigos1 = usu1CEN.ConsultarAmigos(usu1EN.NomUsu);
+                System.Console.Write("FUNCIONO\n");
+                System.Console.Write("Amigos usu1" + usu1EN.NomUsu + "\n");
+                foreach (UsuarioEN aux1 in misAmigos1)
+                {
+                    System.Console.Write(aux1.NomUsu + "\n");
                 }
 
-                System.Console.Write ("Fin Amigos usu1------ABAJO AMIGOS DE USU2\n");
+                System.Console.Write("Fin Amigos usu1------ABAJO AMIGOS DE USU2\n");
                 IList<UsuarioEN> misAmigos2 = new List<UsuarioEN>();
-                misAmigos2 = usu2CEN.MisAmigosPorEmail (usu2EN.NomUsu, "@hotmail.com");
-                System.Console.Write ("FUNCIONO2\n");
-                System.Console.Write ("Amigos usu2" + usu2EN.NomUsu + "\n");
-                foreach (UsuarioEN aux2 in misAmigos2) {
-                        System.Console.Write (aux2.NomUsu + "\n");
+                misAmigos2 = usu2CEN.MisAmigosPorEmail(usu2EN.NomUsu, "@hotmail.com");
+                System.Console.Write("FUNCIONO2\n");
+                System.Console.Write("Amigos usu2" + usu2EN.NomUsu + "\n");
+                foreach (UsuarioEN aux2 in misAmigos2)
+                {
+                    System.Console.Write(aux2.NomUsu + "\n");
                 }
-                System.Console.WriteLine ("**************Usuario por email*******************\n");
+                System.Console.WriteLine("**************Usuario por email*******************\n");
 
-                UsuarioEN usu1 = new UsuarioEN ();
-                usu1 = usu1CEN.DevuelveUsuarioPorEmail (usu2EN.Email);
-                System.Console.Write (usu1.NomUsu + "\n");
+                UsuarioEN usu1 = new UsuarioEN();
+                usu1 = usu1CEN.DevuelveUsuarioPorEmail(usu2EN.Email);
+                System.Console.Write(usu1.NomUsu + "\n");
                 IList<UsuarioEN> aux = new List<UsuarioEN>();
 
-                aux = usu1CEN.MisAmigosPorNomUsu (usu2EN.NomUsu, "u");
-                System.Console.Write ("******************MI AMIGO por nomUsu*****\n");
-                foreach (UsuarioEN aux2 in aux) {
-                        System.Console.Write (aux2.NomUsu + "\n");
+                aux = usu1CEN.MisAmigosPorNomUsu(usu2EN.NomUsu, "u");
+                System.Console.Write("******************MI AMIGO por nomUsu*****\n");
+                foreach (UsuarioEN aux2 in aux)
+                {
+                    System.Console.Write(aux2.NomUsu + "\n");
                 }
                 IList<string> borrar1 = new List<string>();
-                borrar1.Add (usu3EN.NomUsu);
+                borrar1.Add(usu3EN.NomUsu);
 
-                usu1CEN.BorrarAmigo (usu2EN.NomUsu, usu1EN.NomUsu);
+                usu1CEN.BorrarAmigo(usu2EN.NomUsu, usu1EN.NomUsu);
                 IList<UsuarioEN> misAmigos9 = new List<UsuarioEN>();
-                misAmigos9 = usu1CEN.MisAmigos (usu2EN.NomUsu);
-                System.Console.Write ("Amigos de: " + usu2EN.NomUsu + " despues del borrado\n");
-                foreach (UsuarioEN aux1 in misAmigos9) {
-                        System.Console.Write (aux1.NomUsu + "\n");
+                misAmigos9 = usu1CEN.MisAmigos(usu2EN.NomUsu);
+                System.Console.Write("Amigos de: " + usu2EN.NomUsu + " despues del borrado\n");
+                foreach (UsuarioEN aux1 in misAmigos9)
+                {
+                    System.Console.Write(aux1.NomUsu + "\n");
                 }
 
-                System.Console.Write ("***************SITIOS*****************\n");
+                System.Console.Write("***************SITIOS*****************\n");
                 IList<SitioEN> aux5 = new List<SitioEN>();
-                SitioEN sit = new SitioEN ();
-                aux5 = sitio1CEN.DevuelveSitiosOrdenadosPorFecha ();
-                foreach (SitioEN sitio in aux5) {
-                        System.Console.Write (sitio.Nombre + "\n");
+                SitioEN sit = new SitioEN();
+                aux5 = sitio1CEN.DevuelveSitiosOrdenadosPorFecha();
+                foreach (SitioEN sitio in aux5)
+                {
+                    System.Console.Write(sitio.Nombre + "\n");
                 }
-                System.Console.Write (ruta1EN.PuntuacionMedia + "TYTY\n");
-                System.Console.Write (ruta1EN.Puntuacion + "TYTY\n");
-                ruta1CEN.PuntuarRuta (ruta1EN.Nombre, 2);
-                ruta1EN = ruta1CEN.DevuelveRutaPorNombre (ruta1EN.Nombre);
-                System.Console.Write (ruta1EN.Nombre + "\n");
-                System.Console.Write (ruta1EN.PuntuacionMedia + "\n");
+                System.Console.Write(ruta1EN.PuntuacionMedia + "TYTY\n");
+                System.Console.Write(ruta1EN.Puntuacion + "TYTY\n");
+                ruta1CEN.PuntuarRuta(ruta1EN.Nombre, 2);
+                ruta1EN = ruta1CEN.DevuelveRutaPorNombre(ruta1EN.Nombre);
+                System.Console.Write(ruta1EN.Nombre + "\n");
+                System.Console.Write(ruta1EN.PuntuacionMedia + "\n");
 
-                ReporteCP reporCP = new ReporteCP ();
-                ReporteCEN repCEN = new ReporteCEN ();
-                reporCP.ReporteUsuario ("mal reporte", adminEN.Email, usu1EN.NomUsu);
-                ReporteEN reporteEN = new ReporteEN ();
-                reporteEN = repCEN.DevuelveReportePorId (1);
-                System.Console.Write (reporteEN.Usuario.NomUsu + " ********************************\n");
+                ReporteCP reporCP = new ReporteCP();
+                ReporteCEN repCEN = new ReporteCEN();
+                reporCP.ReporteUsuario("mal reporte", usu1EN.NomUsu);
+                ReporteEN reporteEN = new ReporteEN();
+                reporteEN = repCEN.DevuelveReportePorId(1);
+                System.Console.Write(reporteEN.Usuario.NomUsu + " ********************************\n");
 
-                IList<ReporteEN> reportes = repCEN.MostrarReportes (0, -1);
-                System.Console.Write (reportes.Count + "\n");
-                if (reportes != null) {
-                        foreach (ReporteEN r in reportes) {
-                                System.Console.Write (r.Motivo);
-                        }
+                IList<ReporteEN> reportes = repCEN.MostrarReportes(0, -1);
+                System.Console.Write(reportes.Count + "\n");
+                if (reportes != null)
+                {
+                    foreach (ReporteEN r in reportes)
+                    {
+                        System.Console.Write(r.Motivo);
+                    }
                 }
-                IList<UsuarioEN> reportesUsuario = repCEN.MostrarReportesUsuario ();
-                System.Console.Write (reportesUsuario.Count + "\n");
-                if (reportesUsuario != null) {
-                        foreach (UsuarioEN r in reportesUsuario) {
-                                System.Console.Write (r.Nombre);
-                        }
+                IList<UsuarioEN> reportesUsuario = repCEN.MostrarReportesUsuario();
+                System.Console.Write(reportesUsuario.Count + "\n");
+                if (reportesUsuario != null)
+                {
+                    foreach (UsuarioEN r in reportesUsuario)
+                    {
+                        System.Console.Write(r.Nombre);
+                    }
                 }
 
 
                 ////////////////////////////////FAVORITOS////////////////////////////////////////
 
-                FavoritoCEN favCEN = new FavoritoCEN ();
-                FavoritoEN favENSitio = new FavoritoEN ();
-                FavoritoEN favENRuta = new FavoritoEN ();
+                FavoritoCEN favCEN = new FavoritoCEN();
+                FavoritoEN favENSitio = new FavoritoEN();
+                FavoritoEN favENRuta = new FavoritoEN();
 
-                favENSitio.Id = favCEN.CrearFavorito (usu1.NomUsu);
-                favENRuta.Id = favCEN.CrearFavorito (usu1.NomUsu);
-                favCEN.AnyadirSitioFavoritos (favENSitio.Id, sitio2EN.Nombre);
-                favCEN.AnyadirRutaFavoritos (favENRuta.Id, ruta1EN.Nombre);
-                System.Console.Write ("***************FAVORITO CREADO********************************\n");
-                System.Console.Write ("***********ID DEL FAVORITO SITIO********************************\n" + favENSitio.Id + "\n");
-                System.Console.Write ("***********ID DEL FAVORITO RUTA********************************\n" + favENRuta.Id + "\n");
-                IList<FavoritoEN> favs = favCEN.DevuelveFavoritos (0, -1);
+                favENSitio.Id = favCEN.CrearFavorito(usu1.NomUsu);
+                favENRuta.Id = favCEN.CrearFavorito(usu1.NomUsu);
+                favCEN.AnyadirSitioFavoritos(favENSitio.Id, sitio2EN.Nombre);
+                favCEN.AnyadirRutaFavoritos(favENRuta.Id, ruta1EN.Nombre);
+                System.Console.Write("***************FAVORITO CREADO********************************\n");
+                System.Console.Write("***********ID DEL FAVORITO SITIO********************************\n" + favENSitio.Id + "\n");
+                System.Console.Write("***********ID DEL FAVORITO RUTA********************************\n" + favENRuta.Id + "\n");
+                IList<FavoritoEN> favs = favCEN.DevuelveFavoritos(0, -1);
                 usu1.Favorito = favs;
-                System.Console.Write ("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
+                System.Console.Write("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
 
                 IList<SitioEN> sitiosfavs1 = new List<SitioEN>();
-                sitiosfavs1 = favCEN.DevuelveSitiosFavoritos ();
-                System.Console.Write ("Sitios favoritos en total:" + sitiosfavs1.Count + "\n\n");
+                sitiosfavs1 = favCEN.DevuelveSitiosFavoritos();
+                System.Console.Write("Sitios favoritos en total:" + sitiosfavs1.Count + "\n\n");
 
                 IList<RutaEN> rutasfavs1 = new List<RutaEN>();
-                rutasfavs1 = favCEN.DevuelveRutasFavoritas ();
-                System.Console.Write ("Rutas favoritas en total:" + rutasfavs1.Count + "\n\n");
+                rutasfavs1 = favCEN.DevuelveRutasFavoritas();
+                System.Console.Write("Rutas favoritas en total:" + rutasfavs1.Count + "\n\n");
 
-                foreach (FavoritoEN s in favs) {
-                        System.Console.Write (s + "\n");
+                foreach (FavoritoEN s in favs)
+                {
+                    System.Console.Write(s + "\n");
                 }
-                System.Console.Write ("fin lista1\n");
+                System.Console.Write("fin lista1\n");
 
-                favCEN.EliminarFavorito (favENSitio.Id);
+                favCEN.EliminarFavorito(favENSitio.Id);
 
-                IList<FavoritoEN> favs2 = favCEN.DevuelveFavoritos (0, -1);
+                IList<FavoritoEN> favs2 = favCEN.DevuelveFavoritos(0, -1);
                 usu1.Favorito = favs2;
-                System.Console.Write ("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
+                System.Console.Write("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
 
                 IList<SitioEN> sitiosfavs2 = new List<SitioEN>();
-                sitiosfavs2 = favCEN.DevuelveSitiosFavoritos ();
-                System.Console.Write ("Sitios favoritos en total:" + sitiosfavs2.Count + "\n\n");
+                sitiosfavs2 = favCEN.DevuelveSitiosFavoritos();
+                System.Console.Write("Sitios favoritos en total:" + sitiosfavs2.Count + "\n\n");
 
                 IList<RutaEN> rutasfavs2 = new List<RutaEN>();
-                rutasfavs2 = favCEN.DevuelveRutasFavoritas ();
-                System.Console.Write ("Rutas favoritas en total:" + rutasfavs2.Count + "\n\n");
+                rutasfavs2 = favCEN.DevuelveRutasFavoritas();
+                System.Console.Write("Rutas favoritas en total:" + rutasfavs2.Count + "\n\n");
 
-                foreach (FavoritoEN s in favs2) {
-                        System.Console.Write (s + "\n");
+                foreach (FavoritoEN s in favs2)
+                {
+                    System.Console.Write(s + "\n");
                 }
                 //Peta en favENSitio y cualquier cosa
                 /* favENSitio = favCEN.DevuelveFavoritoPorId(1);
@@ -381,20 +429,21 @@ public static void InitializeData ()
 
                 /*********************************EVENTO********************************/
 
-                EventoCEN evento1CEN = new EventoCEN ();
-                EventoEN evento1EN = new EventoEN ();
-                EventoCEN evento2CEN = new EventoCEN ();
-                EventoEN evento2EN = new EventoEN ();
-                evento1CEN.CrearEvento ("evento1", "dasldskvjdfv", usu2EN.NomUsu, 34, 23, 12);
-                evento1CEN.CrearEvento ("evento2", "dasldskvjSDFSDFGSDFG", usu2EN.NomUsu, 38, 23, 12);
-                evento1EN = evento1CEN.DevueleEventoPorId (1);
-                evento2EN = evento1CEN.DevueleEventoPorId (2);
-                System.Console.Write (evento1EN.Id + " EVENTO MOSTRADO ********************************\n");
+                EventoCEN evento1CEN = new EventoCEN();
+                EventoEN evento1EN = new EventoEN();
+                EventoCEN evento2CEN = new EventoCEN();
+                EventoEN evento2EN = new EventoEN();
+                evento1CEN.CrearEvento("evento1", "dasldskvjdfv", usu2EN.NomUsu, 34, 23, 12);
+                evento1CEN.CrearEvento("evento2", "dasldskvjSDFSDFGSDFG", usu2EN.NomUsu, 38, 23, 12);
+                evento1EN = evento1CEN.DevueleEventoPorId(1);
+                evento2EN = evento1CEN.DevueleEventoPorId(2);
+                System.Console.Write(evento1EN.Id + " EVENTO MOSTRADO ********************************\n");
 
                 IList<EventoEN> eventos = new List<EventoEN>();
-                eventos = evento2CEN.EventosPorMayorNumAsistentes (0, -1);
-                foreach (EventoEN evento in eventos) {
-                        System.Console.Write (evento.Id + "\n");
+                eventos = evento2CEN.EventosPorMayorNumAsistentes(0, -1);
+                foreach (EventoEN evento in eventos)
+                {
+                    System.Console.Write(evento.Id + "\n");
                 }
 
 
@@ -438,12 +487,12 @@ public static void InitializeData ()
 
 
                 /*PROTECTED REGION END*/
-        }
-        catch (Exception ex)
-        {
-                System.Console.WriteLine (ex.InnerException);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.InnerException);
                 throw ex;
+            }
         }
-}
-}
+    }
 }

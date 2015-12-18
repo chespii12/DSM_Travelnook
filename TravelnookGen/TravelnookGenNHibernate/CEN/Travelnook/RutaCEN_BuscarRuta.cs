@@ -14,7 +14,7 @@ namespace TravelnookGenNHibernate.CEN.Travelnook
 {
 public partial class RutaCEN
 {
-public void BuscarRuta (string p_nombre, string p_provincia, int p_puntuacion)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> BuscarRuta (string p_nombre, string p_provincia, int p_puntuacion)
 {
         /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Ruta_buscarRuta) ENABLED START*/
 

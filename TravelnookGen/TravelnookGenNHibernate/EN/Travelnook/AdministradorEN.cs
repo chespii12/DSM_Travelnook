@@ -6,9 +6,9 @@ namespace TravelnookGenNHibernate.EN.Travelnook
 public partial class AdministradorEN
 {
 /**
- *	Atributo email
+ *	Atributo nomUsu
  */
-private string email;
+private string nomUsu;
 
 
 
@@ -20,17 +20,17 @@ private String contrasenya;
 
 
 /**
- *	Atributo reporte
+ *	Atributo email
  */
-private System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte;
+private string email;
 
 
 
 
 
 
-public virtual string Email {
-        get { return email; } set { email = value;  }
+public virtual string NomUsu {
+        get { return nomUsu; } set { nomUsu = value;  }
 }
 
 
@@ -41,8 +41,8 @@ public virtual String Contrasenya {
 
 
 
-public virtual System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> Reporte {
-        get { return reporte; } set { reporte = value;  }
+public virtual string Email {
+        get { return email; } set { email = value;  }
 }
 
 
@@ -51,31 +51,30 @@ public virtual System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Trave
 
 public AdministradorEN()
 {
-        reporte = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.ReporteEN>();
 }
 
 
 
-public AdministradorEN(string email, String contrasenya, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte
+public AdministradorEN(string nomUsu, String contrasenya, string email
                        )
 {
-        this.init (Email, contrasenya, reporte);
+        this.init (NomUsu, contrasenya, email);
 }
 
 
 public AdministradorEN(AdministradorEN administrador)
 {
-        this.init (Email, administrador.Contrasenya, administrador.Reporte);
+        this.init (NomUsu, administrador.Contrasenya, administrador.Email);
 }
 
-private void init (string email, String contrasenya, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte)
+private void init (string nomUsu, String contrasenya, string email)
 {
-        this.Email = email;
+        this.NomUsu = nomUsu;
 
 
         this.Contrasenya = contrasenya;
 
-        this.Reporte = reporte;
+        this.Email = email;
 }
 
 public override bool Equals (object obj)
@@ -85,7 +84,7 @@ public override bool Equals (object obj)
         AdministradorEN t = obj as AdministradorEN;
         if (t == null)
                 return false;
-        if (Email.Equals (t.Email))
+        if (NomUsu.Equals (t.NomUsu))
                 return true;
         else
                 return false;
@@ -95,7 +94,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Email.GetHashCode ();
+        hash += this.NomUsu.GetHashCode ();
         return hash;
 }
 }

@@ -28,14 +28,14 @@ public AdministradorCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public AdministradorEN ReadOIDDefault (string email)
+public AdministradorEN ReadOIDDefault (string nomUsu)
 {
         AdministradorEN administradorEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), email);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nomUsu);
                 SessionCommit ();
         }
 
@@ -103,22 +103,43 @@ public string New_ (AdministradorEN administrador)
                 SessionClose ();
         }
 
-        return administrador.Email;
+        return administrador.NomUsu;
 }
 
-public TravelnookGenNHibernate.EN.Travelnook.AdministradorEN DevuelveAdminPorEmail (string p_email)
+public void Destroy (string nomUsu)
 {
-        TravelnookGenNHibernate.EN.Travelnook.AdministradorEN result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AdministradorEN self where FROM AdministradorEN as admin where admin.Email= :p_email";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("AdministradorENdevuelveAdminPorEmailHQL");
-                query.SetParameter ("p_email", p_email);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), nomUsu);
+                session.Delete (administradorEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in AdministradorCAD.", ex);
+        }
 
 
-                result = query.UniqueResult<TravelnookGenNHibernate.EN.Travelnook.AdministradorEN>();
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+//Sin e: DevuelveAdminPorNombre
+//Con e: AdministradorEN
+public AdministradorEN DevuelveAdminPorNombre (string nomUsu)
+{
+        AdministradorEN administradorEN = null;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nomUsu);
                 SessionCommit ();
         }
 
@@ -135,7 +156,7 @@ public TravelnookGenNHibernate.EN.Travelnook.AdministradorEN DevuelveAdminPorEma
                 SessionClose ();
         }
 
-        return result;
+        return administradorEN;
 }
 }
 }

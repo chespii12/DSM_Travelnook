@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
 namespace TravelnookMVC.Models
 {
     public class Sitio
@@ -12,30 +11,19 @@ namespace TravelnookMVC.Models
         [ScaffoldColumn(false)]
         public string NombreUsuario { get; set; }
 
-        [ScaffoldColumn(false)]
-        public IList<int> IdComentarios { get; set; } //falta el resto de campos??????
+        
 
         [ScaffoldColumn(false)]
-        public IList<string> UsuarioComentarios { get; set; }
+        public IList<Comentario> Comentarios { get; set; }
 
-        [ScaffoldColumn(false)]
-        public IList<string> ContenidoComentarios { get; set; }
+        
 
-        [ScaffoldColumn(false)]
-        public IList<int> FechaComentarios { get; set; }
-
-        [ScaffoldColumn(false)]
-        public IList<int> Likes { get; set; }
-
-        [ScaffoldColumn(false)]
-        public IList<int> Dislikes { get; set; }
-
-        [Display(Prompt = "Nombre del sitio", Description = "Nombre del sitio", Name = "NombreAAA ")]
+        [Display(Prompt = "Nombre del sitio", Description = "Nombre del sitio", Name = "Nombre ")]
         [Required(ErrorMessage = "Debe indicar un nombre para el sitio")]
         [StringLength(maximumLength: 30, ErrorMessage = "El nombre no puede tener más de 30 caracteres")]
         public string Nombre { get; set; }
 
-        [Display(Prompt = "Descripción del sitio", Description = "Descripción del sitio", Name = "DescripciónBBB ")]
+        [Display(Prompt = "Descripción del sitio", Description = "Descripción del sitio", Name = "Descripción ")]
         [Required(ErrorMessage = "Debe indicar una descripción para el sitio")]
         [StringLength(maximumLength: 300, ErrorMessage = "La descripción no puede tener más de 300 caracteres")]
         public string Descripcion { get; set; }
@@ -69,7 +57,7 @@ namespace TravelnookMVC.Models
         public string Localizacion { get; set; }
 
         [Display(Prompt = "Fecha de creación", Description = "Fecha de creación", Name = "Fecha ")]
-        [Required(ErrorMessage = "Debe indicar una fecha para la ruta")]
+        [Required(ErrorMessage = "Debe indicar una fecha para el sitio")]
         public Nullable<DateTime> Fecha { get; set; }
 
         [Display(Prompt = "Imágenes del sitio", Description = "Imágenes del sitio", Name = "Imágenes ")]
@@ -79,5 +67,30 @@ namespace TravelnookMVC.Models
         [Display(Prompt = "Vídeos del sitio", Description = "Vídeos del sitio", Name = "Vídeos ")]
         //[Required(ErrorMessage = "Debe indicar una imagen del artículo")]
         public IList<string> Videos { get; set; }
+
+        [Display( Name = "Senderismo ")]
+        public bool senderismo { get; set; }
+
+        [Display(Name = "Deportes acuáticos ")]
+        public bool deportes_acuaticos { get; set; }
+
+        [Display(Name = "Deportes ")]
+        public bool deportes { get; set; }
+
+        [Display(Name = "Gastronomía ")]
+        public bool gastronomia { get; set; }
+
+        [Display(Name = "Camping ")]
+        public bool camping { get; set; }
+
+        [Display(Name = "Lúdicas ")]
+        public bool ludicas { get; set; }
+
+        [Display(Name = "Ocio nocturno ")]
+        public bool ocio_nocturno { get; set; }
+
+        [Display(Name = "Culturales ")]
+        public bool culturales { get; set; }
+
     }
 }

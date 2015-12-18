@@ -12,36 +12,40 @@ using TravelnookGenNHibernate.CAD.Travelnook;
 
 namespace TravelnookGenNHibernate.CEN.Travelnook
 {
-public partial class AdministradorCEN
-{
-public bool Login (string p_email, String p_contrasenya)
-{
-        /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Administrador_login) ENABLED START*/
+    public partial class AdministradorCEN
+    {
+        public bool Login(string p_email, String p_contrasenya)
+        {
+            /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Administrador_login) ENABLED START*/
 
-        // Write here your custom code...
+            // Write here your custom code...
 
-        bool devuelve = false;
+            bool devuelve = false;
 
-        AdministradorCEN adminCEN = new AdministradorCEN ();
-        AdministradorEN adminEN = new AdministradorEN ();
+            AdministradorCEN adminCEN = new AdministradorCEN();
+            AdministradorEN adminEN = new AdministradorEN();
 
-        adminEN = adminCEN.DevuelveAdminPorEmail (p_email);
+            adminEN = adminCEN.DevuelveAdminPorNombre(p_email);
 
-        if (adminEN != null) {
-                if (Utils.Util.GetEncondeMD5 (p_contrasenya) == adminEN.Contrasenya) {
-                        devuelve = true;
+            if (adminEN != null)
+            {
+                if (Utils.Util.GetEncondeMD5(p_contrasenya) == adminEN.Contrasenya)
+                {
+                    devuelve = true;
                 }
-                else{
-                        devuelve = false;
+                else
+                {
+                    devuelve = false;
                 }
-        }
-        else{
+            }
+            else
+            {
                 devuelve = false;
+            }
+
+            return devuelve;
+
+            /*PROTECTED REGION END*/
         }
-
-        return devuelve;
-
-        /*PROTECTED REGION END*/
-}
-}
+    }
 }

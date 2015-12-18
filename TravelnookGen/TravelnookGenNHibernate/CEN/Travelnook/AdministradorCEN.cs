@@ -36,16 +36,18 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string New_ (string p_email, String p_contrasenya)
+public string New_ (string p_nomUsu, String p_contrasenya, string p_email)
 {
         AdministradorEN administradorEN = null;
         string oid;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
-        administradorEN.Email = p_email;
+        administradorEN.NomUsu = p_nomUsu;
 
         administradorEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
+
+        administradorEN.Email = p_email;
 
         //Call to AdministradorCAD
 
@@ -53,9 +55,17 @@ public string New_ (string p_email, String p_contrasenya)
         return oid;
 }
 
-public TravelnookGenNHibernate.EN.Travelnook.AdministradorEN DevuelveAdminPorEmail (string p_email)
+public void Destroy (string nomUsu)
 {
-        return _IAdministradorCAD.DevuelveAdminPorEmail (p_email);
+        _IAdministradorCAD.Destroy (nomUsu);
+}
+
+public AdministradorEN DevuelveAdminPorNombre (string nomUsu)
+{
+        AdministradorEN administradorEN = null;
+
+        administradorEN = _IAdministradorCAD.DevuelveAdminPorNombre (nomUsu);
+        return administradorEN;
 }
 }
 }

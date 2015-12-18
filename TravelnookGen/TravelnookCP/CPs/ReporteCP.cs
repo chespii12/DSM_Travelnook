@@ -17,7 +17,7 @@ namespace TravelnookCP.CPs
             : base(sessionAux)
         {
         }
-        public void ReporteSitio(string motivo, string Admin_OID, string sitio_nombre){
+        public void ReporteSitio(string motivo, string sitio_nombre){
             SitioCEN sitioCEN = null;
             ReporteCEN reporteCEN = null;
 
@@ -31,7 +31,7 @@ namespace TravelnookCP.CPs
                 sitioCEN = new SitioCEN(sitioCAD);
                 reporteCEN = new ReporteCEN(reporteCAD);
 
-                int reporte_id= reporteCEN.CrearReporte(motivo, Admin_OID, marcado);
+                int reporte_id= reporteCEN.CrearReporte(motivo, marcado);
                 //arignar sitio ( reporte, sitio)
                 ReporteEN reporte = reporteCAD.DevuelveReportePorId(reporte_id);
                 reporteCEN.AsignarSitio(reporte_id, sitio_nombre);
@@ -50,7 +50,7 @@ namespace TravelnookCP.CPs
             }
 
         }
-        public void ReporteRuta(string motivo, string Admin_OID, string ruta_nombre)
+        public void ReporteRuta(string motivo, string ruta_nombre)
         {
             RutaCEN rutaCEN = null;
             ReporteCEN reporteCEN = null;
@@ -65,7 +65,7 @@ namespace TravelnookCP.CPs
                 rutaCEN = new RutaCEN(rutaCAD);
                 reporteCEN = new ReporteCEN(reporteCAD);
 
-                int reporte_id = reporteCEN.CrearReporte(motivo, Admin_OID, marcado);
+                int reporte_id = reporteCEN.CrearReporte(motivo, marcado);
                 //arignar sitio ( reporte, sitio)
                 ReporteEN reporte = reporteCAD.DevuelveReportePorId(reporte_id);
                 reporteCEN.AsignarRuta(reporte_id, ruta_nombre);
@@ -84,7 +84,7 @@ namespace TravelnookCP.CPs
             }
 
         }
-        public void ReporteComentario(string motivo, string Admin_OID, int comentario_OID)
+        public void ReporteComentario(string motivo, int comentario_OID)
         {
             ComentarioCEN comentarioCEN = null;
             ReporteCEN reporteCEN = null;
@@ -99,7 +99,7 @@ namespace TravelnookCP.CPs
                 comentarioCEN = new ComentarioCEN(comentarioCAD);
                 reporteCEN = new ReporteCEN(reporteCAD);
 
-                int reporte_id = reporteCEN.CrearReporte(motivo, Admin_OID, marcado);
+                int reporte_id = reporteCEN.CrearReporte(motivo, marcado);
                 //arignar sitio ( reporte, sitio)
                 ReporteEN reporte = reporteCAD.DevuelveReportePorId(reporte_id);
                 
@@ -119,7 +119,7 @@ namespace TravelnookCP.CPs
             }
 
         }
-        public void ReporteUsuario(string motivo, string Admin_OID, string usuario_OID)
+        public void ReporteUsuario(string motivo, string usuario_OID)
         {
             UsuarioCEN usuarioCEN = null;
             ReporteCEN reporteCEN = null;
@@ -134,7 +134,7 @@ namespace TravelnookCP.CPs
                 usuarioCEN = new UsuarioCEN(usuarioCAD);
                 reporteCEN = new ReporteCEN(reporteCAD);
 
-                int reporte_id = reporteCEN.CrearReporte(motivo, Admin_OID, marcado);
+                int reporte_id = reporteCEN.CrearReporte(motivo, marcado);
                 ReporteEN reporte = reporteCAD.DevuelveReportePorId(reporte_id);
 
                 reporteCEN.AsignarUsuario(reporte_id, usuario_OID);

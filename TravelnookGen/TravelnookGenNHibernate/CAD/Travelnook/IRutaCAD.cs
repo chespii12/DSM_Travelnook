@@ -24,8 +24,5 @@ TravelnookGenNHibernate.EN.Travelnook.RutaEN DevuelveRutaPorNombre (string p_nom
 
 
 System.Collections.Generic.IList<RutaEN> MostrarRutas (int first, int size);
-
-
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> BuscarRuta (string p_nombre, string p_provincia, int p_puntuacion);
 }
 }

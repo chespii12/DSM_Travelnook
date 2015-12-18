@@ -6,11 +6,14 @@ namespace TravelnookGenNHibernate.CAD.Travelnook
 {
 public partial interface IAdministradorCAD
 {
-AdministradorEN ReadOIDDefault (string email);
+AdministradorEN ReadOIDDefault (string nomUsu);
 
 
 string New_ (AdministradorEN administrador);
 
-TravelnookGenNHibernate.EN.Travelnook.AdministradorEN DevuelveAdminPorEmail (string p_email);
+void Destroy (string nomUsu);
+
+
+AdministradorEN DevuelveAdminPorNombre (string nomUsu);
 }
 }

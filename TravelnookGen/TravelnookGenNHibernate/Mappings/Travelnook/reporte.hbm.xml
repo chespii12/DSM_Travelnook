@@ -52,13 +52,6 @@
 						</many-to-one>
 											 					
 			
-		  			
-						<many-to-one name="Administrador" class="TravelnookGenNHibernate.EN.Travelnook.AdministradorEN" >	
-								<column name="FK_email_idAdministrador"/> 
-						</many-to-one>
-											 					
-			
-					
 					
 					
 					

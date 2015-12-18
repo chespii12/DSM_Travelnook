@@ -95,7 +95,6 @@
 		  
 		  <query name="RutaENReadAllHQL">from RutaEN</query>
 		  <query name="RutaENDevuelveRutasOrdenadasPorFechaHQL"><![CDATA[FROM RutaEN ruta order by ruta.FechaCreacion asc]]></query>
-		  <query name="RutaENDevuelveRutaPorNombreHQL"><![CDATA[FROM RutaEN as r where r.Nombre like :p_nombre]]></query>
-		  <query name="RutaENbuscarRutaHQL"><![CDATA[FROM RutaEN ruta where (:p_nombre is null or ruta.Nombre = :p_nombre) and (:p_provincia is null or ruta.Provincia = :p_provincia) and (:p_puntuacion = -1 or ruta.PuntuacionMedia = :p_puntuacion)]]></query>
+		  <query name="RutaENDevuelveRutaPorNombreHQL"><![CDATA[FROM RutaEN as r where r.Nombre like '%'+ :p_nombre+'%']]></query>
 		</hibernate-mapping>
 	

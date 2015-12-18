@@ -55,13 +55,6 @@ private TravelnookGenNHibernate.EN.Travelnook.EventoEN evento;
 
 
 /**
- *	Atributo administrador
- */
-private TravelnookGenNHibernate.EN.Travelnook.AdministradorEN administrador;
-
-
-
-/**
  *	Atributo marcado
  */
 private bool marcado;
@@ -113,12 +106,6 @@ public virtual TravelnookGenNHibernate.EN.Travelnook.EventoEN Evento {
 
 
 
-public virtual TravelnookGenNHibernate.EN.Travelnook.AdministradorEN Administrador {
-        get { return administrador; } set { administrador = value;  }
-}
-
-
-
 public virtual bool Marcado {
         get { return marcado; } set { marcado = value;  }
 }
@@ -133,19 +120,19 @@ public ReporteEN()
 
 
 
-public ReporteEN(int id, string motivo, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN usuario, TravelnookGenNHibernate.EN.Travelnook.SitioEN sitio, TravelnookGenNHibernate.EN.Travelnook.RutaEN ruta, TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentario, TravelnookGenNHibernate.EN.Travelnook.EventoEN evento, TravelnookGenNHibernate.EN.Travelnook.AdministradorEN administrador, bool marcado
+public ReporteEN(int id, string motivo, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN usuario, TravelnookGenNHibernate.EN.Travelnook.SitioEN sitio, TravelnookGenNHibernate.EN.Travelnook.RutaEN ruta, TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentario, TravelnookGenNHibernate.EN.Travelnook.EventoEN evento, bool marcado
                  )
 {
-        this.init (Id, motivo, usuario, sitio, ruta, comentario, evento, administrador, marcado);
+        this.init (Id, motivo, usuario, sitio, ruta, comentario, evento, marcado);
 }
 
 
 public ReporteEN(ReporteEN reporte)
 {
-        this.init (Id, reporte.Motivo, reporte.Usuario, reporte.Sitio, reporte.Ruta, reporte.Comentario, reporte.Evento, reporte.Administrador, reporte.Marcado);
+        this.init (Id, reporte.Motivo, reporte.Usuario, reporte.Sitio, reporte.Ruta, reporte.Comentario, reporte.Evento, reporte.Marcado);
 }
 
-private void init (int id, string motivo, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN usuario, TravelnookGenNHibernate.EN.Travelnook.SitioEN sitio, TravelnookGenNHibernate.EN.Travelnook.RutaEN ruta, TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentario, TravelnookGenNHibernate.EN.Travelnook.EventoEN evento, TravelnookGenNHibernate.EN.Travelnook.AdministradorEN administrador, bool marcado)
+private void init (int id, string motivo, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN usuario, TravelnookGenNHibernate.EN.Travelnook.SitioEN sitio, TravelnookGenNHibernate.EN.Travelnook.RutaEN ruta, TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentario, TravelnookGenNHibernate.EN.Travelnook.EventoEN evento, bool marcado)
 {
         this.Id = id;
 
@@ -161,8 +148,6 @@ private void init (int id, string motivo, TravelnookGenNHibernate.EN.Travelnook.
         this.Comentario = comentario;
 
         this.Evento = evento;
-
-        this.Administrador = administrador;
 
         this.Marcado = marcado;
 }

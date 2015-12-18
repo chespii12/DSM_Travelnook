@@ -85,13 +85,6 @@ public int CrearReporte (ReporteEN reporte)
         try
         {
                 SessionInitializeTransaction ();
-                if (reporte.Administrador != null) {
-                        // Argumento OID y no colección.
-                        reporte.Administrador = (TravelnookGenNHibernate.EN.Travelnook.AdministradorEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.AdministradorEN), reporte.Administrador.Email);
-
-                        reporte.Administrador.Reporte
-                        .Add (reporte);
-                }
 
                 session.Save (reporte);
                 SessionCommit ();

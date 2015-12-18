@@ -130,10 +130,6 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
 {
         return _ISitioCAD.DevuelveSitiosPorActividad (p_actividades);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BuscarSitio (string p_nombre, string p_provincia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipo, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades, int p_puntuacion)
-{
-        return _ISitioCAD.BuscarSitio (p_nombre, p_provincia, p_tipo, p_actividades, p_puntuacion);
-}
 public System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int size)
 {
         System.Collections.Generic.IList<SitioEN> list = null;

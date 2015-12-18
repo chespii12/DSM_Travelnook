@@ -36,7 +36,7 @@ public IReporteCAD get_IReporteCAD ()
         return this._IReporteCAD;
 }
 
-public int CrearReporte (string p_motivo, string p_administrador, bool p_marcado)
+public int CrearReporte (string p_motivo, bool p_marcado)
 {
         ReporteEN reporteEN = null;
         int oid;
@@ -44,14 +44,6 @@ public int CrearReporte (string p_motivo, string p_administrador, bool p_marcado
         //Initialized ReporteEN
         reporteEN = new ReporteEN ();
         reporteEN.Motivo = p_motivo;
-
-
-        if (p_administrador != null) {
-                // El argumento p_administrador -> Property administrador es oid = false
-                // Lista de oids id
-                reporteEN.Administrador = new TravelnookGenNHibernate.EN.Travelnook.AdministradorEN ();
-                reporteEN.Administrador.Email = p_administrador;
-        }
 
         reporteEN.Marcado = p_marcado;
 

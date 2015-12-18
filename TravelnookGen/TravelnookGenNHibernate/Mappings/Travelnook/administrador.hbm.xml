@@ -6,26 +6,19 @@
 		    
 			
 				<class name="AdministradorEN" table="Administrador"> 
-						<id name="Email" column="email"/> 
+						<id name="NomUsu" column="nomUsu"/> 
 			
 					
 					<property name="Contrasenya" type="string"> 
 						<column name="contrasenya"  not-null="true"/>
 					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  unique="true" not-null="true"/>
+					</property>
 			
 			
 			
 			
-		  			
-						<bag name="Reporte" >
-							<key>
-							
-								
-								<column name="FK_email_idAdministrador"/>
-					      	</key>
-							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ReporteEN"/>
-					    </bag>
-					
 					
 					
 					
@@ -33,6 +26,5 @@
 		 </class>	
 		  
 		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
-		  <query name="AdministradorENdevuelveAdminPorEmailHQL"><![CDATA[FROM AdministradorEN as admin where admin.Email= :p_email]]></query>
 		</hibernate-mapping>
 	

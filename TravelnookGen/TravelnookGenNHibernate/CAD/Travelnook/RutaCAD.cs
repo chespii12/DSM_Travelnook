@@ -212,7 +212,7 @@ public TravelnookGenNHibernate.EN.Travelnook.RutaEN DevuelveRutaPorNombre (strin
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM RutaEN self where FROM RutaEN as r where r.Nombre like :p_nombre";
+                //String sql = @"FROM RutaEN self where FROM RutaEN as r where r.Nombre like '%'+ :p_nombre+'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("RutaENDevuelveRutaPorNombreHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -248,39 +248,6 @@ public System.Collections.Generic.IList<RutaEN> MostrarRutas (int first, int siz
                                  SetFirstResult (first).SetMaxResults (size).List<RutaEN>();
                 else
                         result = session.CreateCriteria (typeof(RutaEN)).List<RutaEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in RutaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
-
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> BuscarRuta (string p_nombre, string p_provincia, int p_puntuacion)
-{
-        System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM RutaEN self where FROM RutaEN ruta where (:p_nombre is null or ruta.Nombre = :p_nombre) and (:p_provincia is null or ruta.Provincia = :p_provincia) and (:p_puntuacion = -1 or ruta.PuntuacionMedia = :p_puntuacion)";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("RutaENbuscarRutaHQL");
-                query.SetParameter ("p_nombre", p_nombre);
-                query.SetParameter ("p_provincia", p_provincia);
-                query.SetParameter ("p_puntuacion", p_puntuacion);
-
-                result = query.List<TravelnookGenNHibernate.EN.Travelnook.RutaEN>();
                 SessionCommit ();
         }
 

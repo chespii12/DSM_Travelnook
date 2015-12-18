@@ -115,9 +115,5 @@ public System.Collections.Generic.IList<RutaEN> MostrarRutas (int first, int siz
         list = _IRutaCAD.MostrarRutas (first, size);
         return list;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> BuscarRuta (string p_nombre, string p_provincia, int p_puntuacion)
-{
-        return _IRutaCAD.BuscarRuta (p_nombre, p_provincia, p_puntuacion);
-}
 }
 }

@@ -12,22 +12,22 @@ using TravelnookGenNHibernate.CAD.Travelnook;
 
 namespace TravelnookGenNHibernate.CEN.Travelnook
 {
-public partial class RutaCEN
-{
-public void PuntuarRuta (string p_oid, int p_puntuacion)
-{
-        /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Ruta_puntuarRuta) ENABLED START*/
+    public partial class RutaCEN
+    {
+        public void PuntuarRuta(string p_oid, int p_puntuacion)
+        {
+            /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Ruta_puntuarRuta) ENABLED START*/
 
-        RutaEN rutaEN = new RutaEN ();
-        RutaCEN rutaCEN = new RutaCEN ();
+            RutaEN rutaEN = new RutaEN();
+            RutaCEN rutaCEN = new RutaCEN();
 
-        rutaEN = rutaCEN.DevuelveRutaPorNombre (p_oid);
-        rutaEN.Puntuacion += p_puntuacion;
-        rutaEN.NumPuntuados++;
-        float med = ((float)rutaEN.Puntuacion / (float)rutaEN.NumPuntuados);
-        rutaEN.PuntuacionMedia = (int)Math.Round (med);
+            rutaEN = rutaCEN.DevuelveRutaPorNombre(p_oid);
+            rutaEN.Puntuacion += p_puntuacion;
+            rutaEN.NumPuntuados++;
+            float med = ((float)rutaEN.Puntuacion / (float)rutaEN.NumPuntuados);
+            rutaEN.PuntuacionMedia = (int)Math.Round(med);
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }

@@ -59,21 +59,41 @@ namespace TravelnookMVC.Controllers
                 // extract only the fielname
                 fileName = Path.GetFileName(imagenes.FileName);
                 // store the file inside ~/App_Data/uploads folder
-                path = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
+                path = Path.Combine(Server.MapPath("~/Images/Uploads/"+ sit.Nombre ), fileName);
                 //string pathDef = path.Replace(@"\\", @"\");
                 imagenes.SaveAs(path);
             }
 
             try
             {
-                fileName = "/Images/Uploads/" + fileName;
+                fileName = "/Images/Uploads/"+ sit.Nombre + "/" + fileName;
                 SitioCEN cen = new SitioCEN();
                 DateTime fechaActual = DateTime.Today;
                 //IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> TipoActividades = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
                 
-                TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum sitioaaa= new TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum();
-                sitioaaa = (TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum),Tipo_formulario);
-                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.NombreUsuario, sit.Localizacion, fechaActual, 1, sit.Puntuacion, sitioaaa, sit.Actividades);
+                TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum tipoaux= new TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum();
+                tipoaux = (TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum),Tipo_formulario);
+
+                IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> actividadesaux = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
+               
+                if (sit.camping == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "camping"));
+                if (sit.deportes == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "deportes"));
+                if (sit.deportes_acuaticos == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "deportes_acuaticos"));
+                if (sit.gastronomia == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "gastronomia"));
+                if (sit.ludicas == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "ludicas"));
+                if (sit.ocio_nocturno == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "ocio_nocturno"));
+                if (sit.senderismo == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "senderismo"));
+                if (sit.culturales == true)
+                    actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "culturales"));
+
+                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.NombreUsuario, sit.Localizacion, fechaActual, 1, sit.Puntuacion, tipoaux, actividadesaux);
 
                 return RedirectToAction("Details", new { id = sit.Nombre });
             }

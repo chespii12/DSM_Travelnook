@@ -122,11 +122,13 @@
 	<Compile Include="CAD\Travelnook\ISitioCAD.cs" />
 	<Compile Include="CAD\Travelnook\SitioCAD.cs" />
 			<Compile Include="CEN\Travelnook\SitioCEN_PuntuarSitio.cs" />
+			<Compile Include="CEN\Travelnook\SitioCEN_BuscarSitio.cs" />
 	<Compile Include="EN\Travelnook\RutaEN.cs" />
 	<Compile Include="CEN\Travelnook\RutaCEN.cs" />
 	<Compile Include="CAD\Travelnook\IRutaCAD.cs" />
 	<Compile Include="CAD\Travelnook\RutaCAD.cs" />
 			<Compile Include="CEN\Travelnook\RutaCEN_PuntuarRuta.cs" />
+			<Compile Include="CEN\Travelnook\RutaCEN_BuscarRuta.cs" />
 	<Compile Include="EN\Travelnook\ReporteEN.cs" />
 	<Compile Include="CEN\Travelnook\ReporteCEN.cs" />
 	<Compile Include="CAD\Travelnook\IReporteCAD.cs" />

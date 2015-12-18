@@ -14,7 +14,7 @@ namespace TravelnookGenNHibernate.CEN.Travelnook
 {
 public partial class SitioCEN
 {
-public void BuscarSitio (string p_nombre, string p_provincia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipoSitio, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.ActividadesEnum> p_actividades, int p_puntuacion)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BuscarSitio (string p_nombre, string p_provincia, int p_puntuacion, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipo, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades)
 {
         /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Sitio_buscarSitio) ENABLED START*/
 
