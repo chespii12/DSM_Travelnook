@@ -1,0 +1,19 @@
+﻿@model TravelnookMVC.Models.Comentario
+<h2>ESTOY DENTRO DE VISTA COMENTARIO</h2>
+@if (Request.IsAuthenticated) {
+    using (Html.BeginForm("Create", "Comentario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+    }
+}
+else { <a href="/Account/LogIn">inicia sesión</a><p> o </p><a href="/Account/Register">Regístrate </a><p>Para poder comentar</p> }
+
