@@ -1,0 +1,29 @@
+﻿@model TravelnookMVC.Models.Usuario
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<fieldset>
+    <legend>Detalle del usuario @Model.UserName</legend>
+
+</fieldset>
+
+    <h3>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+        <h3>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Provincia)
+        </div>
+    </h3>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Provincia)
+    </div>
+    <img src='@Model.Foto'><img />
