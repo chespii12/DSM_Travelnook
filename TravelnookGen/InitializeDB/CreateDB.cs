@@ -105,7 +105,8 @@ namespace InitializeDB
                 usu1EN.Provincia = "Alicante";
                 usu1EN.Contrasenya = "111111";
                 usu1EN.FechaNacimiento = new DateTime(2000, 03, 12);
-                usu1CEN.CrearUsuario(usu1EN.Email, usu1EN.Nombre, usu1EN.Apellidos, usu1EN.NomUsu, usu1EN.Localidad, usu1EN.Provincia, usu1EN.Contrasenya, usu1EN.FechaNacimiento);
+                usu1EN.Foto_perfil = "/Images/profilepictures/default.jpg";
+                usu1CEN.CrearUsuario(usu1EN.Email, usu1EN.Nombre, usu1EN.Apellidos, usu1EN.NomUsu, usu1EN.Localidad, usu1EN.Provincia, usu1EN.Contrasenya, usu1EN.FechaNacimiento, usu1EN.Foto_perfil);
 
 
                 usu2EN.Email = "usu2@hotmail.com";
@@ -116,7 +117,8 @@ namespace InitializeDB
                 usu2EN.Provincia = "Alicante";
                 usu2EN.Contrasenya = "222222";
                 usu2EN.FechaNacimiento = new DateTime(1994, 03, 12);
-                usu2CEN.CrearUsuario(usu2EN.Email, usu2EN.Nombre, usu2EN.Apellidos, usu2EN.NomUsu, usu2EN.Localidad, usu2EN.Provincia, usu2EN.Contrasenya, usu2EN.FechaNacimiento);
+                usu2EN.Foto_perfil = "/Images/profilepictures/default.jpg";
+                usu2CEN.CrearUsuario(usu2EN.Email, usu2EN.Nombre, usu2EN.Apellidos, usu2EN.NomUsu, usu2EN.Localidad, usu2EN.Provincia, usu2EN.Contrasenya, usu2EN.FechaNacimiento, usu2EN.Foto_perfil);
 
 
                 usu3EN.Email = "usu3@hotmail.com";
@@ -127,7 +129,8 @@ namespace InitializeDB
                 usu3EN.Provincia = "Alicante";
                 usu3EN.Contrasenya = "333";
                 usu3EN.FechaNacimiento = new DateTime(1994, 02, 01);
-                usu3CEN.CrearUsuario(usu3EN.Email, usu3EN.Nombre, usu3EN.Apellidos, usu3EN.NomUsu, usu3EN.Localidad, usu3EN.Provincia, usu3EN.Contrasenya, usu3EN.FechaNacimiento);
+                usu3EN.Foto_perfil = "";
+                usu3CEN.CrearUsuario(usu3EN.Email, usu3EN.Nombre, usu3EN.Apellidos, usu3EN.NomUsu, usu3EN.Localidad, usu3EN.Provincia, usu3EN.Contrasenya, usu3EN.FechaNacimiento, usu3EN.Foto_perfil);
 
 
 
@@ -190,11 +193,13 @@ namespace InitializeDB
                 sitio1EN.FechaCreacion = new DateTime(2015, 11, 11);
                 sitio1EN.NumPuntuados = 1;
                 sitio1EN.PuntuacionMedia = 5;
+                sitio1EN.Fotos = new List<string>();
+                sitio1EN.Videos = new List<string>();
                 sitio1EN.TipoSitio = TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum.montanya;
                 IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> acti = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
                 acti.Add(acti3EN.Tipo);
                 //acti.Add (acti2EN.Tipo);
-                sitio1CEN.CrearSitio(sitio1EN.Nombre, sitio1EN.Provincia, sitio1EN.Descripcion, sitio1EN.Puntuacion, sitio1EN.Usuario.NomUsu, sitio1EN.Localizacion, sitio1EN.FechaCreacion, sitio1EN.NumPuntuados, sitio1EN.PuntuacionMedia, sitio1EN.TipoSitio, acti);
+                sitio1CEN.CrearSitio(sitio1EN.Nombre, sitio1EN.Provincia, sitio1EN.Descripcion, sitio1EN.Puntuacion, sitio1EN.Fotos, sitio1EN.Usuario.NomUsu, sitio1EN.Videos, sitio1EN.Localizacion, sitio1EN.FechaCreacion, sitio1EN.NumPuntuados, sitio1EN.PuntuacionMedia, sitio1EN.TipoSitio, acti);
                 System.Console.Write("Crea sitio 1");
                 SitioEN prueba = new SitioEN();
                 /*Si hago esto de golpe va mal, si lo hago paso a paso va bien
@@ -213,12 +218,14 @@ namespace InitializeDB
                 sitio2EN.FechaCreacion = new DateTime(2015, 07, 11);
                 sitio2EN.NumPuntuados = 1;
                 sitio2EN.PuntuacionMedia = 3;
+                sitio2EN.Fotos = new List<string>();
+                sitio2EN.Videos = new List<string>();
                 sitio2EN.TipoSitio = TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum.espacio_natural;
                 IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> acti2 = new List<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum>();
                 acti2.Add(acti1EN.Tipo);
                 acti2.Add(acti2EN.Tipo);
                 System.Console.WriteLine("Creo sitio2");
-                sitio2CEN.CrearSitio(sitio2EN.Nombre, sitio2EN.Provincia, sitio2EN.Descripcion, sitio2EN.Puntuacion, sitio2EN.Usuario.NomUsu, sitio2EN.Localizacion, sitio2EN.FechaCreacion, sitio2EN.NumPuntuados, sitio2EN.PuntuacionMedia, sitio2EN.TipoSitio, acti2);
+                sitio2CEN.CrearSitio(sitio2EN.Nombre, sitio2EN.Provincia, sitio2EN.Descripcion, sitio2EN.Puntuacion, sitio2EN.Fotos, sitio2EN.Usuario.NomUsu, sitio2EN.Videos, sitio2EN.Localizacion, sitio2EN.FechaCreacion, sitio2EN.NumPuntuados, sitio2EN.PuntuacionMedia, sitio2EN.TipoSitio, acti2);
                 System.Console.Write("Crea sitio 2");
 
 

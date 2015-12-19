@@ -159,6 +159,12 @@ public void ModificarSitio (SitioEN sitio)
                 sitioEN.Puntuacion = sitio.Puntuacion;
 
 
+                sitioEN.Fotos = sitio.Fotos;
+
+
+                sitioEN.Videos = sitio.Videos;
+
+
                 sitioEN.Localizacion = sitio.Localizacion;
 
 

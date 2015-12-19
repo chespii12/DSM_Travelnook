@@ -4,7 +4,50 @@
     ViewBag.Title = "Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section scriptoptional{
+    <style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+   body div#body { height: 100%; margin: 0px; padding: 0px }
 
+</style>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=weather&amp;language=es"></script>
+    <script type="text/javascript">
+<!--n //
+      var map;
+      var geocoder;
+      var infoWindow;
+      var marker;
+      window.onload = function () {
+          var tiene= @Model.tieneLocalizacion;
+          var zoom1= 4;
+          if(tiene==1)  zoom1=14;
+          var latLng = new google.maps.LatLng(@Model.latitud, @Model.longitud);
+          var opciones = {
+              center: latLng,
+              zoom: zoom1,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var map = new google.maps.Map(document.getElementById('map_canvas'), opciones);
+          var myLatLng = {lat: @Model.latitud, lng: @Model.longitud};
+
+                  if (tiene == 1){
+                      var marker = new google.maps.Marker({
+                          position: myLatLng,
+                          map: map,
+                          title: '@Model.Nombre'
+                      });
+                  }
+
+
+
+                  // -->
+      }
+    </script>
+}
+
+    
+}
 <h2>@ViewBag.Title del Sitio @Model.Nombre</h2>
 
 <fieldset>
@@ -24,8 +67,8 @@
         </div>
     </h3>
     <div class="display-field">
-        @Html.DisplayFor(model => model.NombreUsuario)
-    </div>
+        <a href='/Usuario/Details/@Model.NombreUsuario'>@Html.DisplayFor(model => model.NombreUsuario)</a>
+</div>
     <h3>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Fecha)
@@ -97,23 +140,19 @@
     }
     else
     { <h3>No hay comentarios que mostrar</h3>}
+    <h2>Escribe un comentario</h2>
     @if (Request.IsAuthenticated)
     {
         using (Html.BeginForm("Create", "Comentario", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Descripcion)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Descripcion)
-                @Html.ValidationMessageFor(model => model.Descripcion)
-            </div>
+            
+            <textarea id="Descripcion" name="Descripcion" placeholder="Introduzca su comentario aquí"></textarea>
+            
     <input type="hidden" id="Sitio" name="Sitio"  value='@Model.Nombre' />
             <p>
-                <input type="submit" value="Nuevo" />
+                <input type="submit" value="Publicar" />
             </p>
         }
     }
@@ -125,3 +164,7 @@
     @Html.ActionLink("Editar", "Edit", new { id=26 }) |
     @Html.ActionLink("Inicio", "PorCategoria", new { id ="casa"})
 </p>
+@section mapas{
+    <span id="geocoding"></span>
+    <div id="map_canvas" style="width:100%; height:90%"></div>
+}

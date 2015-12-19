@@ -9,7 +9,7 @@ using TravelnookGenNHibernate.CAD.Travelnook;
 using TravelnookMVC.Models;
 namespace TravelnookMVC.Controllers
 {
-    public class ComentarioController : Controller
+    public class ComentarioController : BasicController
     {
         //
         // GET: /Comentario/

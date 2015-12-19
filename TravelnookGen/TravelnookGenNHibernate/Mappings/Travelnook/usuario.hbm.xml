@@ -30,6 +30,9 @@
 					<property name="FechaNacimiento" type="date"> 
 						<column name="fechaNacimiento"  not-null="true"/>
 					</property>
+					<property name="Foto_perfil" type="string"> 
+						<column name="foto_perfil"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -128,6 +131,7 @@
 									<column name="FK_attribute_idInvitados"/> 
       						</many-to-many>
     					</bag>
+			
 					
 					
 					
@@ -152,6 +156,7 @@
 									<column name="FK_nomUsu_idAmigos"/> 
       						</many-to-many>
     					</bag>		
+					
 					
 					
 		

@@ -75,6 +75,13 @@ private int rechazados;
 
 
 
+/**
+ *	Atributo comentarios
+ */
+private System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual int Rechazados {
 
 
 
+public virtual System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> Comentarios {
+        get { return comentarios; } set { comentarios = value;  }
+}
+
+
+
 
 
 public EventoEN()
@@ -145,23 +158,24 @@ public EventoEN()
         reporte = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.ReporteEN>();
         favorito = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN>();
         usuario = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN>();
+        comentarios = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN>();
 }
 
 
 
-public EventoEN(int id, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, string titulo, string descripcion, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN organizador, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> usuario, int asistentes, int quizas, int rechazados
+public EventoEN(int id, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, string titulo, string descripcion, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN organizador, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> usuario, int asistentes, int quizas, int rechazados, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios
                 )
 {
-        this.init (Id, reporte, titulo, descripcion, organizador, favorito, usuario, asistentes, quizas, rechazados);
+        this.init (Id, reporte, titulo, descripcion, organizador, favorito, usuario, asistentes, quizas, rechazados, comentarios);
 }
 
 
 public EventoEN(EventoEN evento)
 {
-        this.init (Id, evento.Reporte, evento.Titulo, evento.Descripcion, evento.Organizador, evento.Favorito, evento.Usuario, evento.Asistentes, evento.Quizas, evento.Rechazados);
+        this.init (Id, evento.Reporte, evento.Titulo, evento.Descripcion, evento.Organizador, evento.Favorito, evento.Usuario, evento.Asistentes, evento.Quizas, evento.Rechazados, evento.Comentarios);
 }
 
-private void init (int id, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, string titulo, string descripcion, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN organizador, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> usuario, int asistentes, int quizas, int rechazados)
+private void init (int id, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, string titulo, string descripcion, TravelnookGenNHibernate.EN.Travelnook.UsuarioEN organizador, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> usuario, int asistentes, int quizas, int rechazados, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentarios)
 {
         this.Id = id;
 
@@ -183,6 +197,8 @@ private void init (int id, System.Collections.Generic.IList<TravelnookGenNHibern
         this.Quizas = quizas;
 
         this.Rechazados = rechazados;
+
+        this.Comentarios = comentarios;
 }
 
 public override bool Equals (object obj)

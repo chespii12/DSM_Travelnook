@@ -76,6 +76,13 @@
 									<column name="FK_nombre_idRuta"/> 
       						</many-to-many>
     					</bag>
+			
+		  			
+						<many-to-one name="Evento" class="TravelnookGenNHibernate.EN.Travelnook.EventoEN" >	
+								<column name="FK_attribute_idEvento"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					

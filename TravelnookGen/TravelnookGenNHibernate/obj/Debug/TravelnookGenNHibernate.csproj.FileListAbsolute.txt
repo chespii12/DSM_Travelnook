@@ -1,4 +1,3 @@
-C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\obj\Debug\TravelnookGenNHibernate.csprojResolveAssemblyReference.cache
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\hibernate.cfg.xml
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\TravelnookGenNHibernate.dll.config
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\TravelnookGenNHibernate.dll
@@ -11,5 +10,6 @@ C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\NHibernate.
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\Iesi.Collections.dll
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\Antlr3.Runtime.dll
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\bin\Debug\log4net.dll
+C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\obj\Debug\TravelnookGenNHibernate.csprojResolveAssemblyReference.cache
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\obj\Debug\TravelnookGenNHibernate.dll
 C:\OOH4RIA\workspace\TravelnookGen\TravelnookGenNHibernate\obj\Debug\TravelnookGenNHibernate.pdb

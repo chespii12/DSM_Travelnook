@@ -1,5 +1,4 @@
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\InitializeDB.exe.config
-C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\obj\x86\Debug\InitializeDB.csprojResolveAssemblyReference.cache
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\hibernate.cfg.xml
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\InitializeDB.exe
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\InitializeDB.pdb
@@ -17,5 +16,6 @@ C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\nunit.framework.dll
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\TravelnookGenNHibernate.dll
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\master8GENCP.pdb
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\bin\Debug\TravelnookGenNHibernate.pdb
+C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\obj\x86\Debug\InitializeDB.csprojResolveAssemblyReference.cache
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\obj\x86\Debug\InitializeDB.exe
 C:\OOH4RIA\workspace\TravelnookGen\InitializeDB\obj\x86\Debug\InitializeDB.pdb

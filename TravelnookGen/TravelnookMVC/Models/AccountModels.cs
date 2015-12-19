@@ -114,6 +114,10 @@ namespace TravelnookMVC.Models
         [Display(Name = "Fecha de nacimiento")]
         public DateTime Fecha { get; set; }
 
+        
+        [Display(Name = "Foto de perfil")]
+        public string Foto { get; set; }
+
 
 
 

@@ -4,7 +4,71 @@
     ViewBag.Title = "Crear Sitio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section scriptoptional {
+    <style type="text/css">
+    html {
+        height: 100%;
+    }
 
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #map_canvas {
+        height: 100%;
+    }
+</style>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=weather&amp;language=es"></script>
+<script type="text/javascript">
+    var map;
+    var geocoder;
+    var infoWindow;
+    var marker;
+    window.onload = function () {
+        var latLng = new google.maps.LatLng(43.268846, -2.934834);
+        var opciones = {
+            center: latLng,
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), opciones);
+        geocoder = new google.maps.Geocoder();
+        infowindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            geocoder.geocode(
+                { 'latLng': event.latLng },
+                function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            
+                            document.getElementById('coordenadas').value = results[0].geometry.location;
+                            if (marker) {
+                                marker.setPosition(event.latLng);
+                            } else {
+                                marker = new google.maps.Marker({
+                                    position: event.latLng,
+                                    map: map
+                                });
+                            }
+                            infowindow.setContent(results[0].formatted_address + '<br/> Coordenadas: ' + results[0].geometry.location);
+                            infowindow.open(map, marker);
+                        } else {
+                            document.getElementById('geocoding').innerHTML =
+                                'No se encontraron resultados';
+                        }
+                    } else {
+                        document.getElementById('geocoding').innerHTML =
+                            'Geocodificación  ha fallado debido a: ' + status;
+                    }
+                });
+        });
+
+    }
+</script>
+}
 <h2>Crear</h2>
 
 @using (Html.BeginForm("Create", "Sitio", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -30,13 +94,7 @@
             @Html.EditorFor(model => model.Provincia)
             @Html.ValidationMessageFor(model => model.Provincia)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Localizacion)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Localizacion)
-            @Html.ValidationMessageFor(model => model.Localizacion)
-        </div>
+        
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Descripcion)
@@ -79,7 +137,7 @@
         </div>
        
         <div>
-            <input type="file" name="imagenes" accept="image/jpg, image/png,image/jpeg" />
+            <input type="file" name="imagenes" accept="image/jpg, image/png,image/jpeg" multiple/>
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Videos)
@@ -88,6 +146,8 @@
         <div>
             <input type="file" name="videos" accept="video/*" multiple />
         </div>
+
+ 
         <div class="editor-label">
             @Html.LabelFor(model => model.Puntuacion)
         </div>
@@ -95,11 +155,18 @@
             @Html.EditorFor(model => model.Puntuacion)
             @Html.ValidationMessageFor(model => model.Puntuacion)
         </div>
+        Coordenadas: <input type="text" id="coordenadas" name="Localizacion" size="30" value=""  hidden/>
+        <br />
+        
         @Html.HiddenFor(model => Model.NombreUsuario)
         <p>
             <input type="submit" value="Nuevo" />
         </p>
     </fieldset>
+}
+@section mapas{
+<span id="geocoding"></span>
+<div id="map_canvas" style="width:100%; height:90%"></div>
 }
 
 @section Scripts {

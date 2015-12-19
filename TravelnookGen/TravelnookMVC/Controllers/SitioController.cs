@@ -33,6 +33,21 @@ namespace TravelnookMVC.Controllers
             SitioEN sitEN = new SitioCAD(session).DevuelveSitioPorNombre(id);
             sit = new AssemblerSitio().ConvertENToModelUI(sitEN);
             SessionClose();
+            string aux = sit.Localizacion;
+            if (aux != "") {    //si tiene coordenadas saco las dos
+                sit.tieneLocalizacion = 1;
+                string sinpar= aux.Trim(new Char[] { '(', ')' });  //borro los paréntesis
+                string[] aux2 = sinpar.Split(',');
+                sit.latitud = aux2[0];
+                sit.longitud = aux2[1];
+            }
+            else //si no lo indico
+            {
+                sit.tieneLocalizacion = 0;
+                sit.latitud = "40.268846";
+                sit.longitud = "-3.934834";
+            }
+            
             return View(sit);
         }
 
@@ -50,18 +65,41 @@ namespace TravelnookMVC.Controllers
         // POST: /Sitio/Create
 
         [HttpPost]
-        public ActionResult Create(Sitio sit, HttpPostedFileBase imagenes, string Tipo_formulario)
+        public ActionResult Create(Sitio sit, IList<HttpPostedFileBase> imagenes, IList<HttpPostedFileBase> videos, string Tipo_formulario)
         {
             string fileName = "", path = "";
+            IList<string> fotografias = new List<string>();
+            IList<string> videosSitio = new List<string>();
+            System.IO.Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + sit.Nombre));
+            System.IO.Directory.CreateDirectory(Server.MapPath("~/Videos/Uploads/" + sit.Nombre));
             // Verify that the user selected a file
-            if (imagenes != null && imagenes.ContentLength > 0)
+            foreach (HttpPostedFileBase aux in imagenes)    //para cada imagen
             {
-                // extract only the fielname
-                fileName = Path.GetFileName(imagenes.FileName);
-                // store the file inside ~/App_Data/uploads folder
-                path = Path.Combine(Server.MapPath("~/Images/Uploads/"+ sit.Nombre ), fileName);
-                //string pathDef = path.Replace(@"\\", @"\");
-                imagenes.SaveAs(path);
+                if (aux != null && aux.ContentLength > 0)
+                {
+                    // extract only the fielname
+                    fileName = Path.GetFileName(aux.FileName);
+                    //Directory.CreateDirectory("~/Images/Uploads/" + sit.Nombre);
+                    // store the file inside ~/App_Data/uploads folder
+                    path = Path.Combine(Server.MapPath("~/Images/Uploads/" + sit.Nombre), fileName);
+                    //string pathDef = path.Replace(@"\\", @"\");
+                    aux.SaveAs(path);
+                    fotografias.Add("/Images/Uploads/" + sit.Nombre + "/" + fileName);
+                }
+            }
+            foreach (HttpPostedFileBase aux2 in videos)    //para cada imagen
+            {
+                if (aux2 != null && aux2.ContentLength > 0)
+                {
+                    // extract only the fielname
+                    fileName = Path.GetFileName(aux2.FileName);
+                    //Directory.CreateDirectory("~/Images/Uploads/" + sit.Nombre);
+                    // store the file inside ~/App_Data/uploads folder
+                    path = Path.Combine(Server.MapPath("~/Videos/Uploads/" + sit.Nombre), fileName);
+                    //string pathDef = path.Replace(@"\\", @"\");
+                    aux2.SaveAs(path);
+                    videosSitio.Add("/Videos/Uploads/" + sit.Nombre + "/" + fileName);
+                }
             }
 
             try
@@ -93,7 +131,7 @@ namespace TravelnookMVC.Controllers
                 if (sit.culturales == true)
                     actividadesaux.Add((TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum)Enum.Parse(typeof(TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum), "culturales"));
 
-                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.NombreUsuario, sit.Localizacion, fechaActual, 1, sit.Puntuacion, tipoaux, actividadesaux);
+                cen.CrearSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, fotografias, sit.NombreUsuario, videosSitio, sit.Localizacion, fechaActual, 1, sit.Puntuacion, tipoaux, actividadesaux);
 
                 return RedirectToAction("Details", new { id = sit.Nombre });
             }
@@ -125,7 +163,7 @@ namespace TravelnookMVC.Controllers
             try
             {
                 SitioCEN cen = new SitioCEN();
-                cen.ModificarSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1, sit.Localizacion, sit.Fecha, 1, sit.Puntuacion, sit.TipoSitio);
+                cen.ModificarSitio(sit.Nombre, sit.Provincia, sit.Descripcion, 1,sit.fotos,sit.Videos, sit.Localizacion, sit.Fecha, 1, sit.Puntuacion, sit.TipoSitio);
 
                 return RedirectToAction("Details", new { id = sit.Nombre });
             }

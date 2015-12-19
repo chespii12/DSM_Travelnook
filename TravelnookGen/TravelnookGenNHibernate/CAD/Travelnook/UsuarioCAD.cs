@@ -157,6 +157,9 @@ public void ModificarPerfil (UsuarioEN usuario)
 
                 usuarioEN.FechaNacimiento = usuario.FechaNacimiento;
 
+
+                usuarioEN.Foto_perfil = usuario.Foto_perfil;
+
                 session.Update (usuarioEN);
                 SessionCommit ();
         }

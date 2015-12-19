@@ -90,5 +90,11 @@ public void AsignarRuta (int p_Comentario_OID, System.Collections.Generic.IList<
 
         _IComentarioCAD.AsignarRuta (p_Comentario_OID, p_ruta_OIDs);
 }
+public void AsignarEvento (int p_Comentario_OID, int p_evento_OID)
+{
+        //Call to ComentarioCAD
+
+        _IComentarioCAD.AsignarEvento (p_Comentario_OID, p_evento_OID);
+}
 }
 }

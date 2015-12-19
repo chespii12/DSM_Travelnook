@@ -8,8 +8,10 @@
         <meta name="viewport" content="width=device-width" />
         <link href="~/Content/bootstrap.min.css" rel="stylesheet">
         <link href="~/estilos/estilo_navegacion.css" rel="stylesheet">
+        @RenderSection("scriptoptional", required:false)
     </head>
 <body>
+   
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -24,11 +26,13 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+    @RenderSection("mapas", required: false)
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
         </section>
+       
     </div>
     <footer>
         <div class="content-wrapper">

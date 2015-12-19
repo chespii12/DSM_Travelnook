@@ -36,7 +36,7 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public string CrearUsuario (string p_email, string p_nombre, string p_apellidos, string p_nomUsu, string p_localidad, string p_provincia, String p_contrasenya, Nullable<DateTime> p_fechaNacimiento)
+public string CrearUsuario (string p_email, string p_nombre, string p_apellidos, string p_nomUsu, string p_localidad, string p_provincia, String p_contrasenya, Nullable<DateTime> p_fechaNacimiento, string p_foto_perfil)
 {
         UsuarioEN usuarioEN = null;
         string oid;
@@ -59,6 +59,8 @@ public string CrearUsuario (string p_email, string p_nombre, string p_apellidos,
 
         usuarioEN.FechaNacimiento = p_fechaNacimiento;
 
+        usuarioEN.Foto_perfil = p_foto_perfil;
+
         //Call to UsuarioCAD
 
         oid = _IUsuarioCAD.CrearUsuario (usuarioEN);
@@ -70,7 +72,7 @@ public void BorrarUsuario (string nomUsu)
         _IUsuarioCAD.BorrarUsuario (nomUsu);
 }
 
-public void ModificarPerfil (string p_Usuario_OID, string p_email, string p_nombre, string p_apellidos, string p_localidad, string p_provincia, String p_contrasenya, Nullable<DateTime> p_fechaNacimiento)
+public void ModificarPerfil (string p_Usuario_OID, string p_email, string p_nombre, string p_apellidos, string p_localidad, string p_provincia, String p_contrasenya, Nullable<DateTime> p_fechaNacimiento, string p_foto_perfil)
 {
         UsuarioEN usuarioEN = null;
 
@@ -84,6 +86,7 @@ public void ModificarPerfil (string p_Usuario_OID, string p_email, string p_nomb
         usuarioEN.Provincia = p_provincia;
         usuarioEN.Contrasenya = Utils.Util.GetEncondeMD5 (p_contrasenya);
         usuarioEN.FechaNacimiento = p_fechaNacimiento;
+        usuarioEN.Foto_perfil = p_foto_perfil;
         //Call to UsuarioCAD
 
         _IUsuarioCAD.ModificarPerfil (usuarioEN);

@@ -235,5 +235,36 @@ public void AsignarRuta (int p_Comentario_OID, System.Collections.Generic.IList<
                 SessionClose ();
         }
 }
+
+public void AsignarEvento (int p_Comentario_OID, int p_evento_OID)
+{
+        TravelnookGenNHibernate.EN.Travelnook.ComentarioEN comentarioEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                comentarioEN = (ComentarioEN)session.Load (typeof(ComentarioEN), p_Comentario_OID);
+                comentarioEN.Evento = (TravelnookGenNHibernate.EN.Travelnook.EventoEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.EventoEN), p_evento_OID);
+
+                comentarioEN.Evento.Comentarios.Add (comentarioEN);
+
+
+
+                session.Update (comentarioEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in ComentarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

@@ -73,6 +73,18 @@
 			
 			
 			
+			
+		  			
+						<bag name="Comentarios" >
+							<key>
+							
+								
+								<column name="FK_attribute_idEvento"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.ComentarioEN"/>
+					    </bag>
+					
+					
 					
 					
 					

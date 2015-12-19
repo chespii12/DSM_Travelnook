@@ -13,7 +13,7 @@ using TravelnookMVC.Models;
 using TravelnookGenNHibernate.CEN.Travelnook;
 using TravelnookGenNHibernate.EN.Travelnook;
 using TravelnookGenNHibernate.CAD.Travelnook;
-
+using System.IO;
 namespace TravelnookMVC.Controllers
 {
     [Authorize]
@@ -77,19 +77,39 @@ namespace TravelnookMVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterModel model, HttpPostedFileBase fotoperfil)
         {
             if (ModelState.IsValid)
             {
                 // Intento de registrar al usuario
-             
+                string fileName = "";
+                string path = "";
                 try
                 {
-
-                    // Invocamos a la lógica de negocio para crear un cliente.
+                    string aux = "/Images/profilepictures/default.jpg"; //foto por defecto
                     UsuarioCEN usu = new UsuarioCEN();
-                    usu.CrearUsuario(model.Email, model.Nombre, model.Apellidos, model.UserName, model.Localidad, model.Provincia, model.Password, model.Fecha);//New_(model.UserName, model.UserName, model.UserName, model.Password);
-
+                    if (fotoperfil != null && fotoperfil.ContentLength > 0)
+                    {
+                        fileName = Path.GetFileName(fotoperfil.FileName);
+                        // store the file inside ~/App_Data/uploads folder
+                        path = Path.Combine(Server.MapPath("~/Images/profilepictures"), fileName);
+                        //string pathDef = path.Replace(@"\\", @"\");
+                        fotoperfil.SaveAs(path);
+                        aux="/Images/profilepictures/"+fileName;
+                    }
+                    usu.CrearUsuario(model.Email, model.Nombre, model.Apellidos, model.UserName, model.Localidad, model.Provincia, model.Password, model.Fecha, aux);//New_(model.UserName, model.UserName, model.UserName, model.Password);
+                   /* if (fotoperfil != null && fotoperfil.ContentLength > 0)
+                    {
+                        // extract only the fielname
+                        //fileName = path.Ge
+                        System.IO.Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + sit.Nombre));
+                        //Directory.CreateDirectory("~/Images/Uploads/" + sit.Nombre);
+                        // store the file inside ~/App_Data/uploads folder
+                        path = Path.Combine(Server.MapPath("~/Images/Uploads/" + sit.Nombre), fileName);
+                        //string pathDef = path.Replace(@"\\", @"\");
+                        fotoperfil.SaveAs(path);
+                        model.foto.Add("~/Images/Uploads/" + sit.Nombre + fileName);
+                    }*/
 
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
@@ -170,7 +190,7 @@ namespace TravelnookMVC.Controllers
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
                         UsuarioCEN usu = new UsuarioCEN();
                         UsuarioEN en = usu.get_IUsuarioCAD().ReadOIDDefault(User.Identity.Name);
-                        usu.ModificarPerfil(en.NomUsu, en.Email, en.Nombre, en.Apellidos, en.Localidad, en.Provincia, model.NewPassword, en.FechaNacimiento);//Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
+                        usu.ModificarPerfil(en.NomUsu, en.Email, en.Nombre, en.Apellidos, en.Localidad, en.Provincia, model.NewPassword, en.FechaNacimiento, en.Foto_perfil);//Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
                     }
                     catch (Exception)
                     {

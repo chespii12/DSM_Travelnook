@@ -11,7 +11,14 @@ namespace TravelnookMVC.Models
         [ScaffoldColumn(false)]
         public string NombreUsuario { get; set; }
 
-        
+
+        [ScaffoldColumn(false)]
+        public string latitud { get; set; }
+        [ScaffoldColumn(false)]
+        public string longitud { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int tieneLocalizacion { get; set; }
 
         [ScaffoldColumn(false)]
         public IList<Comentario> Comentarios { get; set; }

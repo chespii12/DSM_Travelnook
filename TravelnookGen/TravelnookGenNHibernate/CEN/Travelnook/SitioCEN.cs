@@ -36,7 +36,7 @@ public ISitioCAD get_ISitioCAD ()
         return this._ISitioCAD;
 }
 
-public string CrearSitio (string p_nombre, string p_provincia, string p_descripcion, int p_puntuacion, string p_usuario, string p_localizacion, Nullable<DateTime> p_fechaCreacion, int p_numPuntuados, int p_puntuacionMedia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipoSitio, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades)
+public string CrearSitio (string p_nombre, string p_provincia, string p_descripcion, int p_puntuacion, System.Collections.Generic.IList<string> p_fotos, string p_usuario, System.Collections.Generic.IList<string> p_videos, string p_localizacion, Nullable<DateTime> p_fechaCreacion, int p_numPuntuados, int p_puntuacionMedia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipoSitio, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades)
 {
         SitioEN sitioEN = null;
         string oid;
@@ -51,6 +51,8 @@ public string CrearSitio (string p_nombre, string p_provincia, string p_descripc
 
         sitioEN.Puntuacion = p_puntuacion;
 
+        sitioEN.Fotos = p_fotos;
+
 
         if (p_usuario != null) {
                 // El argumento p_usuario -> Property usuario es oid = false
@@ -58,6 +60,8 @@ public string CrearSitio (string p_nombre, string p_provincia, string p_descripc
                 sitioEN.Usuario = new TravelnookGenNHibernate.EN.Travelnook.UsuarioEN ();
                 sitioEN.Usuario.NomUsu = p_usuario;
         }
+
+        sitioEN.Videos = p_videos;
 
         sitioEN.Localizacion = p_localizacion;
 
@@ -94,7 +98,7 @@ public void BorrarSitio (string nombre)
         _ISitioCAD.BorrarSitio (nombre);
 }
 
-public void ModificarSitio (string p_Sitio_OID, string p_provincia, string p_descripcion, int p_puntuacion, string p_localizacion, Nullable<DateTime> p_fechaCreacion, int p_numPuntuados, int p_puntuacionMedia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipoSitio)
+public void ModificarSitio (string p_Sitio_OID, string p_provincia, string p_descripcion, int p_puntuacion, System.Collections.Generic.IList<string> p_fotos, System.Collections.Generic.IList<string> p_videos, string p_localizacion, Nullable<DateTime> p_fechaCreacion, int p_numPuntuados, int p_puntuacionMedia, TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum p_tipoSitio)
 {
         SitioEN sitioEN = null;
 
@@ -104,6 +108,8 @@ public void ModificarSitio (string p_Sitio_OID, string p_provincia, string p_des
         sitioEN.Provincia = p_provincia;
         sitioEN.Descripcion = p_descripcion;
         sitioEN.Puntuacion = p_puntuacion;
+        sitioEN.Fotos = p_fotos;
+        sitioEN.Videos = p_videos;
         sitioEN.Localizacion = p_localizacion;
         sitioEN.FechaCreacion = p_fechaCreacion;
         sitioEN.NumPuntuados = p_numPuntuados;
