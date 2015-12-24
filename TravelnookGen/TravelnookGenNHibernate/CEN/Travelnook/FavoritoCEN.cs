@@ -60,13 +60,13 @@ public System.Collections.Generic.IList<FavoritoEN> DevuelveFavoritos (int first
         list = _IFavoritoCAD.DevuelveFavoritos (first, size);
         return list;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos (string p_nombre)
 {
-        return _IFavoritoCAD.DevuelveSitiosFavoritos ();
+        return _IFavoritoCAD.DevuelveSitiosFavoritos (p_nombre);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas (string p_nombre)
 {
-        return _IFavoritoCAD.DevuelveRutasFavoritas ();
+        return _IFavoritoCAD.DevuelveRutasFavoritas (p_nombre);
 }
 public int CrearFavorito (string p_usuario)
 {
@@ -89,9 +89,9 @@ public int CrearFavorito (string p_usuario)
         return oid;
 }
 
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos (string p_nombre)
 {
-        return _IFavoritoCAD.DevuelveEventosFavoritos ();
+        return _IFavoritoCAD.DevuelveEventosFavoritos (p_nombre);
 }
 public void AnyadirEventoFavoritos (int p_Favorito_OID, int p_evento_OID)
 {

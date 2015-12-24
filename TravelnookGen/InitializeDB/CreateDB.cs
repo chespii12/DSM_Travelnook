@@ -387,23 +387,26 @@ namespace InitializeDB
                 FavoritoEN favENSitio = new FavoritoEN();
                 FavoritoEN favENRuta = new FavoritoEN();
 
-                favENSitio.Id = favCEN.CrearFavorito(usu1.NomUsu);
-                favENRuta.Id = favCEN.CrearFavorito(usu1.NomUsu);
+                favENSitio.Id = favCEN.CrearFavorito(usu1EN.NomUsu);
+                favENRuta.Id = favCEN.CrearFavorito(usu1EN.NomUsu);
                 favCEN.AnyadirSitioFavoritos(favENSitio.Id, sitio2EN.Nombre);
                 favCEN.AnyadirRutaFavoritos(favENRuta.Id, ruta1EN.Nombre);
                 System.Console.Write("***************FAVORITO CREADO********************************\n");
                 System.Console.Write("***********ID DEL FAVORITO SITIO********************************\n" + favENSitio.Id + "\n");
                 System.Console.Write("***********ID DEL FAVORITO RUTA********************************\n" + favENRuta.Id + "\n");
                 IList<FavoritoEN> favs = favCEN.DevuelveFavoritos(0, -1);
-                usu1.Favorito = favs;
-                System.Console.Write("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
-
+                //usu1.Favorito = favs;
+                System.Console.Write("Favoritos en total (2): " + favs.Count + "\n\n");
+                foreach (FavoritoEN ddd in favs)
+                {
+                    System.Console.Write(ddd.Usuario.NomUsu + "\n");
+                }
                 IList<SitioEN> sitiosfavs1 = new List<SitioEN>();
-                sitiosfavs1 = favCEN.DevuelveSitiosFavoritos();
-                System.Console.Write("Sitios favoritos en total:" + sitiosfavs1.Count + "\n\n");
+                sitiosfavs1 = favCEN.DevuelveSitiosFavoritos(usu1EN.NomUsu);
+                System.Console.Write("Sitios favoritos en total:" + sitiosfavs1.Count + "\n\n");    //tiene que ser 1
 
                 IList<RutaEN> rutasfavs1 = new List<RutaEN>();
-                rutasfavs1 = favCEN.DevuelveRutasFavoritas();
+                rutasfavs1 = favCEN.DevuelveRutasFavoritas(usu1.NomUsu);
                 System.Console.Write("Rutas favoritas en total:" + rutasfavs1.Count + "\n\n");
 
                 foreach (FavoritoEN s in favs)
@@ -419,11 +422,11 @@ namespace InitializeDB
                 System.Console.Write("Favoritos en total:" + usu1.Favorito.Count + "\n\n");
 
                 IList<SitioEN> sitiosfavs2 = new List<SitioEN>();
-                sitiosfavs2 = favCEN.DevuelveSitiosFavoritos();
+                sitiosfavs2 = favCEN.DevuelveSitiosFavoritos(usu1EN.NomUsu);
                 System.Console.Write("Sitios favoritos en total:" + sitiosfavs2.Count + "\n\n");
 
                 IList<RutaEN> rutasfavs2 = new List<RutaEN>();
-                rutasfavs2 = favCEN.DevuelveRutasFavoritas();
+                rutasfavs2 = favCEN.DevuelveRutasFavoritas(usu2EN.NomUsu);
                 System.Console.Write("Rutas favoritas en total:" + rutasfavs2.Count + "\n\n");
 
                 foreach (FavoritoEN s in favs2)

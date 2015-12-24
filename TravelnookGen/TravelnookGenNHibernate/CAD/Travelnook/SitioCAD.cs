@@ -202,7 +202,7 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SitioEN self where FROM SitioEN sitio order by sitio.FechaCreacion asc";
+                //String sql = @"FROM SitioEN self where FROM SitioEN sitio order by sitio.FechaCreacion desc";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENDevuelveSitiosOrdenadosPorFechaHQL");
 
@@ -327,6 +327,75 @@ public System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int 
                                  SetFirstResult (first).SetMaxResults (size).List<SitioEN>();
                 else
                         result = session.CreateCriteria (typeof(SitioEN)).List<SitioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in SitioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+
+public void BorrarActividades (string p_Sitio_OID, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                TravelnookGenNHibernate.EN.Travelnook.SitioEN sitioEN = null;
+                sitioEN = (SitioEN)session.Load (typeof(SitioEN), p_Sitio_OID);
+
+                TravelnookGenNHibernate.EN.Travelnook.ActividadEN actividadesENAux = null;
+                if (sitioEN.Actividades != null) {
+                        foreach (TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum item in p_actividades_OIDs) {
+                                actividadesENAux = (TravelnookGenNHibernate.EN.Travelnook.ActividadEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.ActividadEN), item);
+                                if (sitioEN.Actividades.Contains (actividadesENAux) == true) {
+                                        sitioEN.Actividades.Remove (actividadesENAux);
+                                        actividadesENAux.Sitio.Remove (sitioEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_actividades_OIDs you are trying to unrelationer, doesn't exist in SitioEN");
+                        }
+                }
+
+                session.Update (sitioEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is TravelnookGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new TravelnookGenNHibernate.Exceptions.DataLayerException ("Error in SitioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string arg0)
+{
+        System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM SitioEN self where FROM SitioEN sitio where sitio.Nombre like '%' + :p_nombre +'%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("SitioENbusarSitiosPorNombreHQL");
+                query.SetParameter ("arg0", arg0);
+
+                result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
                 SessionCommit ();
         }
 

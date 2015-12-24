@@ -13,7 +13,7 @@ namespace TravelnookMVC.Controllers
         {
             
             SitioCEN cen = new SitioCEN();
-            IEnumerable<SitioEN> listaCat = cen.DevuelveSitios(0, -1).ToList();
+            IEnumerable<SitioEN> listaCat = cen.DevuelveSitiosOrdenadosPorFecha().ToList();//cen.DevuelveSitios(0, -1).ToList();
             return View(listaCat);
         }
 

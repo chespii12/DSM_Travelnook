@@ -94,7 +94,7 @@
 		 </class>	
 		  
 		  <query name="RutaENReadAllHQL">from RutaEN</query>
-		  <query name="RutaENDevuelveRutasOrdenadasPorFechaHQL"><![CDATA[FROM RutaEN ruta order by ruta.FechaCreacion asc]]></query>
+		  <query name="RutaENDevuelveRutasOrdenadasPorFechaHQL"><![CDATA[FROM RutaEN ruta order by ruta.FechaCreacion desc]]></query>
 		  <query name="RutaENDevuelveRutaPorNombreHQL"><![CDATA[FROM RutaEN as r where r.Nombre like '%'+ :p_nombre+'%']]></query>
 		</hibernate-mapping>
 	

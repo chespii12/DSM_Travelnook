@@ -77,7 +77,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Articulo</legend>
+        <legend>Sitio</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Nombre)
@@ -103,25 +103,20 @@
             @Html.EditorFor(model => model.Descripcion)
             @Html.ValidationMessageFor(model => model.Descripcion)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TipoSitio)
-        </div>
-       @Html.CheckBoxFor(m => m.senderismo)
-    @Html.LabelFor(m => m.senderismo, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.deportes)
-        @Html.LabelFor(m => m.deportes, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.deportes_acuaticos)
-        @Html.LabelFor(m => m.deportes_acuaticos, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.camping)
-        @Html.LabelFor(m => m.camping, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.gastronomia)
-        @Html.LabelFor(m => m.gastronomia, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.ludicas)
-        @Html.LabelFor(m => m.ludicas, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.ocio_nocturno)
-        @Html.LabelFor(m => m.ocio_nocturno, new { @class = "checkbox" })
-        @Html.CheckBoxFor(m => m.culturales)
-        @Html.LabelFor(m => m.culturales, new { @class = "checkbox" })
+        Actividades<br />
+       @Html.CheckBoxFor(m => m.senderismo) Senderismo <br />
+       <!--@Html.LabelFor(m => m.senderismo, new { @class = "checkbox" })-->
+        @Html.CheckBoxFor(m => m.deportes) Deportes <br />
+       
+        @Html.CheckBoxFor(m => m.deportes_acuaticos) Deportes acuáticos <br />
+
+        @Html.CheckBoxFor(m => m.camping) Camping<br />
+
+        @Html.CheckBoxFor(m => m.gastronomia) Gastronomía<br />
+        @Html.CheckBoxFor(m => m.ludicas) Lúdicas<br />
+        @Html.CheckBoxFor(m => m.culturales) Culturales<br />
+        @Html.CheckBoxFor(m => m.ocio_nocturno) Ocio nocturno<br />
+        Tipo Sitio:<br />
         <div class="editor-field">
             <select id="Tipo_formulario" name="Tipo_formulario">
                 <option value="montanya">Montaña</option>
@@ -155,7 +150,7 @@
             @Html.EditorFor(model => model.Puntuacion)
             @Html.ValidationMessageFor(model => model.Puntuacion)
         </div>
-        Coordenadas: <input type="text" id="coordenadas" name="Localizacion" size="30" value=""  hidden/>
+        <input type="text" id="coordenadas" name="Localizacion" size="30" value=""  hidden/>
         <br />
         
         @Html.HiddenFor(model => Model.NombreUsuario)

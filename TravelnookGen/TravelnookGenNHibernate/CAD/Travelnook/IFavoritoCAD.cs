@@ -18,15 +18,15 @@ void AnyadirSitioFavoritos (int p_Favorito_OID, string p_sitio_OID);
 System.Collections.Generic.IList<FavoritoEN> DevuelveFavoritos (int first, int size);
 
 
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos ();
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos (string p_nombre);
 
 
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas ();
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas (string p_nombre);
 
 
 int CrearFavorito (FavoritoEN favorito);
 
-System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos ();
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos (string p_nombre);
 
 
 void AnyadirEventoFavoritos (int p_Favorito_OID, int p_evento_OID);

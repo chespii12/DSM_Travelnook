@@ -38,9 +38,6 @@
                           title: '@Model.Nombre'
                       });
                   }
-
-
-
                   // -->
       }
     </script>
@@ -56,6 +53,7 @@
     <h3>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Descripcion)
+        
         </div>
     </h3>
     <div class="display-field">
@@ -78,13 +76,6 @@
         @Html.DisplayFor(model => model.Fecha)
     </div>
     <h3>
-        <div class="display-label">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </div>
-    </h3>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Descripcion)
-    </div>
     <h3>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Actividades)
@@ -106,14 +97,22 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.TipoSitio)
     </div>
-    <!--<h3>
-        <div class="display-label">
-            arrobaHtml.DisplayNameFor(model => model.Imagen)
-        </div>
-    </h3>
-    <div class="display-field">
-        <img src="arrobaHtml.DisplayFor(model => model.Imagen)"/>
-    </div>-->
+    Fotos:<br />
+    @foreach(var item2 in Model.fotos){
+    <img src='@item2' /> <br />
+        
+    }
+    Vídeos:<br />
+    @foreach (var item3 in Model.Videos)
+    {
+        <img src='@item3' /> <br />
+        <!--
+            <video width="320" height="240" controls> No va en internet explorer
+   <source src='@item3'>
+   Your browser does not support the video tag.
+</video> 
+        -->
+    }
 </fieldset>
 <p>
     @if (Model.Comentarios != null)
@@ -150,7 +149,7 @@
             
             <textarea id="Descripcion" name="Descripcion" placeholder="Introduzca su comentario aquí"></textarea>
             
-    <input type="hidden" id="Sitio" name="Sitio"  value='@Model.Nombre' />
+            <input type="hidden" id="Sitio" name="Sitio"  value='@Model.Nombre' />
             <p>
                 <input type="submit" value="Publicar" />
             </p>
@@ -160,9 +159,10 @@
     { <a href="/Account/LogIn">inicia sesión</a>
 <p> o </p><a href="/Account/Register">Regístrate </a><p>Para poder comentar</p> }
 
-
-    @Html.ActionLink("Editar", "Edit", new { id=26 }) |
-    @Html.ActionLink("Inicio", "PorCategoria", new { id ="casa"})
+    @if (User.Identity.Name == Model.NombreUsuario)
+    {
+       @Html.ActionLink("Editar", "Edit", new { id=Model.Nombre }) 
+    }
 </p>
 @section mapas{
     <span id="geocoding"></span>

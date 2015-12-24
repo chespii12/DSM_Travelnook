@@ -213,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComentarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RutaController.cs" />
     <Compile Include="Controllers\SitioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\AssemblerComentario.cs" />
     <Compile Include="Models\AssemblerUsuario.cs" />
+    <Compile Include="Models\Favorito.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Ruta.cs" />
     <Compile Include="Models\Sitio.cs" />
@@ -353,6 +355,7 @@
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Comentario\Create.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Ruta\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

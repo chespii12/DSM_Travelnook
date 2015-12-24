@@ -1,35 +1,118 @@
-﻿@model MvcApplication1.Models.Articulo
+﻿@model TravelnookMVC.Models.Sitio
 
 @{
-    ViewBag.Title = "Editar Artículo";
+    ViewBag.Title = "Editar ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section scriptoptional{
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
 
-<h2>@ViewBag.Title</h2>
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
 
-@using (Html.BeginForm()) {
+            body div#body {
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+    </style>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=weather&amp;language=es"></script>
+    <script type="text/javascript">
+<!--n //
+        window.onload = function () {
+            var tiene= @Model.tieneLocalizacion;
+            var zoom1= 4;
+            if(tiene==1)  zoom1=14;
+        var latLng = new google.maps.LatLng(@Model.latitud, @Model.longitud);
+        var opciones = {
+            center: latLng,
+            zoom: zoom1,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), opciones);
+        var myLatLng = {lat: @Model.latitud, lng: @Model.longitud};
+        if (tiene == 1){
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: '@Model.Nombre'
+            });
+        }
+        geocoder = new google.maps.Geocoder();
+        infowindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(map, 'click', function (event) {
+            geocoder.geocode(
+                { 'latLng': event.latLng },
+                function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+
+                            document.getElementById('coordenadas').value = results[0].geometry.location;
+                            if (marker) {
+                                marker.setPosition(event.latLng);
+                            } else {
+                                marker = new google.maps.Marker({
+                                    position: event.latLng,
+                                    map: map
+                                });
+                            }
+                            infowindow.setContent(results[0].formatted_address + '<br/> Coordenadas: ' + results[0].geometry.location);
+                            infowindow.open(map, marker);
+                        } else {
+                            document.getElementById('geocoding').innerHTML =
+                                'No se encontraron resultados';
+                        }
+                    } else {
+                        document.getElementById('geocoding').innerHTML =
+                            'Geocodificación  ha fallado debido a: ' + status;
+                    }
+                });
+        });
+
+    }
+    </script>
+}
+<h2>@ViewBag.Title Sitio</h2>
+@using (Html.BeginForm("Edit", "Sitio", FormMethod.Post, new { enctype = "multipart/form-data" })) { 
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Articulo</legend>
+        <legend>@Model.Nombre</legend>
+
+        
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Nombre)
+            @Html.LabelFor(model => model.Provincia)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Nombre)
-            @Html.ValidationMessageFor(model => model.Nombre)
+            @Html.EditorFor(model => model.Provincia)
+            @Html.ValidationMessageFor(model => model.Provincia)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Precio)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Precio)€
-            @Html.ValidationMessageFor(model => model.Precio)
-        </div>
+        <div class="display-field">
+            Actividades<br />
+            @Html.CheckBoxFor(m => m.senderismo) Senderismo <br />
+            <!--@Html.LabelFor(m => m.senderismo, new { @class = "checkbox" })-->
+            @Html.CheckBoxFor(m => m.deportes) Deportes <br />
 
+            @Html.CheckBoxFor(m => m.deportes_acuaticos) Deportes acuáticos <br />
+
+            @Html.CheckBoxFor(m => m.camping) Camping<br />
+
+            @Html.CheckBoxFor(m => m.gastronomia) Gastronomía<br />
+            @Html.CheckBoxFor(m => m.ludicas) Lúdicas<br />
+            @Html.CheckBoxFor(m => m.culturales) Culturales<br />
+            @Html.CheckBoxFor(m => m.ocio_nocturno) Ocio nocturno<br />
+
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Descripcion)
         </div>
@@ -38,30 +121,38 @@
             @Html.ValidationMessageFor(model => model.Descripcion)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Imagen)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Imagen)
-            @Html.ValidationMessageFor(model => model.Imagen)
+            <select id="Tipo_formulario" name="Tipo_formulario">
+                <option value="montanya">Montaña</option>
+                <option value="playa">Playa</option>
+                <option value="urbano">Urbano</option>
+                <option value="exotico">Exótico</option>
+                <option value="espacio_natural">Espacio Natural</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.TipoSitio)
         </div>
-        <div class="editor-field">
-            <img height="100" width="100" src="@Model.Imagen"/>
+        <div>
+            Añade nuevas fotos:<br /><input type="file" name="imagenes" accept="image/jpg, image/png,image/jpeg" multiple />
         </div>
+        <div>
+            Añade nuevos vídeos:<br /><input type="file" name="videos" accept="video/*" multiple />
+        </div>
+    <input type="text" id="coordenadas" name="Localizacion" size="30" value="" hidden />
+    <br />
 
-
-        @Html.HiddenFor(model => Model.IdCategoria)
+        @Html.HiddenFor(model => Model.Fecha)
+        @Html.HiddenFor(model => Model.NombreUsuario)
+        @Html.HiddenFor(model => Model.Nombre)
 
         <p>
             <input type="submit" value="Salvar" />
         </p>
     </fieldset>
 }
-
-<div>
-   @Html.ActionLink("Volver a la lista", "PorCategoria", new { id = Model.IdCategoria })
-</div>
-
+@section mapas{
+    <span id="geocoding"></span>
+    <div id="map_canvas" style="width:100%; height:90%"></div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

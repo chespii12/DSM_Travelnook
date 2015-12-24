@@ -12,10 +12,10 @@ using TravelnookGenNHibernate.CAD.Travelnook;
 
 namespace TravelnookGenNHibernate.CEN.Travelnook
 {
-    public partial class RutaCEN
-    {
-        public void PuntuarRuta(string p_oid, int p_puntuacion)
-        {
+public partial class RutaCEN
+{
+public void PuntuarRuta (string p_oid, int p_puntuacion)
+{
             /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Ruta_puntuarRuta) ENABLED START*/
 
             RutaEN rutaEN = new RutaEN();
@@ -29,5 +29,5 @@ namespace TravelnookGenNHibernate.CEN.Travelnook
 
             /*PROTECTED REGION END*/
         }
-    }
+}
 }

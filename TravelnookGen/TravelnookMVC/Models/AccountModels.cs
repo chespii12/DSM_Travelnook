@@ -43,7 +43,7 @@ namespace TravelnookMVC.Models
         [Display(Name = "Contraseña actual")]
         public string OldPassword { get; set; }
 
-        [Required]
+        
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Nueva contraseña")]
@@ -53,6 +53,35 @@ namespace TravelnookMVC.Models
         [Display(Name = "Confirmar la nueva contraseña")]
         [Compare("NewPassword", ErrorMessage = "La nueva contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+
+        [Required]
+        [Display(Name = "Apellidos")]
+        public string Apellidos { get; set; }
+
+        [Required]
+        [Display(Name = "Correo electrónico")]
+        [EmailAddress(ErrorMessage = "Correo electrónico no válido")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Provincia")]
+        public string Provincia { get; set; }
+
+        [Required]
+        [Display(Name = "Localidad")]
+        public string Localidad { get; set; }
+
+        [Required]
+        [Display(Name = "Fecha de nacimiento")]
+        public Nullable<DateTime> Fecha { get; set; }
+
+
+        [Display(Name = "Foto de perfil")]
+        public string Foto { get; set; }
     }
 
     public class LoginModel

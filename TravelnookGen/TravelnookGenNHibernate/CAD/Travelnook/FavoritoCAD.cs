@@ -196,15 +196,16 @@ public System.Collections.Generic.IList<FavoritoEN> DevuelveFavoritos (int first
         return result;
 }
 
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> DevuelveSitiosFavoritos (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM FavoritoEN self where select (sitio) FROM FavoritoEN as fav inner join fav.Sitio as sitio";
+                //String sql = @"FROM FavoritoEN self where select (sitio) FROM FavoritoEN as fav inner join fav.Sitio as sitio WHERE fav.Usuario.NomUsu= :p_nombre";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("FavoritoENDevuelveSitiosFavoritosHQL");
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
                 SessionCommit ();
@@ -225,15 +226,16 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
 
         return result;
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> DevuelveRutasFavoritas (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM FavoritoEN self where select (ruta) FROM FavoritoEN as fav inner join fav.Ruta as ruta";
+                //String sql = @"FROM FavoritoEN self where select (ruta) FROM FavoritoEN as fav inner join fav.Ruta as ruta WHERE fav.Usuario.NomUsu= :p_nombre";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("FavoritoENDevuelveRutasFavoritasHQL");
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.RutaEN>();
                 SessionCommit ();
@@ -287,15 +289,16 @@ public int CrearFavorito (FavoritoEN favorito)
         return favorito.Id;
 }
 
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos ()
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> DevuelveEventosFavoritos (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM FavoritoEN self where select (evento) FROM FavoritoEN  as fav inner join fav.Evento as evento";
+                //String sql = @"FROM FavoritoEN self where select (evento) FROM FavoritoEN  as fav inner join fav.Evento as evento  WHERE fav.Usuario.NomUsu= :p_nombre";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("FavoritoENDevuelveEventosFavoritosHQL");
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN>();
                 SessionCommit ();

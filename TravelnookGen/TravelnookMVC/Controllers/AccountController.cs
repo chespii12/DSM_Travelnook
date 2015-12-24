@@ -92,24 +92,14 @@ namespace TravelnookMVC.Controllers
                     {
                         fileName = Path.GetFileName(fotoperfil.FileName);
                         // store the file inside ~/App_Data/uploads folder
-                        path = Path.Combine(Server.MapPath("~/Images/profilepictures"), fileName);
+                        string[] aux2 = fileName.Split('.');
+                        string formato = aux2[1];
+                        path = Path.Combine(Server.MapPath("~/Images/profilepictures"), User.Identity.Name + "." + formato);
                         //string pathDef = path.Replace(@"\\", @"\");
                         fotoperfil.SaveAs(path);
-                        aux="/Images/profilepictures/"+fileName;
+                        aux = "/Images/profilepictures/" + User.Identity.Name + "." + formato;
                     }
-                    usu.CrearUsuario(model.Email, model.Nombre, model.Apellidos, model.UserName, model.Localidad, model.Provincia, model.Password, model.Fecha, aux);//New_(model.UserName, model.UserName, model.UserName, model.Password);
-                   /* if (fotoperfil != null && fotoperfil.ContentLength > 0)
-                    {
-                        // extract only the fielname
-                        //fileName = path.Ge
-                        System.IO.Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + sit.Nombre));
-                        //Directory.CreateDirectory("~/Images/Uploads/" + sit.Nombre);
-                        // store the file inside ~/App_Data/uploads folder
-                        path = Path.Combine(Server.MapPath("~/Images/Uploads/" + sit.Nombre), fileName);
-                        //string pathDef = path.Replace(@"\\", @"\");
-                        fotoperfil.SaveAs(path);
-                        model.foto.Add("~/Images/Uploads/" + sit.Nombre + fileName);
-                    }*/
+                    usu.CrearUsuario(model.Email, model.Nombre, model.Apellidos, model.UserName, model.Localidad, model.Provincia, model.Password, model.Fecha, aux);
 
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
@@ -166,7 +156,18 @@ namespace TravelnookMVC.Controllers
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
-            return View();
+            LocalPasswordModel model = new LocalPasswordModel();
+            UsuarioCEN usuCEN = new UsuarioCEN();
+            UsuarioEN usu = new UsuarioEN();
+            usu = usuCEN.DevuelveUsuarioPorNomUsu(User.Identity.Name);
+            model.Nombre = usu.Nombre;
+            model.Apellidos = usu.Apellidos;
+            model.Provincia = usu.Provincia;
+            model.Localidad = usu.Localidad;
+            model.Fecha = usu.FechaNacimiento;
+            model.Foto = usu.Foto_perfil;
+            model.Email = usu.Email;
+            return View(model);
         }
 
         //
@@ -174,23 +175,50 @@ namespace TravelnookMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
+        public ActionResult Manage(LocalPasswordModel model, HttpPostedFileBase fotoperfil)
         {
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
+            string fileName = "";
+            string path = "";
+            string defaultimage = "/Images/profilepictures/default.jpg"; //foto por defecto
+            string foto = model.Foto;
+            string contrasenya = "";
             if (hasLocalAccount)
             {
-                if (ModelState.IsValid)
-                {
+                
                     // ChangePassword iniciará una excepción en lugar de devolver false en determinados escenarios de error.
                     bool changePasswordSucceeded;
                     try
                     {
+                        contrasenya = model.OldPassword;    //por defecto la contraseña a modificar es la actual
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                        if (changePasswordSucceeded == false && model.NewPassword!=null)    //si he querido cambiar la contraseña pero la actual no
+                        {
+                            ModelState.AddModelError("", "La contraseña actual es incorrecta o la nueva contraseña no es válida.");
+                            return View(model);
+                        }
+                        if(model.NewPassword!=null) //si quiero cambiar la contraseña
+                            contrasenya = model.NewPassword;
+                       
+                        
                         UsuarioCEN usu = new UsuarioCEN();
-                        UsuarioEN en = usu.get_IUsuarioCAD().ReadOIDDefault(User.Identity.Name);
-                        usu.ModificarPerfil(en.NomUsu, en.Email, en.Nombre, en.Apellidos, en.Localidad, en.Provincia, model.NewPassword, en.FechaNacimiento, en.Foto_perfil);//Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
+                        if (fotoperfil != null && fotoperfil.ContentLength > 0)
+                        {
+                            fileName = Path.GetFileName(fotoperfil.FileName);
+
+                            // store the file inside ~/App_Data/uploads folder
+                            string[] aux2 = fileName.Split('.');
+                            string formato = aux2[1];
+                            path = Path.Combine(Server.MapPath("~/Images/profilepictures"), User.Identity.Name+"."+formato);
+                            //string pathDef = path.Replace(@"\\", @"\");
+                            
+                            fotoperfil.SaveAs(path);
+                           
+                            foto = "/Images/profilepictures/" + User.Identity.Name+"."+formato;
+                        }
+                        usu.ModificarPerfil(User.Identity.Name, model.Email, model.Nombre, model.Apellidos, model.Localidad, model.Provincia, contrasenya, model.Fecha, foto);//Modify(en.Nombre, en.Nombre, en.Nombre, model.NewPassword);
                     }
                     catch (Exception)
                     {
@@ -205,7 +233,7 @@ namespace TravelnookMVC.Controllers
                     {
                         ModelState.AddModelError("", "La contraseña actual es incorrecta o la nueva contraseña no es válida.");
                     }
-                }
+                
             }
             else
             {

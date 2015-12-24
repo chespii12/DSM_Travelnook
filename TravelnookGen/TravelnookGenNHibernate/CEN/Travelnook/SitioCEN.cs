@@ -143,5 +143,15 @@ public System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int 
         list = _ISitioCAD.DevuelveSitios (first, size);
         return list;
 }
+public void BorrarActividades (string p_Sitio_OID, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades_OIDs)
+{
+        //Call to SitioCAD
+
+        _ISitioCAD.BorrarActividades (p_Sitio_OID, p_actividades_OIDs);
+}
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string arg0)
+{
+        return _ISitioCAD.BusarSitiosPorNombre (arg0);
+}
 }
 }

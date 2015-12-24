@@ -19,7 +19,6 @@ namespace TravelnookMVC.Models
             sit.Videos = en.Videos;
             sit.Fecha = en.FechaCreacion;
             sit.Descripcion = en.Descripcion;
-            sit.fotos = en.Fotos;
             sit.Puntuacion = en.PuntuacionMedia;
             IList<Comentario> comentarios = new List<Comentario>();
             AssemblerComentario auxiliar= new AssemblerComentario();
@@ -46,6 +45,30 @@ namespace TravelnookMVC.Models
                 actividadesimprimir.Add(aux);
             }
             sit.Actividadesimprimir = actividadesimprimir;
+
+            IList<string> fotosaux = new List<string>();
+            foreach (string act in en.Fotos)
+            {
+              
+                fotosaux.Add(act);
+            }
+            sit.fotos = fotosaux;
+            IList<string> videosaux = new List<string>();
+            foreach (string auxvid in en.Videos)
+            {
+
+                videosaux.Add(auxvid);
+            }
+            sit.Videos = videosaux;
+
+            IList<Favorito> favoritos = new List<Favorito>();
+            Favorito auxfav = new Favorito();
+            foreach (FavoritoEN auxvid in en.Favorito)
+            {
+
+                favoritos.Add(auxfav);
+            }
+            sit.favoritos = favoritos;
             return sit;
 
 

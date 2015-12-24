@@ -12,10 +12,10 @@ using TravelnookGenNHibernate.CAD.Travelnook;
 
 namespace TravelnookGenNHibernate.CEN.Travelnook
 {
-    public partial class SitioCEN
-    {
-        public void PuntuarSitio(string p_oid, int p_puntuacion)
-        {
+public partial class SitioCEN
+{
+public void PuntuarSitio (string p_oid, int p_puntuacion)
+{
             /*PROTECTED REGION ID(TravelnookGenNHibernate.CEN.Travelnook_Sitio_puntuarSitio) ENABLED START*/
 
             SitioEN sitioEN = new SitioEN();
@@ -27,7 +27,7 @@ namespace TravelnookGenNHibernate.CEN.Travelnook
             float med = ((float)sitioEN.Puntuacion / (float)sitioEN.NumPuntuados);
             sitioEN.PuntuacionMedia = (int)Math.Round(med);
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

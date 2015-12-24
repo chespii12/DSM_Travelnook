@@ -23,6 +23,8 @@ namespace TravelnookMVC.Models
         [ScaffoldColumn(false)]
         public IList<Comentario> Comentarios { get; set; }
 
+        [ScaffoldColumn(false)]
+        public IList<Favorito>  favoritos { get; set; }
         
 
         [Display(Prompt = "Nombre del sitio", Description = "Nombre del sitio", Name = "Nombre ")]
@@ -45,7 +47,6 @@ namespace TravelnookMVC.Models
         public IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> Actividades { get; set; }
 
         [Display(Prompt = "Tipo de sitio", Description = "Tipo de sitio", Name = "Actividades imprimir ")]
-        [Required(ErrorMessage = "Debe indicar un tipo al sitio")]
         public IList<string> Actividadesimprimir { get; set; }
 
         [Display(Prompt = "Tipo de sitio", Description = "Tipo de sitio", Name = "Tipo ")]
@@ -98,6 +99,8 @@ namespace TravelnookMVC.Models
 
         [Display(Name = "Culturales ")]
         public bool culturales { get; set; }
+
+
 
     }
 }

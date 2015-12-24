@@ -47,8 +47,8 @@
 		 </class>	
 		  
 		  <query name="FavoritoENReadAllHQL">from FavoritoEN</query>
-		  <query name="FavoritoENDevuelveSitiosFavoritosHQL"><![CDATA[select (sitio) FROM FavoritoEN as fav inner join fav.Sitio as sitio]]></query>
-		  <query name="FavoritoENDevuelveRutasFavoritasHQL"><![CDATA[select (ruta) FROM FavoritoEN as fav inner join fav.Ruta as ruta]]></query>
-		  <query name="FavoritoENDevuelveEventosFavoritosHQL"><![CDATA[select (evento) FROM FavoritoEN  as fav inner join fav.Evento as evento]]></query>
+		  <query name="FavoritoENDevuelveSitiosFavoritosHQL"><![CDATA[select (sitio) FROM FavoritoEN as fav inner join fav.Sitio as sitio WHERE fav.Usuario.NomUsu= :p_nombre]]></query>
+		  <query name="FavoritoENDevuelveRutasFavoritasHQL"><![CDATA[select (ruta) FROM FavoritoEN as fav inner join fav.Ruta as ruta WHERE fav.Usuario.NomUsu= :p_nombre]]></query>
+		  <query name="FavoritoENDevuelveEventosFavoritosHQL"><![CDATA[select (evento) FROM FavoritoEN  as fav inner join fav.Evento as evento  WHERE fav.Usuario.NomUsu= :p_nombre]]></query>
 		</hibernate-mapping>
 	

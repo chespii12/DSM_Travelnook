@@ -31,5 +31,10 @@ System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> 
 
 
 System.Collections.Generic.IList<SitioEN> DevuelveSitios (int first, int size);
+
+
+void BorrarActividades (string p_Sitio_OID, System.Collections.Generic.IList<TravelnookGenNHibernate.Enumerated.Travelnook.TipoActividadesEnum> p_actividades_OIDs);
+
+System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string arg0);
 }
 }

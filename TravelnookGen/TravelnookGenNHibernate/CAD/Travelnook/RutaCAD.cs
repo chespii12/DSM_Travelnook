@@ -183,7 +183,7 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Ru
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM RutaEN self where FROM RutaEN ruta order by ruta.FechaCreacion asc";
+                //String sql = @"FROM RutaEN self where FROM RutaEN ruta order by ruta.FechaCreacion desc";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("RutaENDevuelveRutasOrdenadasPorFechaHQL");
 
