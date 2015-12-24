@@ -3,30 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-//jasdfasd
 namespace TravelnookMVC.Models
 {
-    public class Evento
+    public class Evento /*creado porque lo necesitaba, pero añadid lo que querais o quitad lo que querais*/
     {
+        
         [ScaffoldColumn(false)]
-        public string IdEvento { get; set; } //id de evento
+        public string Nombre { get; set; }
 
-        [ScaffoldColumn(false)]
-        public string Organizador { get; set; } //organizador, relacion con usuario     
+        /*[Display(Prompt = "Vídeos del sitio", Description = "Vídeos del sitio", Name = "Vídeos ")]
+        //[Required(ErrorMessage = "Debe indicar una imagen del artículo")]
+        public IList<string> Videos { get; set; }*/
+       
 
-        [Display(Prompt = "Titulo del evento", Description = "Titulo del evento", Name = "Titulo ")]
-        [Required(ErrorMessage = "Debe indicar un titulo para el evento")]
-        [StringLength(maximumLength: 200, ErrorMessage = "El nombre no puede tener más de 200 caracteres")]
-        public string Titulo { get; set; }
 
-        [Display(Prompt = "Descripción del evento", Description = "Descripción del evento", Name = "Descripción ")]
-        [Required(ErrorMessage = "Debe indicar una descripción")]
-        [StringLength(maximumLength: 500, ErrorMessage = "La descripción no puede tener más de 500 caracteres")]
-        public string Descripcion { get; set; }
-
-        [Display(Prompt = "Invitados al evento", Description = "Puntuación de la ruta", Name = "Puntuación ")]
-        public IList<string> Invitados { get; set; } //asistentes, relacion con usuario
-
-        //PROVINCIA - FECHA?
     }
 }

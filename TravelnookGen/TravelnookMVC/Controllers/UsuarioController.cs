@@ -110,5 +110,20 @@ namespace TravelnookMVC.Controllers
                 return View();
             }
         }
+        public ActionResult Favoritos(string id)
+        {
+            
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).DevuelveUsuarioPorNomUsu(id);
+            //usu = new AssemblerUsuario().ConvertENToModelUI(usuEN);
+            IList<FavoritoEN> lista = new List<FavoritoEN>();
+            foreach (FavoritoEN fav in usuEN.Favorito)
+            {
+                lista.Add(new FavoritoCAD(session).DevuelveFavoritoPorId(fav.Id));
+            }
+            
+            SessionClose();
+            return View(lista);
+        }
     }
 }

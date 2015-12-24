@@ -227,7 +227,7 @@
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\AssemblerComentario.cs" />
     <Compile Include="Models\AssemblerUsuario.cs" />
-    <Compile Include="Models\Favorito.cs" />
+    <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Ruta.cs" />
     <Compile Include="Models\Sitio.cs" />
@@ -290,6 +290,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="estilos\estilo_navegacion.css" />
+    <Content Include="Images\fav.jpg" />
+    <Content Include="Images\heart-512.png" />
+    <Content Include="Images\love-heart-512.png" />
+    <Content Include="Images\no-fav.jpg" />
     <Content Include="Views\favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -356,6 +360,7 @@
     <Content Include="Views\Comentario\Create.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Ruta\Create.cshtml" />
+    <Content Include="Views\Usuario\Favoritos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

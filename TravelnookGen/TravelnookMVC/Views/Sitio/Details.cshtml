@@ -40,6 +40,38 @@
                   }
                   // -->
       }
+        var esfav= @Model.esfav;
+        var cambio="";
+        var actual="";
+        if (esfav == 1) {
+            cambio = "/Images/heart-512.png";
+            actual = "/Images/love-heart-512.png";
+            }
+        else{
+            cambio = "/Images/love-heart-512.png";
+            actual = "/Images/heart-512.png";
+            }
+       
+        function cambiar () {
+            var nofav=  "/Images/no-fav.jpg";
+            var fav= "/Images/fav.jpg";
+            var aux;
+            document.getElementById('favBoton').src = cambio;
+            aux=actual;
+            actual=cambio;
+            cambio=aux;
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("SitioFavorito", "Sitio" , new { id=Model.Nombre } )',
+                content: "application/json; charset=utf-8",
+       
+            });
+
+            }
+
+        function cambiar2(){
+            alert("HOLA");
+        }
     </script>
 }
 
@@ -49,7 +81,14 @@
 
 <fieldset>
     <legend>Sitio</legend>
-
+    @if (Model.esfav == 1)
+    {
+        <input type="image" onclick="cambiar();" id="favBoton" src="/Images/love-heart-512.png" />
+    }
+    else
+    {
+        <input type="image" onclick="cambiar();" id="favBoton" src="~/Images/heart-512.png" />
+    }
     <h3>
         <div class="display-label">
             @Html.DisplayNameFor(model => model.Descripcion)

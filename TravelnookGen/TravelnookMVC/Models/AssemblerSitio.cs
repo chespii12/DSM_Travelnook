@@ -60,15 +60,6 @@ namespace TravelnookMVC.Models
                 videosaux.Add(auxvid);
             }
             sit.Videos = videosaux;
-
-            IList<Favorito> favoritos = new List<Favorito>();
-            Favorito auxfav = new Favorito();
-            foreach (FavoritoEN auxvid in en.Favorito)
-            {
-
-                favoritos.Add(auxfav);
-            }
-            sit.favoritos = favoritos;
             return sit;
 
 

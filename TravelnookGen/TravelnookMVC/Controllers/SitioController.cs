@@ -29,9 +29,18 @@ namespace TravelnookMVC.Controllers
         public ActionResult Details(string id)
         {
             Sitio sit = null;
+
+            IList<SitioEN> favEN = new List<SitioEN>();
             SessionInitialize();
             SitioEN sitEN = new SitioCAD(session).DevuelveSitioPorNombre(id);
             sit = new AssemblerSitio().ConvertENToModelUI(sitEN);
+            sit.esfav = 0;
+            favEN = new FavoritoCAD(session).DevuelveSitiosFavoritos(User.Identity.Name);
+            foreach (SitioEN sitio in favEN)
+            {
+                if (sitio.Nombre == id)
+                    sit.esfav = 1;
+            }
             SessionClose();
             string aux = sit.Localizacion;
             if (aux != "") {    //si tiene coordenadas saco las dos
@@ -104,7 +113,9 @@ namespace TravelnookMVC.Controllers
 
             try
             {
-                fileName = "/Images/Uploads/"+ sit.Nombre + "/" + fileName;
+                //fileName = "/Images/Uploads/"+ sit.Nombre + "/" + fileName;
+                if (sit.Localizacion == null)
+                    sit.Localizacion = "";
                 SitioCEN cen = new SitioCEN();
                 DateTime fechaActual = DateTime.Today;                
                 TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum tipoaux= new TravelnookGenNHibernate.Enumerated.Travelnook.TipoSitioEnum();
@@ -330,16 +341,53 @@ namespace TravelnookMVC.Controllers
                 return View();
             }
         }
-        public void SitioFavotiro(string id)
+        public ActionResult SitioFavorito(string id)
         {
+            bool esfav=false;
+            int identificador = 0;
+            IList<SitioEN> favs = new List<SitioEN>();
+            //SessionInitialize();
+            /*FavoritoCAD favCAD = new FavoritoCAD(session);
+            FavoritoCEN favcen = new FavoritoCEN(favCAD);*/
+           /* int nuevo = favcen.CrearFavorito("u1");
+            favcen.AnyadirSitioFavoritos(nuevo, id);*/
             SessionInitialize();
-            SitioCAD sitCAD = new SitioCAD(session);
-            SitioCEN cen = new SitioCEN(sitCAD);
-            SitioEN sitEN = cen.DevuelveSitioPorNombre(id);
-            Sitio sit = new AssemblerSitio().ConvertENToModelUI(sitEN);
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            UsuarioCEN usuCen = new UsuarioCEN(usuCAD);
+            FavoritoCEN favcen = new FavoritoCEN();
+            UsuarioEN usuario = usuCen.DevuelveUsuarioPorNomUsu(User.Identity.Name);
 
+            favs = favcen.DevuelveSitiosFavoritos(User.Identity.Name);
+           
+            
+            //UsuarioEN usu = new UsuarioEN();
+            
+            foreach (SitioEN favaux in favs)
+            {
+                if (favaux.Nombre == id)
+                {   //si esta en mis favoritos
+                    esfav = true;
+
+                }
+            }
+            
+            if (esfav == true)  //si esta en mis favoritos lo busco y me quedo con su id
+            {
+                foreach (FavoritoEN misFavs in usuario.Favorito)    //para cada favorito
+                {
+                    if (misFavs.Sitio != null && misFavs.Sitio.Nombre == id)    //si Sitio no es null y es el que recibo
+                        identificador = misFavs.Id; 
+                }
+                favcen.EliminarFavorito(identificador);
+            }
+            else //si no esta lo creo
+            {
+                int nuevo2 = favcen.CrearFavorito(User.Identity.Name);
+                favcen.AnyadirSitioFavoritos(nuevo2,id);
+            }
+           
             SessionClose();
-
+            return View();
         }
     }
 }

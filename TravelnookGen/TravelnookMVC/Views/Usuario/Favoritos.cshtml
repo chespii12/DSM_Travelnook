@@ -1,0 +1,35 @@
+﻿@model List<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN>
+@{
+    ViewBag.Title = "Favoritos";
+}
+
+<h2>Favoritos</h2>
+<h3>Sitios</h3>
+@foreach (var a in Model)
+{
+    if (a.Sitio != null)
+    {
+        <a href='/Sitio/Details/@a.Sitio.Nombre'>@a.Sitio.Nombre</a><br />
+    }
+
+}
+
+<h3>Rutas</h3>
+@foreach (var ab in Model)
+{
+    if (ab.Ruta != null)
+    {
+        <a href='/Ruta/Details/@ab.Ruta.Nombre'>@ab.Ruta.Nombre</a>
+    }
+
+}
+
+<h3>Eventos</h3>
+@foreach (var av in Model)
+{
+    if (av.Evento != null)
+    {
+        <a href='/Evento/Details/@av.Evento.Id'>@av.Evento.Titulo</a>
+    }
+
+}

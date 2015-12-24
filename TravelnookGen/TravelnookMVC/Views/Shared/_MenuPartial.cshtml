@@ -21,7 +21,7 @@
         <ul id="MenuUsu" class="dropdown-menu">
             <li><a href="/Account/Manage">Editar perfil</a></li>
             <li><a href="#">Mis amigos</a></li>
-            <li><a href="#">Mis favoritos</a></li>
+            <li><a href="/Usuario/Favoritos/@User.Identity.Name">Mis favoritos</a></li>
             <li>@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
                 @Html.AntiForgeryToken()

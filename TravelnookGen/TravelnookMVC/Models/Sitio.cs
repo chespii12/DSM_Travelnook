@@ -24,8 +24,7 @@ namespace TravelnookMVC.Models
         public IList<Comentario> Comentarios { get; set; }
 
         [ScaffoldColumn(false)]
-        public IList<Favorito>  favoritos { get; set; }
-        
+        public int esfav { get; set; }
 
         [Display(Prompt = "Nombre del sitio", Description = "Nombre del sitio", Name = "Nombre ")]
         [Required(ErrorMessage = "Debe indicar un nombre para el sitio")]

@@ -415,7 +415,7 @@ namespace InitializeDB
                 }
                 System.Console.Write("fin lista1\n");
 
-                favCEN.EliminarFavorito(favENSitio.Id);
+                //favCEN.EliminarFavorito(favENSitio.Id);
 
                 IList<FavoritoEN> favs2 = favCEN.DevuelveFavoritos(0, -1);
                 usu1.Favorito = favs2;
