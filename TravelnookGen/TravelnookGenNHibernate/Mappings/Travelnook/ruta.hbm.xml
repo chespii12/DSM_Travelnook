@@ -79,6 +79,13 @@
 									<column name="FK_attribute_idComentario"/> 
       						</many-to-many>
     					</bag>
+			
+		  			
+						<many-to-one name="Usuario" class="TravelnookGenNHibernate.EN.Travelnook.UsuarioEN" >	
+								<column name="FK_nomUsu_idUsuario"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					

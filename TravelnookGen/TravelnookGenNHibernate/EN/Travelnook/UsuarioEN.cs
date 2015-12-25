@@ -131,6 +131,13 @@ private string foto_perfil;
 
 
 
+/**
+ *	Atributo ruta
+ */
+private System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> ruta;
+
+
+
 
 
 
@@ -242,6 +249,12 @@ public virtual string Foto_perfil {
 
 
 
+public virtual System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> Ruta {
+        get { return ruta; } set { ruta = value;  }
+}
+
+
+
 
 
 public UsuarioEN()
@@ -255,23 +268,24 @@ public UsuarioEN()
         amigos = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN>();
         evento = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.EventoEN>();
         invitado = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.EventoEN>();
+        ruta = new System.Collections.Generic.List<TravelnookGenNHibernate.EN.Travelnook.RutaEN>();
 }
 
 
 
-public UsuarioEN(string nomUsu, string email, string nombre, string apellidos, string localidad, string provincia, String contrasenya, Nullable<DateTime> fechaNacimiento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentario, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitante, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitado, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> amigos, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> evento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> invitado, string foto_perfil
+public UsuarioEN(string nomUsu, string email, string nombre, string apellidos, string localidad, string provincia, String contrasenya, Nullable<DateTime> fechaNacimiento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentario, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitante, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitado, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> amigos, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> evento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> invitado, string foto_perfil, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> ruta
                  )
 {
-        this.init (NomUsu, email, nombre, apellidos, localidad, provincia, contrasenya, fechaNacimiento, sitio, favorito, reporte, comentario, solicitudAmistadSolicitante, solicitudAmistadSolicitado, amigos, evento, invitado, foto_perfil);
+        this.init (NomUsu, email, nombre, apellidos, localidad, provincia, contrasenya, fechaNacimiento, sitio, favorito, reporte, comentario, solicitudAmistadSolicitante, solicitudAmistadSolicitado, amigos, evento, invitado, foto_perfil, ruta);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (NomUsu, usuario.Email, usuario.Nombre, usuario.Apellidos, usuario.Localidad, usuario.Provincia, usuario.Contrasenya, usuario.FechaNacimiento, usuario.Sitio, usuario.Favorito, usuario.Reporte, usuario.Comentario, usuario.SolicitudAmistadSolicitante, usuario.SolicitudAmistadSolicitado, usuario.Amigos, usuario.Evento, usuario.Invitado, usuario.Foto_perfil);
+        this.init (NomUsu, usuario.Email, usuario.Nombre, usuario.Apellidos, usuario.Localidad, usuario.Provincia, usuario.Contrasenya, usuario.FechaNacimiento, usuario.Sitio, usuario.Favorito, usuario.Reporte, usuario.Comentario, usuario.SolicitudAmistadSolicitante, usuario.SolicitudAmistadSolicitado, usuario.Amigos, usuario.Evento, usuario.Invitado, usuario.Foto_perfil, usuario.Ruta);
 }
 
-private void init (string nomUsu, string email, string nombre, string apellidos, string localidad, string provincia, String contrasenya, Nullable<DateTime> fechaNacimiento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentario, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitante, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitado, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> amigos, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> evento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> invitado, string foto_perfil)
+private void init (string nomUsu, string email, string nombre, string apellidos, string localidad, string provincia, String contrasenya, Nullable<DateTime> fechaNacimiento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> sitio, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.FavoritoEN> favorito, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ReporteEN> reporte, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.ComentarioEN> comentario, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitante, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SolicitudEN> solicitudAmistadSolicitado, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.UsuarioEN> amigos, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> evento, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.EventoEN> invitado, string foto_perfil, System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.RutaEN> ruta)
 {
         this.NomUsu = nomUsu;
 
@@ -309,6 +323,8 @@ private void init (string nomUsu, string email, string nombre, string apellidos,
         this.Invitado = invitado;
 
         this.Foto_perfil = foto_perfil;
+
+        this.Ruta = ruta;
 }
 
 public override bool Equals (object obj)

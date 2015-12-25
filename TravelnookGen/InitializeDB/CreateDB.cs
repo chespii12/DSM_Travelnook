@@ -252,7 +252,7 @@ namespace InitializeDB
                 ruta1EN.FechaCreacion = new DateTime(2015, 05, 05);
 
                 System.Console.WriteLine("Creo ruta 1");
-                ruta1CEN.CrearRuta(ruta1EN.Nombre, ruta1EN.Descripcion, ruta1EN.Provincia, sitios, ruta1EN.Puntuacion, ruta1EN.NumPuntuados, ruta1EN.FechaCreacion, ruta1EN.PuntuacionMedia);
+                ruta1CEN.CrearRuta(ruta1EN.Nombre, ruta1EN.Descripcion, ruta1EN.Provincia, sitios, ruta1EN.Puntuacion, ruta1EN.NumPuntuados, ruta1EN.FechaCreacion, ruta1EN.PuntuacionMedia, usu1EN.NomUsu);
 
 
                 /*******************************COMENTARIOS**************************/

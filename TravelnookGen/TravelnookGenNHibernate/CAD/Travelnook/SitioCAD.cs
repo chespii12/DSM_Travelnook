@@ -384,7 +384,7 @@ public void BorrarActividades (string p_Sitio_OID, System.Collections.Generic.IL
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string arg0)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string p_nombre)
 {
         System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> result;
         try
@@ -393,7 +393,7 @@ public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.Si
                 //String sql = @"FROM SitioEN self where FROM SitioEN sitio where sitio.Nombre like '%' + :p_nombre +'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SitioENbusarSitiosPorNombreHQL");
-                query.SetParameter ("arg0", arg0);
+                query.SetParameter ("p_nombre", p_nombre);
 
                 result = query.List<TravelnookGenNHibernate.EN.Travelnook.SitioEN>();
                 SessionCommit ();

@@ -149,9 +149,9 @@ public void BorrarActividades (string p_Sitio_OID, System.Collections.Generic.IL
 
         _ISitioCAD.BorrarActividades (p_Sitio_OID, p_actividades_OIDs);
 }
-public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string arg0)
+public System.Collections.Generic.IList<TravelnookGenNHibernate.EN.Travelnook.SitioEN> BusarSitiosPorNombre (string p_nombre)
 {
-        return _ISitioCAD.BusarSitiosPorNombre (arg0);
+        return _ISitioCAD.BusarSitiosPorNombre (p_nombre);
 }
 }
 }

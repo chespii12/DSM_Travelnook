@@ -36,7 +36,7 @@ public IRutaCAD get_IRutaCAD ()
         return this._IRutaCAD;
 }
 
-public string CrearRuta (string p_nombre, string p_descripcion, string p_provincia, System.Collections.Generic.IList<string> p_sitio, int p_puntuacion, int p_numPuntuados, Nullable<DateTime> p_fechaCreacion, int p_puntuacionMedia)
+public string CrearRuta (string p_nombre, string p_descripcion, string p_provincia, System.Collections.Generic.IList<string> p_sitio, int p_puntuacion, int p_numPuntuados, Nullable<DateTime> p_fechaCreacion, int p_puntuacionMedia, string p_usuario)
 {
         RutaEN rutaEN = null;
         string oid;
@@ -70,6 +70,14 @@ public string CrearRuta (string p_nombre, string p_descripcion, string p_provinc
         rutaEN.FechaCreacion = p_fechaCreacion;
 
         rutaEN.PuntuacionMedia = p_puntuacionMedia;
+
+
+        if (p_usuario != null) {
+                // El argumento p_usuario -> Property usuario es oid = false
+                // Lista de oids nombre
+                rutaEN.Usuario = new TravelnookGenNHibernate.EN.Travelnook.UsuarioEN ();
+                rutaEN.Usuario.NomUsu = p_usuario;
+        }
 
         //Call to RutaCAD
 

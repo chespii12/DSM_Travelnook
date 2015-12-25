@@ -4,28 +4,28 @@
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - running workflow: C:/OOH4RIA/workspace/Travelnook/templates/workflow/generator.mwe
 0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - 
-343  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\OOH4RIA\workspace'
-546  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
-609  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
-687  [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow workflow::nhibernate::generator.mwe in C:/OOH4RIA/workspace/Travelnook/templates/workflow/generator.mwe:10
-687  [main] INFO  e.core.container.CompositeComponent  - XmiReader: file 'models/default.domainModel' => slot 'es_ua_dlsi_ooh_conceptual_model'
-876  [main] INFO  e.core.container.CompositeComponent  - CheckComponent: slot es_ua_dlsi_ooh_conceptual_model check file(s): metamodel::Checks 
-1172 [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [../TravelnookGen, CONFIGURATION:../TravelnookGen(overwrite=false,append=false,fileEncoding=utf-8)]
-configuroConf:C:\Users\OIDEWin7\AppData\Local\Temp\OOH4RIA3273286036170852645.cfg
+265  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\OOH4RIA\workspace'
+797  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
+844  [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
+969  [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow workflow::nhibernate::generator.mwe in C:/OOH4RIA/workspace/Travelnook/templates/workflow/generator.mwe:10
+969  [main] INFO  e.core.container.CompositeComponent  - XmiReader: file 'models/default.domainModel' => slot 'es_ua_dlsi_ooh_conceptual_model'
+1126 [main] INFO  e.core.container.CompositeComponent  - CheckComponent: slot es_ua_dlsi_ooh_conceptual_model check file(s): metamodel::Checks 
+1438 [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [../TravelnookGen, CONFIGURATION:../TravelnookGen(overwrite=false,append=false,fileEncoding=utf-8)]
+configuroConf:C:\Users\OIDEWin7\AppData\Local\Temp\OOH4RIA8631381014218772270.cfg
 enc:utf-8
-1329 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
-1329 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan finished in 0.0s
-1329 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Files scanned: 4
-1329 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Regions found: 0
-enc:utf-8
-enc:utf-8
+1626 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
+1626 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan finished in 0.0s
+1626 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Files scanned: 4
+1626 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Regions found: 0
 enc:utf-8
 enc:utf-8
 enc:utf-8
 enc:utf-8
-1547 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCAD
 enc:utf-8
-1610 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCAD
+enc:utf-8
+1830 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCAD
+enc:utf-8
+1892 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCAD
 LA clase origen: Favorito y el nombre de rol: usuario
 DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol destino: usuario
 DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
@@ -51,7 +51,7 @@ DISTINTO en: asoOrigin: ruta_favoritos. El nombre del rol origen: ruta de el rol
 DISTINTO en: asoOrigin: sitio_favoritos. El nombre del rol origen: sitio de el rol destino: usuario
 Encontrado en: asoOrigin: usuario_0_favoritos_0. El nombre del rol origen: usuario y el nombre de rol destino: favorito
 enc:utf-8
-1657 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCAD
+1939 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCAD
 LA clase origen: Sitio y el nombre de rol: usuario
 DISTINTO en: asoOrigin: ruta_sitio. El nombre del rol origen: ruta de el rol destino: usuario
 DISTINTO en: asoOrigin: reportes_sitio. El nombre del rol origen: reporte de el rol destino: usuario
@@ -71,13 +71,34 @@ DISTINTO en: asoOrigin: actividad_sitio. El nombre del rol origen: actividades d
 LA clase destino: Sitio y el nombre de rol: usuario
 Encontrado en: asoTarget: sitio_usuario El nombre de rol origen (generado): sitio y el nombre del rol destino:usuario
 enc:utf-8
-1704 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCAD
+2002 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCAD
+LA clase origen: Ruta y el nombre de rol: usuario
+LA clase destino: Ruta y el nombre de rol: usuario
+DISTINTO en: asoTarget: ruta_sitio. El nombre del rol destino: sitio de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_favoritos. El nombre del rol destino: favorito de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_reportes. El nombre del rol destino: reporte de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_comentario. El nombre del rol destino: comentarios de el rol origen: usuario
+Encontrado en: asoTarget: ruta_usuario El nombre de rol origen (generado): ruta y el nombre del rol destino:usuario
+LA clase origen: Ruta y el nombre de rol: usuario
+LA clase destino: Ruta y el nombre de rol: usuario
+DISTINTO en: asoTarget: ruta_sitio. El nombre del rol destino: sitio de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_favoritos. El nombre del rol destino: favorito de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_reportes. El nombre del rol destino: reporte de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_comentario. El nombre del rol destino: comentarios de el rol origen: usuario
+Encontrado en: asoTarget: ruta_usuario El nombre de rol origen (generado): ruta y el nombre del rol destino:usuario
+LA clase origen: Ruta y el nombre de rol: usuario
+LA clase destino: Ruta y el nombre de rol: usuario
+DISTINTO en: asoTarget: ruta_sitio. El nombre del rol destino: sitio de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_favoritos. El nombre del rol destino: favorito de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_reportes. El nombre del rol destino: reporte de el rol origen: usuario
+DISTINTO en: asoTarget: ruta_comentario. El nombre del rol destino: comentarios de el rol origen: usuario
+Encontrado en: asoTarget: ruta_usuario El nombre de rol origen (generado): ruta y el nombre del rol destino:usuario
 enc:utf-8
-1736 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCAD
+2033 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCAD
 enc:utf-8
-1783 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCAD
+2080 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCAD
 enc:utf-8
-1814 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCAD
+2095 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCAD
 LA clase origen: Comentario y el nombre de rol: usuario
 DISTINTO en: asoOrigin: reportes_comentario. El nombre del rol origen: reportes de el rol destino: usuario
 DISTINTO en: asoOrigin: sitio_comentario. El nombre del rol origen: sitio de el rol destino: usuario
@@ -100,7 +121,7 @@ DISTINTO en: asoOrigin: evento_comentario. El nombre del rol origen: evento de e
 LA clase destino: Comentario y el nombre de rol: usuario
 Encontrado en: asoTarget: comentario_usuario El nombre de rol origen (generado): comentario y el nombre del rol destino:usuario
 enc:utf-8
-1845 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCAD
+2142 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCAD
 LA clase origen: Evento y el nombre de rol: organizador
 DISTINTO en: asoOrigin: favoritos_eventos. El nombre del rol origen: favorito de el rol destino: organizador
 LA clase destino: Evento y el nombre de rol: organizador
@@ -117,7 +138,7 @@ LA clase destino: Evento y el nombre de rol: organizador
 DISTINTO en: asoTarget: eventos_reportes. El nombre del rol destino: reporte de el rol origen: organizador
 Encontrado en: asoTarget: eventos_usuario El nombre de rol origen (generado): evento y el nombre del rol destino:organizador
 enc:utf-8
-1877 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCAD
+2173 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCAD
 LA clase origen: Solicitud y el nombre de rol: solicitante
 DISTINTO en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado de el rol destino: solicitante
 LA clase destino: Solicitud y el nombre de rol: solicitante
@@ -143,7 +164,7 @@ Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen:
 LA clase origen: Solicitud y el nombre de rol: solicitado
 Encontrado en: asoOrigin: usuario_0_solicitud amistad. El nombre del rol origen: solicitado y el nombre de rol destino: solicitudAmistadSolicitado
 enc:utf-8
-1923 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCAD
+2205 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCAD
 enc:utf-8
 enc:utf-8
 enc:utf-8
@@ -156,27 +177,25 @@ enc:utf-8
 enc:utf-8
 enc:utf-8
 enc:utf-8
-2173 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCEN
+2470 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioCEN
 enc:utf-8
-2205 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCEN
+2502 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoCEN
 enc:utf-8
-2236 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCEN
+2533 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioCEN
 enc:utf-8
-2267 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCEN
+2564 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaCEN
 enc:utf-8
-2298 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCEN
+2595 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteCEN
 enc:utf-8
-2330 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCEN
+2627 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorCEN
 enc:utf-8
-2345 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCEN
+2642 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioCEN
 enc:utf-8
-2377 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCEN
+2673 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoCEN
 enc:utf-8
-2408 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCEN
+2705 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudCEN
 enc:utf-8
-2423 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCEN
-enc:utf-8
-enc:utf-8
+2720 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadCEN
 enc:utf-8
 enc:utf-8
 enc:utf-8
@@ -192,46 +211,48 @@ enc:utf-8
 enc:utf-8
 enc:utf-8
 enc:utf-8
-2753 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioEN
-enc:utf-8
-2799 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoEN
-enc:utf-8
-2831 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioEN
-enc:utf-8
-2862 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaEN
-enc:utf-8
-2893 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteEN
-enc:utf-8
-2924 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorEN
-enc:utf-8
-2956 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioEN
-enc:utf-8
-2987 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoEN
-enc:utf-8
-3018 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudEN
-enc:utf-8
-3049 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadEN
 enc:utf-8
 enc:utf-8
+3081 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - UsuarioEN
+enc:utf-8
+3128 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - FavoritoEN
+enc:utf-8
+3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SitioEN
+enc:utf-8
+3206 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - RutaEN
+enc:utf-8
+3237 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ReporteEN
+enc:utf-8
+3284 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - AdministradorEN
+enc:utf-8
+3299 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ComentarioEN
+enc:utf-8
+3331 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EventoEN
+enc:utf-8
+3362 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - SolicitudEN
+enc:utf-8
+3393 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - ActividadEN
 enc:utf-8
 enc:utf-8
-3143 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3143 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3159 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3174 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3174 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
-3174 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
 enc:utf-8
 enc:utf-8
-3221 [main] INFO         org.eclipse.xpand2.Generator  - Written 88 files to outlet [default](../TravelnookGen)
-3221 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 1 files to outlet [default](../TravelnookGen)
-3221 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CreateSolution
-3221 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.UpdateSolution
-3237 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CopyDLLs
+3487 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3487 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3503 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3503 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3503 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3503 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3518 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3518 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3518 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+3518 [main] INFO  ipse.xtend.util.stdlib.IOExtensions  - EN
+enc:utf-8
+enc:utf-8
+3565 [main] INFO         org.eclipse.xpand2.Generator  - Written 88 files to outlet [default](../TravelnookGen)
+3565 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 1 files to outlet [default](../TravelnookGen)
+3565 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CreateSolution
+3581 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.UpdateSolution
+3581 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CopyDLLs
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\Antlr3.Runtime.dll
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\Castle.DynamicProxy2.dll
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\Iesi.Collections.dll
@@ -242,4 +263,4 @@ enc:utf-8
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\NHibernate.dll
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.core.dll
 ../TravelnookGen\TravelnookGenNHibernate\AppLib\nunit.framework.dll
-3253 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 2566ms!
+4175 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 3206ms!

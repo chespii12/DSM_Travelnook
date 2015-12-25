@@ -91,6 +91,13 @@ public string CrearRuta (RutaEN ruta)
                                 ruta.Sitio [i].Ruta.Add (ruta);
                         }
                 }
+                if (ruta.Usuario != null) {
+                        // Argumento OID y no colección.
+                        ruta.Usuario = (TravelnookGenNHibernate.EN.Travelnook.UsuarioEN)session.Load (typeof(TravelnookGenNHibernate.EN.Travelnook.UsuarioEN), ruta.Usuario.NomUsu);
+
+                        ruta.Usuario.Ruta
+                        .Add (ruta);
+                }
 
                 session.Save (ruta);
                 SessionCommit ();

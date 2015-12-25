@@ -132,6 +132,17 @@
       						</many-to-many>
     					</bag>
 			
+			
+		  			
+						<bag name="Ruta" >
+							<key>
+							
+								
+								<column name="FK_nomUsu_idUsuario"/>
+					      	</key>
+							<one-to-many class="TravelnookGenNHibernate.EN.Travelnook.RutaEN"/>
+					    </bag>
+					
 					
 					
 					
@@ -156,6 +167,7 @@
 									<column name="FK_nomUsu_idAmigos"/> 
       						</many-to-many>
     					</bag>		
+					
 					
 					
 					
